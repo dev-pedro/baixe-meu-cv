@@ -3,6 +3,9 @@ import Header from '../components/header';
 import Education from '../components/section.education';
 import { user } from '../data/user.exemple';
 import Experience from '../components/section.experience';
+import Courses from '../components/section.courses';
+import { RiEmpathizeFill } from 'react-icons/ri';
+import { FaBrain } from 'react-icons/fa';
 
 export default async function UserPage({ params }: { params: { username: string } }) {
   //const user = await getUserByUsername(params.username);
@@ -16,24 +19,30 @@ export default async function UserPage({ params }: { params: { username: string 
 
       <Experience props={user} />
 
-      
+      <Courses props={user} />
 
       <section>
-        <h2 className="text-xl font-semibold mb-2">Cursos</h2>
-        <ul className="space-y-2">
-          {user.cursos?.map((curso, i) => (
-            <li key={i}>
-              {curso.titulo} - {curso.instituicao} ({curso.ano})
-            </li>
+      <div className="flex items-center mb-4">
+          <FaBrain className="w-6 h-6 mr-2" />
+          <h2 className="text-2xl font-semibold">Skills</h2>
+        </div>
+        <div className="flex flex-wrap gap-2">
+          {user.skills?.map((skill, i) => (
+            <span key={i} className="bg-primary/20 text-primary/80 px-2 py-1 rounded-full text-sm">
+              {skill}
+            </span>
           ))}
-        </ul>
+        </div>
       </section>
 
       <section>
-        <h2 className="text-xl font-semibold mb-2">Skills</h2>
+        <div className="flex items-center mb-4">
+          <RiEmpathizeFill className="w-8 h-8 mr-2" />
+          <h2 className="text-2xl font-semibold">Soft Skills</h2>
+        </div>
         <div className="flex flex-wrap gap-2">
-          {user.skills?.map((skill, i) => (
-            <span key={i} className="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-sm">
+          {user.softSkills?.map((skill, i) => (
+            <span key={i} className="bg-primary/20 text-primary/80 px-2 py-1 rounded-full text-sm">
               {skill}
             </span>
           ))}
