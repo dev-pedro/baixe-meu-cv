@@ -15,7 +15,7 @@ export default function Header({ props }: { props: any }) {
         <p className="text-xl md:text-2xl pb-4">{props?.nome}</p>
         <h1 className="font-bold text-2xl md:text-5xl pb-4">{props.profissao}</h1>
         <p className='pb-6'>{props.bio}</p>
-        <Button  variant={'default'}>Contate me</Button>
+        <Button  variant={'contact'}>Contate me</Button>
       </div>
     </section>
   );

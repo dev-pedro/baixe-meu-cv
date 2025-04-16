@@ -19,6 +19,8 @@ const buttonVariants = cva(
         link: 'text-primary underline-offset-4 hover:underline',
         download:
           'border bg-background shadow-xs hover:bg-gray-200 hover:text-accent-foreground active:translate-y-[1px] active:shadow-inner dark:bg-input/30 dark:border-input dark:hover:bg-input/50',
+          contact:
+          'bg-primary/80 shadow-xs hover:bg-primary text-primary-foreground active:translate-y-[1px] active:shadow-inner dark:bg-input/30 dark:border-input dark:hover:bg-input/50',
       },
       size: {
         default: 'h-9 px-4 py-2 has-[>svg]:px-3',
