@@ -1,11 +1,11 @@
 import { LuScrollText } from "react-icons/lu";
 
 export const siteDetails = {
-    siteName: 'Curriculo on-line',
+    siteName: 'Baixe Meu CV',
     siteUrl: '#',
-    email: 'taxconferencepro@gmail.com',
+    email: 'baixemeucv@gmail.com',
     metadata: {
-        title: 'Curriculo on-line',
+        title: 'Baixe Meu CV',
         description: 'Um currículo simples e elegante.',
     },
     language: 'pt-br',
