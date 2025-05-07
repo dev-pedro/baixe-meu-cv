@@ -14,6 +14,7 @@ import { useUser } from '../context/user.context';
 import PortfolioEditor from '@/components/form.portifolio.editor';
 import PickColor from '@/components/form.pick.color';
 import GraduationEditor from '@/components/form.graduations.editor';
+import { FaShieldAlt } from 'react-icons/fa';
 
 export default function EditProfileClient({ props }: { props?: any }) {
   const [message, setMessage] = useState<string | null>(null);
@@ -168,6 +169,9 @@ export default function EditProfileClient({ props }: { props?: any }) {
 
       <PickColor color={formData?.pickColor || 1} setPickColor={handlePickColorChange} />
 
+      <div className="flex items-center justify-center sm:justify-end mt-2 w-full sm:w-8/12 text-nowrap">
+        <FaShieldAlt className='mr-1'/> dados critografados.
+      </div>
 
       {/* Área de rolagem para o formulário */}
       <div className="w-full sm:w-8/12">
@@ -202,6 +206,7 @@ export default function EditProfileClient({ props }: { props?: any }) {
           <div>
             <Label htmlFor="email" className="pb-2">
               Email
+              <FaShieldAlt />
             </Label>
             <Input
               type="email"
@@ -215,6 +220,7 @@ export default function EditProfileClient({ props }: { props?: any }) {
           <div>
             <Label htmlFor="phone" className="pb-2">
               Telefone
+              <FaShieldAlt />
             </Label>
             <Input
               type="text"
@@ -272,7 +278,6 @@ export default function EditProfileClient({ props }: { props?: any }) {
             />
             <Label htmlFor="public">Tornar público</Label>
           </div>
-
 
           <PortfolioEditor
             projects={formData?.portfolio || []}
