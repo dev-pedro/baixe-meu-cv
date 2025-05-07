@@ -1,0 +1,83 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../lib/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id             Int          @id @default(autoincrement())
+  username       String       @unique
+  name           String
+  emailEncrypted String
+  emailHash      String       @unique
+  phoneEncrypted String       @unique
+  image          String?
+  profession     String?
+  showPhoneInPDF Boolean      @default(false)
+  showEmailInPDF Boolean      @default(true)
+  city           String?
+  bio            String?
+  public         Boolean      @default(false)
+  pickColor      Int?
+  skills         String[]
+  softSkills     String[]
+  courses        Course[]
+  experiences    Experience[]
+  graduation     Graduation[]
+  portfolio      Portfolio[]
+}
+
+model Portfolio {
+  id           Int      @id @default(autoincrement())
+  name         String
+  url          String
+  description  String
+  technologies String[]
+  userId       Int
+  user         User     @relation(fields: [userId], references: [id])
+}
+
+model Graduation {
+  id          Int     @id @default(autoincrement())
+  institution String
+  name        String
+  year        String
+  description String?
+  userId      Int
+  user        User    @relation(fields: [userId], references: [id])
+}
+
+model Experience {
+  id      Int    @id @default(autoincrement())
+  company String
+  start   String
+  end     String
+  userId  Int
+  user    User   @relation(fields: [userId], references: [id])
+  jobs    Job[]
+}
+
+model Job {
+  id           Int        @id @default(autoincrement())
+  function     String
+  description  String
+  start        String
+  end          String
+  experienceId Int
+  experience   Experience @relation(fields: [experienceId], references: [id])
+}
+
+model Course {
+  id          Int     @id @default(autoincrement())
+  institution String
+  name        String
+  ano         String
+  description String
+  online      Boolean @default(false)
+  userId      Int
+  user        User    @relation(fields: [userId], references: [id])
+}
