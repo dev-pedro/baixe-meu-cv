@@ -74,7 +74,7 @@ export default async function ShowCurriculoPage({ params }: PageProps) {
   if (!curriculo) {
     return (
       <div className="flex flex-col items-center justify-center h-[70vh] text-center text-gray-600 space-y-4">
-        <FaUserSlash className="text-red-400 w-16 h-16" />
+        <FaUserSlash className="w-16 h-16 text-red-400" />
         <h1 className="text-2xl font-semibold">Usuário não encontrado</h1>
         <p className="text-base text-gray-500">
           O currículo que você está tentando acessar não existe ou foi removido.
@@ -94,9 +94,9 @@ export default async function ShowCurriculoPage({ params }: PageProps) {
   };
 
   return (
-    <div className="max-w-12/12 mx-auto">
+    <div className="mx-auto max-w-12/12">
       {curriculo.public ? (
-        <div className="flex flex-col max-w-11/12 md:max-w-10/12 mx-auto gap-4">
+        <div className="flex flex-col gap-4 mx-auto max-w-11/12 md:max-w-10/12">
           <Header props={props} />
           <Portifolio props={props} />
           <Education props={props} />
