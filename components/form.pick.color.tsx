@@ -11,20 +11,19 @@ interface Props {
 
 export default function PickColor({ color, setPickColor }: Props) {
   return (
-    <div className="space-y-4 border-t pt-2">
+    <div className="pt-2 space-y-4 border-t">
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-lg font-semibold">Escolha uma cor</h2>
+          <h2 className="text-lg font-semibold">Cor de destaque</h2>
           <p className="text-xs text-muted-foreground">
             Selecione uma cor de realce para a página de seu currículo.
           </p>
         </div>
         <div
-          className="w-6 h-6 rounded-full border ml-4"
+          className="w-6 h-6 ml-4 border rounded-full"
           style={{ backgroundColor: color !== null ? colors[color - 1] : 'transparent' }}
         />
       </div>
-
       <div className="flex flex-wrap justify-center gap-2">
         {colors.map((colorHex, index) => {
           const selected = color === index + 1;
