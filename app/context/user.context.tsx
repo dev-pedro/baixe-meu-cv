@@ -4,15 +4,11 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 import { useSession } from 'next-auth/react';
 import { getUserByEmailHash } from '@/lib/user';
-import { Prisma } from '@/lib/generated/prisma';
-
-type UserData = Prisma.UserCreateInput;
+import { UserDataResult } from '../types/types';
 
 type UserContextType = {
-  myCurriculo: { user: UserData | null; message: string; error: boolean } | null;
-  setMyCurriculo: React.Dispatch<
-    React.SetStateAction<{ user: UserData | null; message: string; error: boolean } | null>
-  >;
+  myCurriculo: UserDataResult | null;
+  setMyCurriculo: React.Dispatch<React.SetStateAction<UserDataResult | null>>;
   loading: boolean;
 };
 
@@ -24,11 +20,7 @@ const UserContext = createContext<UserContextType>({
 
 function UserProvider({ children }: { children: React.ReactNode }) {
   const { data: session, status } = useSession();
-  const [myCurriculo, setMyCurriculo] = useState<{
-    user: UserData | null;
-    message: string;
-    error: boolean;
-  } | null>(null);
+  const [myCurriculo, setMyCurriculo] = useState<UserDataResult | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(
@@ -39,10 +31,11 @@ function UserProvider({ children }: { children: React.ReactNode }) {
         try {
           const result = await getUserByEmailHash(session.user.email);
           const curriculo = {
-            user: result?.user || null,
+            profile: result?.profile || null,
             message: result?.message || 'Usuário encontrado com sucesso!',
             error: result?.error || false,
           };
+          console.log('curriculo contexto: ', curriculo)
           setMyCurriculo(curriculo);
         } catch (error) {
           console.error('Erro ao buscar usuário', error);
