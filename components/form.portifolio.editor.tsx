@@ -5,7 +5,7 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
 import { X } from 'lucide-react';
-import { Portifolio } from '@/app/types/types';
+import { Portfolio } from '@/app/types/types';
 import {
   Accordion,
   AccordionContent,
@@ -15,12 +15,12 @@ import {
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 interface Props {
-  projects: Portifolio[];
-  setProjects: (projects: Portifolio[]) => void;
+  projects: Portfolio[];
+  setProjects: (projects: Portfolio[]) => void;
 }
 
 export default function PortfolioEditor({ projects, setProjects }: Props) {
-  const handleChange = (index: number, field: keyof Portifolio, value: string) => {
+  const handleChange = (index: number, field: keyof Portfolio, value: string) => {
     const updated = [...projects];
     updated[index][field] = value;
     setProjects(updated);
