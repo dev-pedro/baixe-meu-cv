@@ -24,7 +24,7 @@ import { useUser } from '@/app/context/user.context';
 export function MenuBarUser({ props }: { props: any }) {
   const { userSession } = props;
   const { myCurriculo } = useUser();
-  const user = myCurriculo?.user;
+  const user = myCurriculo?.profile;
   const router = useRouter();
   const [loading, setLoading] = useState(false);
 
@@ -35,7 +35,7 @@ export function MenuBarUser({ props }: { props: any }) {
   };
 
   return (
-    <Menubar className="sticky top-0 px-14 py-4 w-full mx-auto h-full z-50 bg-background border-none shadow-none justify-between sm:justify-end">
+    <Menubar className="sticky top-0 z-50 justify-between w-full h-full py-4 mx-auto border-none shadow-none px-14 bg-background sm:justify-end">
       <div className="flex items-center justify-between w-full">
         <Link href="/">
           <Image
@@ -51,7 +51,7 @@ export function MenuBarUser({ props }: { props: any }) {
             <Button variant="default" onClick={handleLogin} disabled={loading}>
               {loading ? (
                 <>
-                  <Loader2 className="animate-spin mr-1 h-4 w-4" />{' '}
+                  <Loader2 className="w-4 h-4 mr-1 animate-spin" />{' '}
                   <span className="animate-pulse">Acessando...</span>
                 </>
               ) : (
@@ -59,16 +59,16 @@ export function MenuBarUser({ props }: { props: any }) {
               )}
             </Button>
           ) : (
-            <div className="flex text-lg gap-2 items-center justify-end w-full">
+            <div className="flex items-center justify-end w-full gap-2 text-lg">
               <MenubarTrigger className="flex gap-2 ">
-                Olá, {user?.name || 'Usuário'}
-                {user?.image ? (
+                Olá, {user?.name || userSession?.name || 'Usuário'}
+                {user?.image || userSession?.image ? (
                   <Image
-                    src={myCurriculo?.user?.image || userSession?.image || '/default-user.svg'}
+                    src={user?.image || '/default-user.svg'}
                     alt="User_Image"
                     width={40}
                     height={40}
-                    className="w-10 h-10 rounded-full object-cover"
+                    className="object-cover w-10 h-10 rounded-full"
                   />
                 ) : (
                   <TbMenu2 />
@@ -76,7 +76,7 @@ export function MenuBarUser({ props }: { props: any }) {
               </MenubarTrigger>
               <MenubarContent>
                 <MenubarItem
-                  onClick={() => router.push(`${myCurriculo?.user?.username || userSession?.name}`)}
+                  onClick={() => router.push(`${user?.username}`)}
                 >
                   <MdFindInPage /> Ver meu currículo
                 </MenubarItem>
