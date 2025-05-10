@@ -1445,9 +1445,9 @@ export namespace Prisma {
     profession: string | null
     showPhoneInPDF: boolean | null
     showEmailInPDF: boolean | null
-    city: string | null
-    bio: string | null
     public: boolean | null
+    bio: string | null
+    city: string | null
     pickColor: number | null
   }
 
@@ -1462,9 +1462,9 @@ export namespace Prisma {
     profession: string | null
     showPhoneInPDF: boolean | null
     showEmailInPDF: boolean | null
-    city: string | null
-    bio: string | null
     public: boolean | null
+    bio: string | null
+    city: string | null
     pickColor: number | null
   }
 
@@ -1479,9 +1479,9 @@ export namespace Prisma {
     profession: number
     showPhoneInPDF: number
     showEmailInPDF: number
-    city: number
-    bio: number
     public: number
+    bio: number
+    city: number
     pickColor: number
     skills: number
     softSkills: number
@@ -1510,9 +1510,9 @@ export namespace Prisma {
     profession?: true
     showPhoneInPDF?: true
     showEmailInPDF?: true
-    city?: true
-    bio?: true
     public?: true
+    bio?: true
+    city?: true
     pickColor?: true
   }
 
@@ -1527,9 +1527,9 @@ export namespace Prisma {
     profession?: true
     showPhoneInPDF?: true
     showEmailInPDF?: true
-    city?: true
-    bio?: true
     public?: true
+    bio?: true
+    city?: true
     pickColor?: true
   }
 
@@ -1544,9 +1544,9 @@ export namespace Prisma {
     profession?: true
     showPhoneInPDF?: true
     showEmailInPDF?: true
-    city?: true
-    bio?: true
     public?: true
+    bio?: true
+    city?: true
     pickColor?: true
     skills?: true
     softSkills?: true
@@ -1645,14 +1645,14 @@ export namespace Prisma {
     name: string
     emailEncrypted: string
     emailHash: string
-    phoneEncrypted: string
+    phoneEncrypted: string | null
     image: string | null
     profession: string | null
-    showPhoneInPDF: boolean
-    showEmailInPDF: boolean
-    city: string | null
+    showPhoneInPDF: boolean | null
+    showEmailInPDF: boolean | null
+    public: boolean | null
     bio: string | null
-    public: boolean
+    city: string | null
     pickColor: number | null
     skills: string[]
     softSkills: string[]
@@ -1688,9 +1688,9 @@ export namespace Prisma {
     profession?: boolean
     showPhoneInPDF?: boolean
     showEmailInPDF?: boolean
-    city?: boolean
-    bio?: boolean
     public?: boolean
+    bio?: boolean
+    city?: boolean
     pickColor?: boolean
     skills?: boolean
     softSkills?: boolean
@@ -1712,9 +1712,9 @@ export namespace Prisma {
     profession?: boolean
     showPhoneInPDF?: boolean
     showEmailInPDF?: boolean
-    city?: boolean
-    bio?: boolean
     public?: boolean
+    bio?: boolean
+    city?: boolean
     pickColor?: boolean
     skills?: boolean
     softSkills?: boolean
@@ -1731,9 +1731,9 @@ export namespace Prisma {
     profession?: boolean
     showPhoneInPDF?: boolean
     showEmailInPDF?: boolean
-    city?: boolean
-    bio?: boolean
     public?: boolean
+    bio?: boolean
+    city?: boolean
     pickColor?: boolean
     skills?: boolean
     softSkills?: boolean
@@ -1750,15 +1750,15 @@ export namespace Prisma {
     profession?: boolean
     showPhoneInPDF?: boolean
     showEmailInPDF?: boolean
-    city?: boolean
-    bio?: boolean
     public?: boolean
+    bio?: boolean
+    city?: boolean
     pickColor?: boolean
     skills?: boolean
     softSkills?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "username" | "name" | "emailEncrypted" | "emailHash" | "phoneEncrypted" | "image" | "profession" | "showPhoneInPDF" | "showEmailInPDF" | "city" | "bio" | "public" | "pickColor" | "skills" | "softSkills", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "username" | "name" | "emailEncrypted" | "emailHash" | "phoneEncrypted" | "image" | "profession" | "showPhoneInPDF" | "showEmailInPDF" | "public" | "bio" | "city" | "pickColor" | "skills" | "softSkills", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     courses?: boolean | User$coursesArgs<ExtArgs>
     experiences?: boolean | User$experiencesArgs<ExtArgs>
@@ -1783,14 +1783,14 @@ export namespace Prisma {
       name: string
       emailEncrypted: string
       emailHash: string
-      phoneEncrypted: string
+      phoneEncrypted: string | null
       image: string | null
       profession: string | null
-      showPhoneInPDF: boolean
-      showEmailInPDF: boolean
-      city: string | null
+      showPhoneInPDF: boolean | null
+      showEmailInPDF: boolean | null
+      public: boolean | null
       bio: string | null
-      public: boolean
+      city: string | null
       pickColor: number | null
       skills: string[]
       softSkills: string[]
@@ -2231,9 +2231,9 @@ export namespace Prisma {
     readonly profession: FieldRef<"User", 'String'>
     readonly showPhoneInPDF: FieldRef<"User", 'Boolean'>
     readonly showEmailInPDF: FieldRef<"User", 'Boolean'>
-    readonly city: FieldRef<"User", 'String'>
-    readonly bio: FieldRef<"User", 'String'>
     readonly public: FieldRef<"User", 'Boolean'>
+    readonly bio: FieldRef<"User", 'String'>
+    readonly city: FieldRef<"User", 'String'>
     readonly pickColor: FieldRef<"User", 'Int'>
     readonly skills: FieldRef<"User", 'String[]'>
     readonly softSkills: FieldRef<"User", 'String[]'>
@@ -2912,9 +2912,9 @@ export namespace Prisma {
 
   export type PortfolioGroupByOutputType = {
     id: number
-    name: string
-    url: string
-    description: string
+    name: string | null
+    url: string | null
+    description: string | null
     technologies: string[]
     userId: number
     _count: PortfolioCountAggregateOutputType | null
@@ -2995,9 +2995,9 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
-      name: string
-      url: string
-      description: string
+      name: string | null
+      url: string | null
+      description: string | null
       technologies: string[]
       userId: number
     }, ExtArgs["result"]["portfolio"]>
@@ -4021,9 +4021,9 @@ export namespace Prisma {
 
   export type GraduationGroupByOutputType = {
     id: number
-    institution: string
-    name: string
-    year: string
+    institution: string | null
+    name: string | null
+    year: string | null
     description: string | null
     userId: number
     _count: GraduationCountAggregateOutputType | null
@@ -4104,9 +4104,9 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
-      institution: string
-      name: string
-      year: string
+      institution: string | null
+      name: string | null
+      year: string | null
       description: string | null
       userId: number
     }, ExtArgs["result"]["graduation"]>
@@ -5124,9 +5124,9 @@ export namespace Prisma {
 
   export type ExperienceGroupByOutputType = {
     id: number
-    company: string
-    start: string
-    end: string
+    company: string | null
+    start: string | null
+    end: string | null
     userId: number
     _count: ExperienceCountAggregateOutputType | null
     _avg: ExperienceAvgAggregateOutputType | null
@@ -5207,9 +5207,9 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
-      company: string
-      start: string
-      end: string
+      company: string | null
+      start: string | null
+      end: string | null
       userId: number
     }, ExtArgs["result"]["experience"]>
     composites: {}
@@ -6256,10 +6256,10 @@ export namespace Prisma {
 
   export type JobGroupByOutputType = {
     id: number
-    function: string
-    description: string
-    start: string
-    end: string
+    function: string | null
+    description: string | null
+    start: string | null
+    end: string | null
     experienceId: number
     _count: JobCountAggregateOutputType | null
     _avg: JobAvgAggregateOutputType | null
@@ -6339,10 +6339,10 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
-      function: string
-      description: string
-      start: string
-      end: string
+      function: string | null
+      description: string | null
+      start: string | null
+      end: string | null
       experienceId: number
     }, ExtArgs["result"]["job"]>
     composites: {}
@@ -7214,7 +7214,7 @@ export namespace Prisma {
     id: number | null
     institution: string | null
     name: string | null
-    ano: string | null
+    year: string | null
     description: string | null
     online: boolean | null
     userId: number | null
@@ -7224,7 +7224,7 @@ export namespace Prisma {
     id: number | null
     institution: string | null
     name: string | null
-    ano: string | null
+    year: string | null
     description: string | null
     online: boolean | null
     userId: number | null
@@ -7234,7 +7234,7 @@ export namespace Prisma {
     id: number
     institution: number
     name: number
-    ano: number
+    year: number
     description: number
     online: number
     userId: number
@@ -7256,7 +7256,7 @@ export namespace Prisma {
     id?: true
     institution?: true
     name?: true
-    ano?: true
+    year?: true
     description?: true
     online?: true
     userId?: true
@@ -7266,7 +7266,7 @@ export namespace Prisma {
     id?: true
     institution?: true
     name?: true
-    ano?: true
+    year?: true
     description?: true
     online?: true
     userId?: true
@@ -7276,7 +7276,7 @@ export namespace Prisma {
     id?: true
     institution?: true
     name?: true
-    ano?: true
+    year?: true
     description?: true
     online?: true
     userId?: true
@@ -7371,10 +7371,10 @@ export namespace Prisma {
 
   export type CourseGroupByOutputType = {
     id: number
-    institution: string
-    name: string
-    ano: string
-    description: string
+    institution: string | null
+    name: string | null
+    year: string | null
+    description: string | null
     online: boolean
     userId: number
     _count: CourseCountAggregateOutputType | null
@@ -7402,7 +7402,7 @@ export namespace Prisma {
     id?: boolean
     institution?: boolean
     name?: boolean
-    ano?: boolean
+    year?: boolean
     description?: boolean
     online?: boolean
     userId?: boolean
@@ -7413,7 +7413,7 @@ export namespace Prisma {
     id?: boolean
     institution?: boolean
     name?: boolean
-    ano?: boolean
+    year?: boolean
     description?: boolean
     online?: boolean
     userId?: boolean
@@ -7424,7 +7424,7 @@ export namespace Prisma {
     id?: boolean
     institution?: boolean
     name?: boolean
-    ano?: boolean
+    year?: boolean
     description?: boolean
     online?: boolean
     userId?: boolean
@@ -7435,13 +7435,13 @@ export namespace Prisma {
     id?: boolean
     institution?: boolean
     name?: boolean
-    ano?: boolean
+    year?: boolean
     description?: boolean
     online?: boolean
     userId?: boolean
   }
 
-  export type CourseOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "institution" | "name" | "ano" | "description" | "online" | "userId", ExtArgs["result"]["course"]>
+  export type CourseOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "institution" | "name" | "year" | "description" | "online" | "userId", ExtArgs["result"]["course"]>
   export type CourseInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }
@@ -7459,10 +7459,10 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
-      institution: string
-      name: string
-      ano: string
-      description: string
+      institution: string | null
+      name: string | null
+      year: string | null
+      description: string | null
       online: boolean
       userId: number
     }, ExtArgs["result"]["course"]>
@@ -7892,7 +7892,7 @@ export namespace Prisma {
     readonly id: FieldRef<"Course", 'Int'>
     readonly institution: FieldRef<"Course", 'String'>
     readonly name: FieldRef<"Course", 'String'>
-    readonly ano: FieldRef<"Course", 'String'>
+    readonly year: FieldRef<"Course", 'String'>
     readonly description: FieldRef<"Course", 'String'>
     readonly online: FieldRef<"Course", 'Boolean'>
     readonly userId: FieldRef<"Course", 'Int'>
@@ -8335,9 +8335,9 @@ export namespace Prisma {
     profession: 'profession',
     showPhoneInPDF: 'showPhoneInPDF',
     showEmailInPDF: 'showEmailInPDF',
-    city: 'city',
-    bio: 'bio',
     public: 'public',
+    bio: 'bio',
+    city: 'city',
     pickColor: 'pickColor',
     skills: 'skills',
     softSkills: 'softSkills'
@@ -8397,7 +8397,7 @@ export namespace Prisma {
     id: 'id',
     institution: 'institution',
     name: 'name',
-    ano: 'ano',
+    year: 'year',
     description: 'description',
     online: 'online',
     userId: 'userId'
@@ -8496,14 +8496,14 @@ export namespace Prisma {
     name?: StringFilter<"User"> | string
     emailEncrypted?: StringFilter<"User"> | string
     emailHash?: StringFilter<"User"> | string
-    phoneEncrypted?: StringFilter<"User"> | string
+    phoneEncrypted?: StringNullableFilter<"User"> | string | null
     image?: StringNullableFilter<"User"> | string | null
     profession?: StringNullableFilter<"User"> | string | null
-    showPhoneInPDF?: BoolFilter<"User"> | boolean
-    showEmailInPDF?: BoolFilter<"User"> | boolean
-    city?: StringNullableFilter<"User"> | string | null
+    showPhoneInPDF?: BoolNullableFilter<"User"> | boolean | null
+    showEmailInPDF?: BoolNullableFilter<"User"> | boolean | null
+    public?: BoolNullableFilter<"User"> | boolean | null
     bio?: StringNullableFilter<"User"> | string | null
-    public?: BoolFilter<"User"> | boolean
+    city?: StringNullableFilter<"User"> | string | null
     pickColor?: IntNullableFilter<"User"> | number | null
     skills?: StringNullableListFilter<"User">
     softSkills?: StringNullableListFilter<"User">
@@ -8519,14 +8519,14 @@ export namespace Prisma {
     name?: SortOrder
     emailEncrypted?: SortOrder
     emailHash?: SortOrder
-    phoneEncrypted?: SortOrder
+    phoneEncrypted?: SortOrderInput | SortOrder
     image?: SortOrderInput | SortOrder
     profession?: SortOrderInput | SortOrder
-    showPhoneInPDF?: SortOrder
-    showEmailInPDF?: SortOrder
-    city?: SortOrderInput | SortOrder
+    showPhoneInPDF?: SortOrderInput | SortOrder
+    showEmailInPDF?: SortOrderInput | SortOrder
+    public?: SortOrderInput | SortOrder
     bio?: SortOrderInput | SortOrder
-    public?: SortOrder
+    city?: SortOrderInput | SortOrder
     pickColor?: SortOrderInput | SortOrder
     skills?: SortOrder
     softSkills?: SortOrder
@@ -8548,11 +8548,11 @@ export namespace Prisma {
     emailEncrypted?: StringFilter<"User"> | string
     image?: StringNullableFilter<"User"> | string | null
     profession?: StringNullableFilter<"User"> | string | null
-    showPhoneInPDF?: BoolFilter<"User"> | boolean
-    showEmailInPDF?: BoolFilter<"User"> | boolean
-    city?: StringNullableFilter<"User"> | string | null
+    showPhoneInPDF?: BoolNullableFilter<"User"> | boolean | null
+    showEmailInPDF?: BoolNullableFilter<"User"> | boolean | null
+    public?: BoolNullableFilter<"User"> | boolean | null
     bio?: StringNullableFilter<"User"> | string | null
-    public?: BoolFilter<"User"> | boolean
+    city?: StringNullableFilter<"User"> | string | null
     pickColor?: IntNullableFilter<"User"> | number | null
     skills?: StringNullableListFilter<"User">
     softSkills?: StringNullableListFilter<"User">
@@ -8568,14 +8568,14 @@ export namespace Prisma {
     name?: SortOrder
     emailEncrypted?: SortOrder
     emailHash?: SortOrder
-    phoneEncrypted?: SortOrder
+    phoneEncrypted?: SortOrderInput | SortOrder
     image?: SortOrderInput | SortOrder
     profession?: SortOrderInput | SortOrder
-    showPhoneInPDF?: SortOrder
-    showEmailInPDF?: SortOrder
-    city?: SortOrderInput | SortOrder
+    showPhoneInPDF?: SortOrderInput | SortOrder
+    showEmailInPDF?: SortOrderInput | SortOrder
+    public?: SortOrderInput | SortOrder
     bio?: SortOrderInput | SortOrder
-    public?: SortOrder
+    city?: SortOrderInput | SortOrder
     pickColor?: SortOrderInput | SortOrder
     skills?: SortOrder
     softSkills?: SortOrder
@@ -8595,14 +8595,14 @@ export namespace Prisma {
     name?: StringWithAggregatesFilter<"User"> | string
     emailEncrypted?: StringWithAggregatesFilter<"User"> | string
     emailHash?: StringWithAggregatesFilter<"User"> | string
-    phoneEncrypted?: StringWithAggregatesFilter<"User"> | string
+    phoneEncrypted?: StringNullableWithAggregatesFilter<"User"> | string | null
     image?: StringNullableWithAggregatesFilter<"User"> | string | null
     profession?: StringNullableWithAggregatesFilter<"User"> | string | null
-    showPhoneInPDF?: BoolWithAggregatesFilter<"User"> | boolean
-    showEmailInPDF?: BoolWithAggregatesFilter<"User"> | boolean
-    city?: StringNullableWithAggregatesFilter<"User"> | string | null
+    showPhoneInPDF?: BoolNullableWithAggregatesFilter<"User"> | boolean | null
+    showEmailInPDF?: BoolNullableWithAggregatesFilter<"User"> | boolean | null
+    public?: BoolNullableWithAggregatesFilter<"User"> | boolean | null
     bio?: StringNullableWithAggregatesFilter<"User"> | string | null
-    public?: BoolWithAggregatesFilter<"User"> | boolean
+    city?: StringNullableWithAggregatesFilter<"User"> | string | null
     pickColor?: IntNullableWithAggregatesFilter<"User"> | number | null
     skills?: StringNullableListFilter<"User">
     softSkills?: StringNullableListFilter<"User">
@@ -8613,9 +8613,9 @@ export namespace Prisma {
     OR?: PortfolioWhereInput[]
     NOT?: PortfolioWhereInput | PortfolioWhereInput[]
     id?: IntFilter<"Portfolio"> | number
-    name?: StringFilter<"Portfolio"> | string
-    url?: StringFilter<"Portfolio"> | string
-    description?: StringFilter<"Portfolio"> | string
+    name?: StringNullableFilter<"Portfolio"> | string | null
+    url?: StringNullableFilter<"Portfolio"> | string | null
+    description?: StringNullableFilter<"Portfolio"> | string | null
     technologies?: StringNullableListFilter<"Portfolio">
     userId?: IntFilter<"Portfolio"> | number
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
@@ -8623,9 +8623,9 @@ export namespace Prisma {
 
   export type PortfolioOrderByWithRelationInput = {
     id?: SortOrder
-    name?: SortOrder
-    url?: SortOrder
-    description?: SortOrder
+    name?: SortOrderInput | SortOrder
+    url?: SortOrderInput | SortOrder
+    description?: SortOrderInput | SortOrder
     technologies?: SortOrder
     userId?: SortOrder
     user?: UserOrderByWithRelationInput
@@ -8636,9 +8636,9 @@ export namespace Prisma {
     AND?: PortfolioWhereInput | PortfolioWhereInput[]
     OR?: PortfolioWhereInput[]
     NOT?: PortfolioWhereInput | PortfolioWhereInput[]
-    name?: StringFilter<"Portfolio"> | string
-    url?: StringFilter<"Portfolio"> | string
-    description?: StringFilter<"Portfolio"> | string
+    name?: StringNullableFilter<"Portfolio"> | string | null
+    url?: StringNullableFilter<"Portfolio"> | string | null
+    description?: StringNullableFilter<"Portfolio"> | string | null
     technologies?: StringNullableListFilter<"Portfolio">
     userId?: IntFilter<"Portfolio"> | number
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
@@ -8646,9 +8646,9 @@ export namespace Prisma {
 
   export type PortfolioOrderByWithAggregationInput = {
     id?: SortOrder
-    name?: SortOrder
-    url?: SortOrder
-    description?: SortOrder
+    name?: SortOrderInput | SortOrder
+    url?: SortOrderInput | SortOrder
+    description?: SortOrderInput | SortOrder
     technologies?: SortOrder
     userId?: SortOrder
     _count?: PortfolioCountOrderByAggregateInput
@@ -8663,9 +8663,9 @@ export namespace Prisma {
     OR?: PortfolioScalarWhereWithAggregatesInput[]
     NOT?: PortfolioScalarWhereWithAggregatesInput | PortfolioScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"Portfolio"> | number
-    name?: StringWithAggregatesFilter<"Portfolio"> | string
-    url?: StringWithAggregatesFilter<"Portfolio"> | string
-    description?: StringWithAggregatesFilter<"Portfolio"> | string
+    name?: StringNullableWithAggregatesFilter<"Portfolio"> | string | null
+    url?: StringNullableWithAggregatesFilter<"Portfolio"> | string | null
+    description?: StringNullableWithAggregatesFilter<"Portfolio"> | string | null
     technologies?: StringNullableListFilter<"Portfolio">
     userId?: IntWithAggregatesFilter<"Portfolio"> | number
   }
@@ -8675,9 +8675,9 @@ export namespace Prisma {
     OR?: GraduationWhereInput[]
     NOT?: GraduationWhereInput | GraduationWhereInput[]
     id?: IntFilter<"Graduation"> | number
-    institution?: StringFilter<"Graduation"> | string
-    name?: StringFilter<"Graduation"> | string
-    year?: StringFilter<"Graduation"> | string
+    institution?: StringNullableFilter<"Graduation"> | string | null
+    name?: StringNullableFilter<"Graduation"> | string | null
+    year?: StringNullableFilter<"Graduation"> | string | null
     description?: StringNullableFilter<"Graduation"> | string | null
     userId?: IntFilter<"Graduation"> | number
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
@@ -8685,9 +8685,9 @@ export namespace Prisma {
 
   export type GraduationOrderByWithRelationInput = {
     id?: SortOrder
-    institution?: SortOrder
-    name?: SortOrder
-    year?: SortOrder
+    institution?: SortOrderInput | SortOrder
+    name?: SortOrderInput | SortOrder
+    year?: SortOrderInput | SortOrder
     description?: SortOrderInput | SortOrder
     userId?: SortOrder
     user?: UserOrderByWithRelationInput
@@ -8698,9 +8698,9 @@ export namespace Prisma {
     AND?: GraduationWhereInput | GraduationWhereInput[]
     OR?: GraduationWhereInput[]
     NOT?: GraduationWhereInput | GraduationWhereInput[]
-    institution?: StringFilter<"Graduation"> | string
-    name?: StringFilter<"Graduation"> | string
-    year?: StringFilter<"Graduation"> | string
+    institution?: StringNullableFilter<"Graduation"> | string | null
+    name?: StringNullableFilter<"Graduation"> | string | null
+    year?: StringNullableFilter<"Graduation"> | string | null
     description?: StringNullableFilter<"Graduation"> | string | null
     userId?: IntFilter<"Graduation"> | number
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
@@ -8708,9 +8708,9 @@ export namespace Prisma {
 
   export type GraduationOrderByWithAggregationInput = {
     id?: SortOrder
-    institution?: SortOrder
-    name?: SortOrder
-    year?: SortOrder
+    institution?: SortOrderInput | SortOrder
+    name?: SortOrderInput | SortOrder
+    year?: SortOrderInput | SortOrder
     description?: SortOrderInput | SortOrder
     userId?: SortOrder
     _count?: GraduationCountOrderByAggregateInput
@@ -8725,9 +8725,9 @@ export namespace Prisma {
     OR?: GraduationScalarWhereWithAggregatesInput[]
     NOT?: GraduationScalarWhereWithAggregatesInput | GraduationScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"Graduation"> | number
-    institution?: StringWithAggregatesFilter<"Graduation"> | string
-    name?: StringWithAggregatesFilter<"Graduation"> | string
-    year?: StringWithAggregatesFilter<"Graduation"> | string
+    institution?: StringNullableWithAggregatesFilter<"Graduation"> | string | null
+    name?: StringNullableWithAggregatesFilter<"Graduation"> | string | null
+    year?: StringNullableWithAggregatesFilter<"Graduation"> | string | null
     description?: StringNullableWithAggregatesFilter<"Graduation"> | string | null
     userId?: IntWithAggregatesFilter<"Graduation"> | number
   }
@@ -8737,9 +8737,9 @@ export namespace Prisma {
     OR?: ExperienceWhereInput[]
     NOT?: ExperienceWhereInput | ExperienceWhereInput[]
     id?: IntFilter<"Experience"> | number
-    company?: StringFilter<"Experience"> | string
-    start?: StringFilter<"Experience"> | string
-    end?: StringFilter<"Experience"> | string
+    company?: StringNullableFilter<"Experience"> | string | null
+    start?: StringNullableFilter<"Experience"> | string | null
+    end?: StringNullableFilter<"Experience"> | string | null
     userId?: IntFilter<"Experience"> | number
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     jobs?: JobListRelationFilter
@@ -8747,9 +8747,9 @@ export namespace Prisma {
 
   export type ExperienceOrderByWithRelationInput = {
     id?: SortOrder
-    company?: SortOrder
-    start?: SortOrder
-    end?: SortOrder
+    company?: SortOrderInput | SortOrder
+    start?: SortOrderInput | SortOrder
+    end?: SortOrderInput | SortOrder
     userId?: SortOrder
     user?: UserOrderByWithRelationInput
     jobs?: JobOrderByRelationAggregateInput
@@ -8760,9 +8760,9 @@ export namespace Prisma {
     AND?: ExperienceWhereInput | ExperienceWhereInput[]
     OR?: ExperienceWhereInput[]
     NOT?: ExperienceWhereInput | ExperienceWhereInput[]
-    company?: StringFilter<"Experience"> | string
-    start?: StringFilter<"Experience"> | string
-    end?: StringFilter<"Experience"> | string
+    company?: StringNullableFilter<"Experience"> | string | null
+    start?: StringNullableFilter<"Experience"> | string | null
+    end?: StringNullableFilter<"Experience"> | string | null
     userId?: IntFilter<"Experience"> | number
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     jobs?: JobListRelationFilter
@@ -8770,9 +8770,9 @@ export namespace Prisma {
 
   export type ExperienceOrderByWithAggregationInput = {
     id?: SortOrder
-    company?: SortOrder
-    start?: SortOrder
-    end?: SortOrder
+    company?: SortOrderInput | SortOrder
+    start?: SortOrderInput | SortOrder
+    end?: SortOrderInput | SortOrder
     userId?: SortOrder
     _count?: ExperienceCountOrderByAggregateInput
     _avg?: ExperienceAvgOrderByAggregateInput
@@ -8786,9 +8786,9 @@ export namespace Prisma {
     OR?: ExperienceScalarWhereWithAggregatesInput[]
     NOT?: ExperienceScalarWhereWithAggregatesInput | ExperienceScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"Experience"> | number
-    company?: StringWithAggregatesFilter<"Experience"> | string
-    start?: StringWithAggregatesFilter<"Experience"> | string
-    end?: StringWithAggregatesFilter<"Experience"> | string
+    company?: StringNullableWithAggregatesFilter<"Experience"> | string | null
+    start?: StringNullableWithAggregatesFilter<"Experience"> | string | null
+    end?: StringNullableWithAggregatesFilter<"Experience"> | string | null
     userId?: IntWithAggregatesFilter<"Experience"> | number
   }
 
@@ -8797,20 +8797,20 @@ export namespace Prisma {
     OR?: JobWhereInput[]
     NOT?: JobWhereInput | JobWhereInput[]
     id?: IntFilter<"Job"> | number
-    function?: StringFilter<"Job"> | string
-    description?: StringFilter<"Job"> | string
-    start?: StringFilter<"Job"> | string
-    end?: StringFilter<"Job"> | string
+    function?: StringNullableFilter<"Job"> | string | null
+    description?: StringNullableFilter<"Job"> | string | null
+    start?: StringNullableFilter<"Job"> | string | null
+    end?: StringNullableFilter<"Job"> | string | null
     experienceId?: IntFilter<"Job"> | number
     experience?: XOR<ExperienceScalarRelationFilter, ExperienceWhereInput>
   }
 
   export type JobOrderByWithRelationInput = {
     id?: SortOrder
-    function?: SortOrder
-    description?: SortOrder
-    start?: SortOrder
-    end?: SortOrder
+    function?: SortOrderInput | SortOrder
+    description?: SortOrderInput | SortOrder
+    start?: SortOrderInput | SortOrder
+    end?: SortOrderInput | SortOrder
     experienceId?: SortOrder
     experience?: ExperienceOrderByWithRelationInput
   }
@@ -8820,20 +8820,20 @@ export namespace Prisma {
     AND?: JobWhereInput | JobWhereInput[]
     OR?: JobWhereInput[]
     NOT?: JobWhereInput | JobWhereInput[]
-    function?: StringFilter<"Job"> | string
-    description?: StringFilter<"Job"> | string
-    start?: StringFilter<"Job"> | string
-    end?: StringFilter<"Job"> | string
+    function?: StringNullableFilter<"Job"> | string | null
+    description?: StringNullableFilter<"Job"> | string | null
+    start?: StringNullableFilter<"Job"> | string | null
+    end?: StringNullableFilter<"Job"> | string | null
     experienceId?: IntFilter<"Job"> | number
     experience?: XOR<ExperienceScalarRelationFilter, ExperienceWhereInput>
   }, "id">
 
   export type JobOrderByWithAggregationInput = {
     id?: SortOrder
-    function?: SortOrder
-    description?: SortOrder
-    start?: SortOrder
-    end?: SortOrder
+    function?: SortOrderInput | SortOrder
+    description?: SortOrderInput | SortOrder
+    start?: SortOrderInput | SortOrder
+    end?: SortOrderInput | SortOrder
     experienceId?: SortOrder
     _count?: JobCountOrderByAggregateInput
     _avg?: JobAvgOrderByAggregateInput
@@ -8847,10 +8847,10 @@ export namespace Prisma {
     OR?: JobScalarWhereWithAggregatesInput[]
     NOT?: JobScalarWhereWithAggregatesInput | JobScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"Job"> | number
-    function?: StringWithAggregatesFilter<"Job"> | string
-    description?: StringWithAggregatesFilter<"Job"> | string
-    start?: StringWithAggregatesFilter<"Job"> | string
-    end?: StringWithAggregatesFilter<"Job"> | string
+    function?: StringNullableWithAggregatesFilter<"Job"> | string | null
+    description?: StringNullableWithAggregatesFilter<"Job"> | string | null
+    start?: StringNullableWithAggregatesFilter<"Job"> | string | null
+    end?: StringNullableWithAggregatesFilter<"Job"> | string | null
     experienceId?: IntWithAggregatesFilter<"Job"> | number
   }
 
@@ -8859,10 +8859,10 @@ export namespace Prisma {
     OR?: CourseWhereInput[]
     NOT?: CourseWhereInput | CourseWhereInput[]
     id?: IntFilter<"Course"> | number
-    institution?: StringFilter<"Course"> | string
-    name?: StringFilter<"Course"> | string
-    ano?: StringFilter<"Course"> | string
-    description?: StringFilter<"Course"> | string
+    institution?: StringNullableFilter<"Course"> | string | null
+    name?: StringNullableFilter<"Course"> | string | null
+    year?: StringNullableFilter<"Course"> | string | null
+    description?: StringNullableFilter<"Course"> | string | null
     online?: BoolFilter<"Course"> | boolean
     userId?: IntFilter<"Course"> | number
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
@@ -8870,10 +8870,10 @@ export namespace Prisma {
 
   export type CourseOrderByWithRelationInput = {
     id?: SortOrder
-    institution?: SortOrder
-    name?: SortOrder
-    ano?: SortOrder
-    description?: SortOrder
+    institution?: SortOrderInput | SortOrder
+    name?: SortOrderInput | SortOrder
+    year?: SortOrderInput | SortOrder
+    description?: SortOrderInput | SortOrder
     online?: SortOrder
     userId?: SortOrder
     user?: UserOrderByWithRelationInput
@@ -8884,10 +8884,10 @@ export namespace Prisma {
     AND?: CourseWhereInput | CourseWhereInput[]
     OR?: CourseWhereInput[]
     NOT?: CourseWhereInput | CourseWhereInput[]
-    institution?: StringFilter<"Course"> | string
-    name?: StringFilter<"Course"> | string
-    ano?: StringFilter<"Course"> | string
-    description?: StringFilter<"Course"> | string
+    institution?: StringNullableFilter<"Course"> | string | null
+    name?: StringNullableFilter<"Course"> | string | null
+    year?: StringNullableFilter<"Course"> | string | null
+    description?: StringNullableFilter<"Course"> | string | null
     online?: BoolFilter<"Course"> | boolean
     userId?: IntFilter<"Course"> | number
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
@@ -8895,10 +8895,10 @@ export namespace Prisma {
 
   export type CourseOrderByWithAggregationInput = {
     id?: SortOrder
-    institution?: SortOrder
-    name?: SortOrder
-    ano?: SortOrder
-    description?: SortOrder
+    institution?: SortOrderInput | SortOrder
+    name?: SortOrderInput | SortOrder
+    year?: SortOrderInput | SortOrder
+    description?: SortOrderInput | SortOrder
     online?: SortOrder
     userId?: SortOrder
     _count?: CourseCountOrderByAggregateInput
@@ -8913,10 +8913,10 @@ export namespace Prisma {
     OR?: CourseScalarWhereWithAggregatesInput[]
     NOT?: CourseScalarWhereWithAggregatesInput | CourseScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"Course"> | number
-    institution?: StringWithAggregatesFilter<"Course"> | string
-    name?: StringWithAggregatesFilter<"Course"> | string
-    ano?: StringWithAggregatesFilter<"Course"> | string
-    description?: StringWithAggregatesFilter<"Course"> | string
+    institution?: StringNullableWithAggregatesFilter<"Course"> | string | null
+    name?: StringNullableWithAggregatesFilter<"Course"> | string | null
+    year?: StringNullableWithAggregatesFilter<"Course"> | string | null
+    description?: StringNullableWithAggregatesFilter<"Course"> | string | null
     online?: BoolWithAggregatesFilter<"Course"> | boolean
     userId?: IntWithAggregatesFilter<"Course"> | number
   }
@@ -8926,14 +8926,14 @@ export namespace Prisma {
     name: string
     emailEncrypted: string
     emailHash: string
-    phoneEncrypted: string
+    phoneEncrypted?: string | null
     image?: string | null
     profession?: string | null
-    showPhoneInPDF?: boolean
-    showEmailInPDF?: boolean
-    city?: string | null
+    showPhoneInPDF?: boolean | null
+    showEmailInPDF?: boolean | null
+    public?: boolean | null
     bio?: string | null
-    public?: boolean
+    city?: string | null
     pickColor?: number | null
     skills?: UserCreateskillsInput | string[]
     softSkills?: UserCreatesoftSkillsInput | string[]
@@ -8949,14 +8949,14 @@ export namespace Prisma {
     name: string
     emailEncrypted: string
     emailHash: string
-    phoneEncrypted: string
+    phoneEncrypted?: string | null
     image?: string | null
     profession?: string | null
-    showPhoneInPDF?: boolean
-    showEmailInPDF?: boolean
-    city?: string | null
+    showPhoneInPDF?: boolean | null
+    showEmailInPDF?: boolean | null
+    public?: boolean | null
     bio?: string | null
-    public?: boolean
+    city?: string | null
     pickColor?: number | null
     skills?: UserCreateskillsInput | string[]
     softSkills?: UserCreatesoftSkillsInput | string[]
@@ -8971,14 +8971,14 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     emailEncrypted?: StringFieldUpdateOperationsInput | string
     emailHash?: StringFieldUpdateOperationsInput | string
-    phoneEncrypted?: StringFieldUpdateOperationsInput | string
+    phoneEncrypted?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     profession?: NullableStringFieldUpdateOperationsInput | string | null
-    showPhoneInPDF?: BoolFieldUpdateOperationsInput | boolean
-    showEmailInPDF?: BoolFieldUpdateOperationsInput | boolean
-    city?: NullableStringFieldUpdateOperationsInput | string | null
+    showPhoneInPDF?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    showEmailInPDF?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    public?: NullableBoolFieldUpdateOperationsInput | boolean | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
-    public?: BoolFieldUpdateOperationsInput | boolean
+    city?: NullableStringFieldUpdateOperationsInput | string | null
     pickColor?: NullableIntFieldUpdateOperationsInput | number | null
     skills?: UserUpdateskillsInput | string[]
     softSkills?: UserUpdatesoftSkillsInput | string[]
@@ -8994,14 +8994,14 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     emailEncrypted?: StringFieldUpdateOperationsInput | string
     emailHash?: StringFieldUpdateOperationsInput | string
-    phoneEncrypted?: StringFieldUpdateOperationsInput | string
+    phoneEncrypted?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     profession?: NullableStringFieldUpdateOperationsInput | string | null
-    showPhoneInPDF?: BoolFieldUpdateOperationsInput | boolean
-    showEmailInPDF?: BoolFieldUpdateOperationsInput | boolean
-    city?: NullableStringFieldUpdateOperationsInput | string | null
+    showPhoneInPDF?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    showEmailInPDF?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    public?: NullableBoolFieldUpdateOperationsInput | boolean | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
-    public?: BoolFieldUpdateOperationsInput | boolean
+    city?: NullableStringFieldUpdateOperationsInput | string | null
     pickColor?: NullableIntFieldUpdateOperationsInput | number | null
     skills?: UserUpdateskillsInput | string[]
     softSkills?: UserUpdatesoftSkillsInput | string[]
@@ -9017,14 +9017,14 @@ export namespace Prisma {
     name: string
     emailEncrypted: string
     emailHash: string
-    phoneEncrypted: string
+    phoneEncrypted?: string | null
     image?: string | null
     profession?: string | null
-    showPhoneInPDF?: boolean
-    showEmailInPDF?: boolean
-    city?: string | null
+    showPhoneInPDF?: boolean | null
+    showEmailInPDF?: boolean | null
+    public?: boolean | null
     bio?: string | null
-    public?: boolean
+    city?: string | null
     pickColor?: number | null
     skills?: UserCreateskillsInput | string[]
     softSkills?: UserCreatesoftSkillsInput | string[]
@@ -9035,14 +9035,14 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     emailEncrypted?: StringFieldUpdateOperationsInput | string
     emailHash?: StringFieldUpdateOperationsInput | string
-    phoneEncrypted?: StringFieldUpdateOperationsInput | string
+    phoneEncrypted?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     profession?: NullableStringFieldUpdateOperationsInput | string | null
-    showPhoneInPDF?: BoolFieldUpdateOperationsInput | boolean
-    showEmailInPDF?: BoolFieldUpdateOperationsInput | boolean
-    city?: NullableStringFieldUpdateOperationsInput | string | null
+    showPhoneInPDF?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    showEmailInPDF?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    public?: NullableBoolFieldUpdateOperationsInput | boolean | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
-    public?: BoolFieldUpdateOperationsInput | boolean
+    city?: NullableStringFieldUpdateOperationsInput | string | null
     pickColor?: NullableIntFieldUpdateOperationsInput | number | null
     skills?: UserUpdateskillsInput | string[]
     softSkills?: UserUpdatesoftSkillsInput | string[]
@@ -9054,314 +9054,314 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     emailEncrypted?: StringFieldUpdateOperationsInput | string
     emailHash?: StringFieldUpdateOperationsInput | string
-    phoneEncrypted?: StringFieldUpdateOperationsInput | string
+    phoneEncrypted?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     profession?: NullableStringFieldUpdateOperationsInput | string | null
-    showPhoneInPDF?: BoolFieldUpdateOperationsInput | boolean
-    showEmailInPDF?: BoolFieldUpdateOperationsInput | boolean
-    city?: NullableStringFieldUpdateOperationsInput | string | null
+    showPhoneInPDF?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    showEmailInPDF?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    public?: NullableBoolFieldUpdateOperationsInput | boolean | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
-    public?: BoolFieldUpdateOperationsInput | boolean
+    city?: NullableStringFieldUpdateOperationsInput | string | null
     pickColor?: NullableIntFieldUpdateOperationsInput | number | null
     skills?: UserUpdateskillsInput | string[]
     softSkills?: UserUpdatesoftSkillsInput | string[]
   }
 
   export type PortfolioCreateInput = {
-    name: string
-    url: string
-    description: string
+    name?: string | null
+    url?: string | null
+    description?: string | null
     technologies?: PortfolioCreatetechnologiesInput | string[]
     user: UserCreateNestedOneWithoutPortfolioInput
   }
 
   export type PortfolioUncheckedCreateInput = {
     id?: number
-    name: string
-    url: string
-    description: string
+    name?: string | null
+    url?: string | null
+    description?: string | null
     technologies?: PortfolioCreatetechnologiesInput | string[]
     userId: number
   }
 
   export type PortfolioUpdateInput = {
-    name?: StringFieldUpdateOperationsInput | string
-    url?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     technologies?: PortfolioUpdatetechnologiesInput | string[]
     user?: UserUpdateOneRequiredWithoutPortfolioNestedInput
   }
 
   export type PortfolioUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
-    url?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     technologies?: PortfolioUpdatetechnologiesInput | string[]
     userId?: IntFieldUpdateOperationsInput | number
   }
 
   export type PortfolioCreateManyInput = {
     id?: number
-    name: string
-    url: string
-    description: string
+    name?: string | null
+    url?: string | null
+    description?: string | null
     technologies?: PortfolioCreatetechnologiesInput | string[]
     userId: number
   }
 
   export type PortfolioUpdateManyMutationInput = {
-    name?: StringFieldUpdateOperationsInput | string
-    url?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     technologies?: PortfolioUpdatetechnologiesInput | string[]
   }
 
   export type PortfolioUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
-    url?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     technologies?: PortfolioUpdatetechnologiesInput | string[]
     userId?: IntFieldUpdateOperationsInput | number
   }
 
   export type GraduationCreateInput = {
-    institution: string
-    name: string
-    year: string
+    institution?: string | null
+    name?: string | null
+    year?: string | null
     description?: string | null
     user: UserCreateNestedOneWithoutGraduationInput
   }
 
   export type GraduationUncheckedCreateInput = {
     id?: number
-    institution: string
-    name: string
-    year: string
+    institution?: string | null
+    name?: string | null
+    year?: string | null
     description?: string | null
     userId: number
   }
 
   export type GraduationUpdateInput = {
-    institution?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    year?: StringFieldUpdateOperationsInput | string
+    institution?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    year?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
     user?: UserUpdateOneRequiredWithoutGraduationNestedInput
   }
 
   export type GraduationUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
-    institution?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    year?: StringFieldUpdateOperationsInput | string
+    institution?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    year?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
     userId?: IntFieldUpdateOperationsInput | number
   }
 
   export type GraduationCreateManyInput = {
     id?: number
-    institution: string
-    name: string
-    year: string
+    institution?: string | null
+    name?: string | null
+    year?: string | null
     description?: string | null
     userId: number
   }
 
   export type GraduationUpdateManyMutationInput = {
-    institution?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    year?: StringFieldUpdateOperationsInput | string
+    institution?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    year?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type GraduationUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
-    institution?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    year?: StringFieldUpdateOperationsInput | string
+    institution?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    year?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
     userId?: IntFieldUpdateOperationsInput | number
   }
 
   export type ExperienceCreateInput = {
-    company: string
-    start: string
-    end: string
+    company?: string | null
+    start?: string | null
+    end?: string | null
     user: UserCreateNestedOneWithoutExperiencesInput
     jobs?: JobCreateNestedManyWithoutExperienceInput
   }
 
   export type ExperienceUncheckedCreateInput = {
     id?: number
-    company: string
-    start: string
-    end: string
+    company?: string | null
+    start?: string | null
+    end?: string | null
     userId: number
     jobs?: JobUncheckedCreateNestedManyWithoutExperienceInput
   }
 
   export type ExperienceUpdateInput = {
-    company?: StringFieldUpdateOperationsInput | string
-    start?: StringFieldUpdateOperationsInput | string
-    end?: StringFieldUpdateOperationsInput | string
+    company?: NullableStringFieldUpdateOperationsInput | string | null
+    start?: NullableStringFieldUpdateOperationsInput | string | null
+    end?: NullableStringFieldUpdateOperationsInput | string | null
     user?: UserUpdateOneRequiredWithoutExperiencesNestedInput
     jobs?: JobUpdateManyWithoutExperienceNestedInput
   }
 
   export type ExperienceUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
-    company?: StringFieldUpdateOperationsInput | string
-    start?: StringFieldUpdateOperationsInput | string
-    end?: StringFieldUpdateOperationsInput | string
+    company?: NullableStringFieldUpdateOperationsInput | string | null
+    start?: NullableStringFieldUpdateOperationsInput | string | null
+    end?: NullableStringFieldUpdateOperationsInput | string | null
     userId?: IntFieldUpdateOperationsInput | number
     jobs?: JobUncheckedUpdateManyWithoutExperienceNestedInput
   }
 
   export type ExperienceCreateManyInput = {
     id?: number
-    company: string
-    start: string
-    end: string
+    company?: string | null
+    start?: string | null
+    end?: string | null
     userId: number
   }
 
   export type ExperienceUpdateManyMutationInput = {
-    company?: StringFieldUpdateOperationsInput | string
-    start?: StringFieldUpdateOperationsInput | string
-    end?: StringFieldUpdateOperationsInput | string
+    company?: NullableStringFieldUpdateOperationsInput | string | null
+    start?: NullableStringFieldUpdateOperationsInput | string | null
+    end?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ExperienceUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
-    company?: StringFieldUpdateOperationsInput | string
-    start?: StringFieldUpdateOperationsInput | string
-    end?: StringFieldUpdateOperationsInput | string
+    company?: NullableStringFieldUpdateOperationsInput | string | null
+    start?: NullableStringFieldUpdateOperationsInput | string | null
+    end?: NullableStringFieldUpdateOperationsInput | string | null
     userId?: IntFieldUpdateOperationsInput | number
   }
 
   export type JobCreateInput = {
-    function: string
-    description: string
-    start: string
-    end: string
+    function?: string | null
+    description?: string | null
+    start?: string | null
+    end?: string | null
     experience: ExperienceCreateNestedOneWithoutJobsInput
   }
 
   export type JobUncheckedCreateInput = {
     id?: number
-    function: string
-    description: string
-    start: string
-    end: string
+    function?: string | null
+    description?: string | null
+    start?: string | null
+    end?: string | null
     experienceId: number
   }
 
   export type JobUpdateInput = {
-    function?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    start?: StringFieldUpdateOperationsInput | string
-    end?: StringFieldUpdateOperationsInput | string
+    function?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    start?: NullableStringFieldUpdateOperationsInput | string | null
+    end?: NullableStringFieldUpdateOperationsInput | string | null
     experience?: ExperienceUpdateOneRequiredWithoutJobsNestedInput
   }
 
   export type JobUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
-    function?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    start?: StringFieldUpdateOperationsInput | string
-    end?: StringFieldUpdateOperationsInput | string
+    function?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    start?: NullableStringFieldUpdateOperationsInput | string | null
+    end?: NullableStringFieldUpdateOperationsInput | string | null
     experienceId?: IntFieldUpdateOperationsInput | number
   }
 
   export type JobCreateManyInput = {
     id?: number
-    function: string
-    description: string
-    start: string
-    end: string
+    function?: string | null
+    description?: string | null
+    start?: string | null
+    end?: string | null
     experienceId: number
   }
 
   export type JobUpdateManyMutationInput = {
-    function?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    start?: StringFieldUpdateOperationsInput | string
-    end?: StringFieldUpdateOperationsInput | string
+    function?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    start?: NullableStringFieldUpdateOperationsInput | string | null
+    end?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type JobUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
-    function?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    start?: StringFieldUpdateOperationsInput | string
-    end?: StringFieldUpdateOperationsInput | string
+    function?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    start?: NullableStringFieldUpdateOperationsInput | string | null
+    end?: NullableStringFieldUpdateOperationsInput | string | null
     experienceId?: IntFieldUpdateOperationsInput | number
   }
 
   export type CourseCreateInput = {
-    institution: string
-    name: string
-    ano: string
-    description: string
+    institution?: string | null
+    name?: string | null
+    year?: string | null
+    description?: string | null
     online?: boolean
     user: UserCreateNestedOneWithoutCoursesInput
   }
 
   export type CourseUncheckedCreateInput = {
     id?: number
-    institution: string
-    name: string
-    ano: string
-    description: string
+    institution?: string | null
+    name?: string | null
+    year?: string | null
+    description?: string | null
     online?: boolean
     userId: number
   }
 
   export type CourseUpdateInput = {
-    institution?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    ano?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
+    institution?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    year?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     online?: BoolFieldUpdateOperationsInput | boolean
     user?: UserUpdateOneRequiredWithoutCoursesNestedInput
   }
 
   export type CourseUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
-    institution?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    ano?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
+    institution?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    year?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     online?: BoolFieldUpdateOperationsInput | boolean
     userId?: IntFieldUpdateOperationsInput | number
   }
 
   export type CourseCreateManyInput = {
     id?: number
-    institution: string
-    name: string
-    ano: string
-    description: string
+    institution?: string | null
+    name?: string | null
+    year?: string | null
+    description?: string | null
     online?: boolean
     userId: number
   }
 
   export type CourseUpdateManyMutationInput = {
-    institution?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    ano?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
+    institution?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    year?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     online?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type CourseUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
-    institution?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    ano?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
+    institution?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    year?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     online?: BoolFieldUpdateOperationsInput | boolean
     userId?: IntFieldUpdateOperationsInput | number
   }
@@ -9407,9 +9407,9 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
-  export type BoolFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolFilter<$PrismaModel> | boolean
+  export type BoolNullableFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
   }
 
   export type IntNullableFilter<$PrismaModel = never> = {
@@ -9487,9 +9487,9 @@ export namespace Prisma {
     profession?: SortOrder
     showPhoneInPDF?: SortOrder
     showEmailInPDF?: SortOrder
-    city?: SortOrder
-    bio?: SortOrder
     public?: SortOrder
+    bio?: SortOrder
+    city?: SortOrder
     pickColor?: SortOrder
     skills?: SortOrder
     softSkills?: SortOrder
@@ -9511,9 +9511,9 @@ export namespace Prisma {
     profession?: SortOrder
     showPhoneInPDF?: SortOrder
     showEmailInPDF?: SortOrder
-    city?: SortOrder
-    bio?: SortOrder
     public?: SortOrder
+    bio?: SortOrder
+    city?: SortOrder
     pickColor?: SortOrder
   }
 
@@ -9528,9 +9528,9 @@ export namespace Prisma {
     profession?: SortOrder
     showPhoneInPDF?: SortOrder
     showEmailInPDF?: SortOrder
-    city?: SortOrder
-    bio?: SortOrder
     public?: SortOrder
+    bio?: SortOrder
+    city?: SortOrder
     pickColor?: SortOrder
   }
 
@@ -9591,12 +9591,12 @@ export namespace Prisma {
     _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
-  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedBoolFilter<$PrismaModel>
-    _max?: NestedBoolFilter<$PrismaModel>
+  export type BoolNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedBoolNullableFilter<$PrismaModel>
+    _max?: NestedBoolNullableFilter<$PrismaModel>
   }
 
   export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -9778,11 +9778,16 @@ export namespace Prisma {
     experienceId?: SortOrder
   }
 
+  export type BoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
   export type CourseCountOrderByAggregateInput = {
     id?: SortOrder
     institution?: SortOrder
     name?: SortOrder
-    ano?: SortOrder
+    year?: SortOrder
     description?: SortOrder
     online?: SortOrder
     userId?: SortOrder
@@ -9797,7 +9802,7 @@ export namespace Prisma {
     id?: SortOrder
     institution?: SortOrder
     name?: SortOrder
-    ano?: SortOrder
+    year?: SortOrder
     description?: SortOrder
     online?: SortOrder
     userId?: SortOrder
@@ -9807,7 +9812,7 @@ export namespace Prisma {
     id?: SortOrder
     institution?: SortOrder
     name?: SortOrder
-    ano?: SortOrder
+    year?: SortOrder
     description?: SortOrder
     online?: SortOrder
     userId?: SortOrder
@@ -9816,6 +9821,14 @@ export namespace Prisma {
   export type CourseSumOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
+  }
+
+  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
   }
 
   export type UserCreateskillsInput = {
@@ -9890,8 +9903,8 @@ export namespace Prisma {
     set?: string | null
   }
 
-  export type BoolFieldUpdateOperationsInput = {
-    set?: boolean
+  export type NullableBoolFieldUpdateOperationsInput = {
+    set?: boolean | null
   }
 
   export type NullableIntFieldUpdateOperationsInput = {
@@ -10145,6 +10158,10 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput
   }
 
+  export type BoolFieldUpdateOperationsInput = {
+    set?: boolean
+  }
+
   export type UserUpdateOneRequiredWithoutCoursesNestedInput = {
     create?: XOR<UserCreateWithoutCoursesInput, UserUncheckedCreateWithoutCoursesInput>
     connectOrCreate?: UserCreateOrConnectWithoutCoursesInput
@@ -10192,9 +10209,9 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
-  export type NestedBoolFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolFilter<$PrismaModel> | boolean
+  export type NestedBoolNullableFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
   }
 
   export type NestedIntNullableFilter<$PrismaModel = never> = {
@@ -10269,12 +10286,12 @@ export namespace Prisma {
     _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
-  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedBoolFilter<$PrismaModel>
-    _max?: NestedBoolFilter<$PrismaModel>
+  export type NestedBoolNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedBoolNullableFilter<$PrismaModel>
+    _max?: NestedBoolNullableFilter<$PrismaModel>
   }
 
   export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -10304,20 +10321,33 @@ export namespace Prisma {
     not?: NestedFloatNullableFilter<$PrismaModel> | number | null
   }
 
+  export type NestedBoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
+  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
+  }
+
   export type CourseCreateWithoutUserInput = {
-    institution: string
-    name: string
-    ano: string
-    description: string
+    institution?: string | null
+    name?: string | null
+    year?: string | null
+    description?: string | null
     online?: boolean
   }
 
   export type CourseUncheckedCreateWithoutUserInput = {
     id?: number
-    institution: string
-    name: string
-    ano: string
-    description: string
+    institution?: string | null
+    name?: string | null
+    year?: string | null
+    description?: string | null
     online?: boolean
   }
 
@@ -10332,17 +10362,17 @@ export namespace Prisma {
   }
 
   export type ExperienceCreateWithoutUserInput = {
-    company: string
-    start: string
-    end: string
+    company?: string | null
+    start?: string | null
+    end?: string | null
     jobs?: JobCreateNestedManyWithoutExperienceInput
   }
 
   export type ExperienceUncheckedCreateWithoutUserInput = {
     id?: number
-    company: string
-    start: string
-    end: string
+    company?: string | null
+    start?: string | null
+    end?: string | null
     jobs?: JobUncheckedCreateNestedManyWithoutExperienceInput
   }
 
@@ -10357,17 +10387,17 @@ export namespace Prisma {
   }
 
   export type GraduationCreateWithoutUserInput = {
-    institution: string
-    name: string
-    year: string
+    institution?: string | null
+    name?: string | null
+    year?: string | null
     description?: string | null
   }
 
   export type GraduationUncheckedCreateWithoutUserInput = {
     id?: number
-    institution: string
-    name: string
-    year: string
+    institution?: string | null
+    name?: string | null
+    year?: string | null
     description?: string | null
   }
 
@@ -10382,17 +10412,17 @@ export namespace Prisma {
   }
 
   export type PortfolioCreateWithoutUserInput = {
-    name: string
-    url: string
-    description: string
+    name?: string | null
+    url?: string | null
+    description?: string | null
     technologies?: PortfolioCreatetechnologiesInput | string[]
   }
 
   export type PortfolioUncheckedCreateWithoutUserInput = {
     id?: number
-    name: string
-    url: string
-    description: string
+    name?: string | null
+    url?: string | null
+    description?: string | null
     technologies?: PortfolioCreatetechnologiesInput | string[]
   }
 
@@ -10427,10 +10457,10 @@ export namespace Prisma {
     OR?: CourseScalarWhereInput[]
     NOT?: CourseScalarWhereInput | CourseScalarWhereInput[]
     id?: IntFilter<"Course"> | number
-    institution?: StringFilter<"Course"> | string
-    name?: StringFilter<"Course"> | string
-    ano?: StringFilter<"Course"> | string
-    description?: StringFilter<"Course"> | string
+    institution?: StringNullableFilter<"Course"> | string | null
+    name?: StringNullableFilter<"Course"> | string | null
+    year?: StringNullableFilter<"Course"> | string | null
+    description?: StringNullableFilter<"Course"> | string | null
     online?: BoolFilter<"Course"> | boolean
     userId?: IntFilter<"Course"> | number
   }
@@ -10456,9 +10486,9 @@ export namespace Prisma {
     OR?: ExperienceScalarWhereInput[]
     NOT?: ExperienceScalarWhereInput | ExperienceScalarWhereInput[]
     id?: IntFilter<"Experience"> | number
-    company?: StringFilter<"Experience"> | string
-    start?: StringFilter<"Experience"> | string
-    end?: StringFilter<"Experience"> | string
+    company?: StringNullableFilter<"Experience"> | string | null
+    start?: StringNullableFilter<"Experience"> | string | null
+    end?: StringNullableFilter<"Experience"> | string | null
     userId?: IntFilter<"Experience"> | number
   }
 
@@ -10483,9 +10513,9 @@ export namespace Prisma {
     OR?: GraduationScalarWhereInput[]
     NOT?: GraduationScalarWhereInput | GraduationScalarWhereInput[]
     id?: IntFilter<"Graduation"> | number
-    institution?: StringFilter<"Graduation"> | string
-    name?: StringFilter<"Graduation"> | string
-    year?: StringFilter<"Graduation"> | string
+    institution?: StringNullableFilter<"Graduation"> | string | null
+    name?: StringNullableFilter<"Graduation"> | string | null
+    year?: StringNullableFilter<"Graduation"> | string | null
     description?: StringNullableFilter<"Graduation"> | string | null
     userId?: IntFilter<"Graduation"> | number
   }
@@ -10511,9 +10541,9 @@ export namespace Prisma {
     OR?: PortfolioScalarWhereInput[]
     NOT?: PortfolioScalarWhereInput | PortfolioScalarWhereInput[]
     id?: IntFilter<"Portfolio"> | number
-    name?: StringFilter<"Portfolio"> | string
-    url?: StringFilter<"Portfolio"> | string
-    description?: StringFilter<"Portfolio"> | string
+    name?: StringNullableFilter<"Portfolio"> | string | null
+    url?: StringNullableFilter<"Portfolio"> | string | null
+    description?: StringNullableFilter<"Portfolio"> | string | null
     technologies?: StringNullableListFilter<"Portfolio">
     userId?: IntFilter<"Portfolio"> | number
   }
@@ -10523,14 +10553,14 @@ export namespace Prisma {
     name: string
     emailEncrypted: string
     emailHash: string
-    phoneEncrypted: string
+    phoneEncrypted?: string | null
     image?: string | null
     profession?: string | null
-    showPhoneInPDF?: boolean
-    showEmailInPDF?: boolean
-    city?: string | null
+    showPhoneInPDF?: boolean | null
+    showEmailInPDF?: boolean | null
+    public?: boolean | null
     bio?: string | null
-    public?: boolean
+    city?: string | null
     pickColor?: number | null
     skills?: UserCreateskillsInput | string[]
     softSkills?: UserCreatesoftSkillsInput | string[]
@@ -10545,14 +10575,14 @@ export namespace Prisma {
     name: string
     emailEncrypted: string
     emailHash: string
-    phoneEncrypted: string
+    phoneEncrypted?: string | null
     image?: string | null
     profession?: string | null
-    showPhoneInPDF?: boolean
-    showEmailInPDF?: boolean
-    city?: string | null
+    showPhoneInPDF?: boolean | null
+    showEmailInPDF?: boolean | null
+    public?: boolean | null
     bio?: string | null
-    public?: boolean
+    city?: string | null
     pickColor?: number | null
     skills?: UserCreateskillsInput | string[]
     softSkills?: UserCreatesoftSkillsInput | string[]
@@ -10582,14 +10612,14 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     emailEncrypted?: StringFieldUpdateOperationsInput | string
     emailHash?: StringFieldUpdateOperationsInput | string
-    phoneEncrypted?: StringFieldUpdateOperationsInput | string
+    phoneEncrypted?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     profession?: NullableStringFieldUpdateOperationsInput | string | null
-    showPhoneInPDF?: BoolFieldUpdateOperationsInput | boolean
-    showEmailInPDF?: BoolFieldUpdateOperationsInput | boolean
-    city?: NullableStringFieldUpdateOperationsInput | string | null
+    showPhoneInPDF?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    showEmailInPDF?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    public?: NullableBoolFieldUpdateOperationsInput | boolean | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
-    public?: BoolFieldUpdateOperationsInput | boolean
+    city?: NullableStringFieldUpdateOperationsInput | string | null
     pickColor?: NullableIntFieldUpdateOperationsInput | number | null
     skills?: UserUpdateskillsInput | string[]
     softSkills?: UserUpdatesoftSkillsInput | string[]
@@ -10604,14 +10634,14 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     emailEncrypted?: StringFieldUpdateOperationsInput | string
     emailHash?: StringFieldUpdateOperationsInput | string
-    phoneEncrypted?: StringFieldUpdateOperationsInput | string
+    phoneEncrypted?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     profession?: NullableStringFieldUpdateOperationsInput | string | null
-    showPhoneInPDF?: BoolFieldUpdateOperationsInput | boolean
-    showEmailInPDF?: BoolFieldUpdateOperationsInput | boolean
-    city?: NullableStringFieldUpdateOperationsInput | string | null
+    showPhoneInPDF?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    showEmailInPDF?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    public?: NullableBoolFieldUpdateOperationsInput | boolean | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
-    public?: BoolFieldUpdateOperationsInput | boolean
+    city?: NullableStringFieldUpdateOperationsInput | string | null
     pickColor?: NullableIntFieldUpdateOperationsInput | number | null
     skills?: UserUpdateskillsInput | string[]
     softSkills?: UserUpdatesoftSkillsInput | string[]
@@ -10625,14 +10655,14 @@ export namespace Prisma {
     name: string
     emailEncrypted: string
     emailHash: string
-    phoneEncrypted: string
+    phoneEncrypted?: string | null
     image?: string | null
     profession?: string | null
-    showPhoneInPDF?: boolean
-    showEmailInPDF?: boolean
-    city?: string | null
+    showPhoneInPDF?: boolean | null
+    showEmailInPDF?: boolean | null
+    public?: boolean | null
     bio?: string | null
-    public?: boolean
+    city?: string | null
     pickColor?: number | null
     skills?: UserCreateskillsInput | string[]
     softSkills?: UserCreatesoftSkillsInput | string[]
@@ -10647,14 +10677,14 @@ export namespace Prisma {
     name: string
     emailEncrypted: string
     emailHash: string
-    phoneEncrypted: string
+    phoneEncrypted?: string | null
     image?: string | null
     profession?: string | null
-    showPhoneInPDF?: boolean
-    showEmailInPDF?: boolean
-    city?: string | null
+    showPhoneInPDF?: boolean | null
+    showEmailInPDF?: boolean | null
+    public?: boolean | null
     bio?: string | null
-    public?: boolean
+    city?: string | null
     pickColor?: number | null
     skills?: UserCreateskillsInput | string[]
     softSkills?: UserCreatesoftSkillsInput | string[]
@@ -10684,14 +10714,14 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     emailEncrypted?: StringFieldUpdateOperationsInput | string
     emailHash?: StringFieldUpdateOperationsInput | string
-    phoneEncrypted?: StringFieldUpdateOperationsInput | string
+    phoneEncrypted?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     profession?: NullableStringFieldUpdateOperationsInput | string | null
-    showPhoneInPDF?: BoolFieldUpdateOperationsInput | boolean
-    showEmailInPDF?: BoolFieldUpdateOperationsInput | boolean
-    city?: NullableStringFieldUpdateOperationsInput | string | null
+    showPhoneInPDF?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    showEmailInPDF?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    public?: NullableBoolFieldUpdateOperationsInput | boolean | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
-    public?: BoolFieldUpdateOperationsInput | boolean
+    city?: NullableStringFieldUpdateOperationsInput | string | null
     pickColor?: NullableIntFieldUpdateOperationsInput | number | null
     skills?: UserUpdateskillsInput | string[]
     softSkills?: UserUpdatesoftSkillsInput | string[]
@@ -10706,14 +10736,14 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     emailEncrypted?: StringFieldUpdateOperationsInput | string
     emailHash?: StringFieldUpdateOperationsInput | string
-    phoneEncrypted?: StringFieldUpdateOperationsInput | string
+    phoneEncrypted?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     profession?: NullableStringFieldUpdateOperationsInput | string | null
-    showPhoneInPDF?: BoolFieldUpdateOperationsInput | boolean
-    showEmailInPDF?: BoolFieldUpdateOperationsInput | boolean
-    city?: NullableStringFieldUpdateOperationsInput | string | null
+    showPhoneInPDF?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    showEmailInPDF?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    public?: NullableBoolFieldUpdateOperationsInput | boolean | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
-    public?: BoolFieldUpdateOperationsInput | boolean
+    city?: NullableStringFieldUpdateOperationsInput | string | null
     pickColor?: NullableIntFieldUpdateOperationsInput | number | null
     skills?: UserUpdateskillsInput | string[]
     softSkills?: UserUpdatesoftSkillsInput | string[]
@@ -10727,14 +10757,14 @@ export namespace Prisma {
     name: string
     emailEncrypted: string
     emailHash: string
-    phoneEncrypted: string
+    phoneEncrypted?: string | null
     image?: string | null
     profession?: string | null
-    showPhoneInPDF?: boolean
-    showEmailInPDF?: boolean
-    city?: string | null
+    showPhoneInPDF?: boolean | null
+    showEmailInPDF?: boolean | null
+    public?: boolean | null
     bio?: string | null
-    public?: boolean
+    city?: string | null
     pickColor?: number | null
     skills?: UserCreateskillsInput | string[]
     softSkills?: UserCreatesoftSkillsInput | string[]
@@ -10749,14 +10779,14 @@ export namespace Prisma {
     name: string
     emailEncrypted: string
     emailHash: string
-    phoneEncrypted: string
+    phoneEncrypted?: string | null
     image?: string | null
     profession?: string | null
-    showPhoneInPDF?: boolean
-    showEmailInPDF?: boolean
-    city?: string | null
+    showPhoneInPDF?: boolean | null
+    showEmailInPDF?: boolean | null
+    public?: boolean | null
     bio?: string | null
-    public?: boolean
+    city?: string | null
     pickColor?: number | null
     skills?: UserCreateskillsInput | string[]
     softSkills?: UserCreatesoftSkillsInput | string[]
@@ -10771,18 +10801,18 @@ export namespace Prisma {
   }
 
   export type JobCreateWithoutExperienceInput = {
-    function: string
-    description: string
-    start: string
-    end: string
+    function?: string | null
+    description?: string | null
+    start?: string | null
+    end?: string | null
   }
 
   export type JobUncheckedCreateWithoutExperienceInput = {
     id?: number
-    function: string
-    description: string
-    start: string
-    end: string
+    function?: string | null
+    description?: string | null
+    start?: string | null
+    end?: string | null
   }
 
   export type JobCreateOrConnectWithoutExperienceInput = {
@@ -10811,14 +10841,14 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     emailEncrypted?: StringFieldUpdateOperationsInput | string
     emailHash?: StringFieldUpdateOperationsInput | string
-    phoneEncrypted?: StringFieldUpdateOperationsInput | string
+    phoneEncrypted?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     profession?: NullableStringFieldUpdateOperationsInput | string | null
-    showPhoneInPDF?: BoolFieldUpdateOperationsInput | boolean
-    showEmailInPDF?: BoolFieldUpdateOperationsInput | boolean
-    city?: NullableStringFieldUpdateOperationsInput | string | null
+    showPhoneInPDF?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    showEmailInPDF?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    public?: NullableBoolFieldUpdateOperationsInput | boolean | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
-    public?: BoolFieldUpdateOperationsInput | boolean
+    city?: NullableStringFieldUpdateOperationsInput | string | null
     pickColor?: NullableIntFieldUpdateOperationsInput | number | null
     skills?: UserUpdateskillsInput | string[]
     softSkills?: UserUpdatesoftSkillsInput | string[]
@@ -10833,14 +10863,14 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     emailEncrypted?: StringFieldUpdateOperationsInput | string
     emailHash?: StringFieldUpdateOperationsInput | string
-    phoneEncrypted?: StringFieldUpdateOperationsInput | string
+    phoneEncrypted?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     profession?: NullableStringFieldUpdateOperationsInput | string | null
-    showPhoneInPDF?: BoolFieldUpdateOperationsInput | boolean
-    showEmailInPDF?: BoolFieldUpdateOperationsInput | boolean
-    city?: NullableStringFieldUpdateOperationsInput | string | null
+    showPhoneInPDF?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    showEmailInPDF?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    public?: NullableBoolFieldUpdateOperationsInput | boolean | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
-    public?: BoolFieldUpdateOperationsInput | boolean
+    city?: NullableStringFieldUpdateOperationsInput | string | null
     pickColor?: NullableIntFieldUpdateOperationsInput | number | null
     skills?: UserUpdateskillsInput | string[]
     softSkills?: UserUpdatesoftSkillsInput | string[]
@@ -10870,25 +10900,25 @@ export namespace Prisma {
     OR?: JobScalarWhereInput[]
     NOT?: JobScalarWhereInput | JobScalarWhereInput[]
     id?: IntFilter<"Job"> | number
-    function?: StringFilter<"Job"> | string
-    description?: StringFilter<"Job"> | string
-    start?: StringFilter<"Job"> | string
-    end?: StringFilter<"Job"> | string
+    function?: StringNullableFilter<"Job"> | string | null
+    description?: StringNullableFilter<"Job"> | string | null
+    start?: StringNullableFilter<"Job"> | string | null
+    end?: StringNullableFilter<"Job"> | string | null
     experienceId?: IntFilter<"Job"> | number
   }
 
   export type ExperienceCreateWithoutJobsInput = {
-    company: string
-    start: string
-    end: string
+    company?: string | null
+    start?: string | null
+    end?: string | null
     user: UserCreateNestedOneWithoutExperiencesInput
   }
 
   export type ExperienceUncheckedCreateWithoutJobsInput = {
     id?: number
-    company: string
-    start: string
-    end: string
+    company?: string | null
+    start?: string | null
+    end?: string | null
     userId: number
   }
 
@@ -10909,17 +10939,17 @@ export namespace Prisma {
   }
 
   export type ExperienceUpdateWithoutJobsInput = {
-    company?: StringFieldUpdateOperationsInput | string
-    start?: StringFieldUpdateOperationsInput | string
-    end?: StringFieldUpdateOperationsInput | string
+    company?: NullableStringFieldUpdateOperationsInput | string | null
+    start?: NullableStringFieldUpdateOperationsInput | string | null
+    end?: NullableStringFieldUpdateOperationsInput | string | null
     user?: UserUpdateOneRequiredWithoutExperiencesNestedInput
   }
 
   export type ExperienceUncheckedUpdateWithoutJobsInput = {
     id?: IntFieldUpdateOperationsInput | number
-    company?: StringFieldUpdateOperationsInput | string
-    start?: StringFieldUpdateOperationsInput | string
-    end?: StringFieldUpdateOperationsInput | string
+    company?: NullableStringFieldUpdateOperationsInput | string | null
+    start?: NullableStringFieldUpdateOperationsInput | string | null
+    end?: NullableStringFieldUpdateOperationsInput | string | null
     userId?: IntFieldUpdateOperationsInput | number
   }
 
@@ -10928,14 +10958,14 @@ export namespace Prisma {
     name: string
     emailEncrypted: string
     emailHash: string
-    phoneEncrypted: string
+    phoneEncrypted?: string | null
     image?: string | null
     profession?: string | null
-    showPhoneInPDF?: boolean
-    showEmailInPDF?: boolean
-    city?: string | null
+    showPhoneInPDF?: boolean | null
+    showEmailInPDF?: boolean | null
+    public?: boolean | null
     bio?: string | null
-    public?: boolean
+    city?: string | null
     pickColor?: number | null
     skills?: UserCreateskillsInput | string[]
     softSkills?: UserCreatesoftSkillsInput | string[]
@@ -10950,14 +10980,14 @@ export namespace Prisma {
     name: string
     emailEncrypted: string
     emailHash: string
-    phoneEncrypted: string
+    phoneEncrypted?: string | null
     image?: string | null
     profession?: string | null
-    showPhoneInPDF?: boolean
-    showEmailInPDF?: boolean
-    city?: string | null
+    showPhoneInPDF?: boolean | null
+    showEmailInPDF?: boolean | null
+    public?: boolean | null
     bio?: string | null
-    public?: boolean
+    city?: string | null
     pickColor?: number | null
     skills?: UserCreateskillsInput | string[]
     softSkills?: UserCreatesoftSkillsInput | string[]
@@ -10987,14 +11017,14 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     emailEncrypted?: StringFieldUpdateOperationsInput | string
     emailHash?: StringFieldUpdateOperationsInput | string
-    phoneEncrypted?: StringFieldUpdateOperationsInput | string
+    phoneEncrypted?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     profession?: NullableStringFieldUpdateOperationsInput | string | null
-    showPhoneInPDF?: BoolFieldUpdateOperationsInput | boolean
-    showEmailInPDF?: BoolFieldUpdateOperationsInput | boolean
-    city?: NullableStringFieldUpdateOperationsInput | string | null
+    showPhoneInPDF?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    showEmailInPDF?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    public?: NullableBoolFieldUpdateOperationsInput | boolean | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
-    public?: BoolFieldUpdateOperationsInput | boolean
+    city?: NullableStringFieldUpdateOperationsInput | string | null
     pickColor?: NullableIntFieldUpdateOperationsInput | number | null
     skills?: UserUpdateskillsInput | string[]
     softSkills?: UserUpdatesoftSkillsInput | string[]
@@ -11009,14 +11039,14 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     emailEncrypted?: StringFieldUpdateOperationsInput | string
     emailHash?: StringFieldUpdateOperationsInput | string
-    phoneEncrypted?: StringFieldUpdateOperationsInput | string
+    phoneEncrypted?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     profession?: NullableStringFieldUpdateOperationsInput | string | null
-    showPhoneInPDF?: BoolFieldUpdateOperationsInput | boolean
-    showEmailInPDF?: BoolFieldUpdateOperationsInput | boolean
-    city?: NullableStringFieldUpdateOperationsInput | string | null
+    showPhoneInPDF?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    showEmailInPDF?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    public?: NullableBoolFieldUpdateOperationsInput | boolean | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
-    public?: BoolFieldUpdateOperationsInput | boolean
+    city?: NullableStringFieldUpdateOperationsInput | string | null
     pickColor?: NullableIntFieldUpdateOperationsInput | number | null
     skills?: UserUpdateskillsInput | string[]
     softSkills?: UserUpdatesoftSkillsInput | string[]
@@ -11027,159 +11057,159 @@ export namespace Prisma {
 
   export type CourseCreateManyUserInput = {
     id?: number
-    institution: string
-    name: string
-    ano: string
-    description: string
+    institution?: string | null
+    name?: string | null
+    year?: string | null
+    description?: string | null
     online?: boolean
   }
 
   export type ExperienceCreateManyUserInput = {
     id?: number
-    company: string
-    start: string
-    end: string
+    company?: string | null
+    start?: string | null
+    end?: string | null
   }
 
   export type GraduationCreateManyUserInput = {
     id?: number
-    institution: string
-    name: string
-    year: string
+    institution?: string | null
+    name?: string | null
+    year?: string | null
     description?: string | null
   }
 
   export type PortfolioCreateManyUserInput = {
     id?: number
-    name: string
-    url: string
-    description: string
+    name?: string | null
+    url?: string | null
+    description?: string | null
     technologies?: PortfolioCreatetechnologiesInput | string[]
   }
 
   export type CourseUpdateWithoutUserInput = {
-    institution?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    ano?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
+    institution?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    year?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     online?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type CourseUncheckedUpdateWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number
-    institution?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    ano?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
+    institution?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    year?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     online?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type CourseUncheckedUpdateManyWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number
-    institution?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    ano?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
+    institution?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    year?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     online?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type ExperienceUpdateWithoutUserInput = {
-    company?: StringFieldUpdateOperationsInput | string
-    start?: StringFieldUpdateOperationsInput | string
-    end?: StringFieldUpdateOperationsInput | string
+    company?: NullableStringFieldUpdateOperationsInput | string | null
+    start?: NullableStringFieldUpdateOperationsInput | string | null
+    end?: NullableStringFieldUpdateOperationsInput | string | null
     jobs?: JobUpdateManyWithoutExperienceNestedInput
   }
 
   export type ExperienceUncheckedUpdateWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number
-    company?: StringFieldUpdateOperationsInput | string
-    start?: StringFieldUpdateOperationsInput | string
-    end?: StringFieldUpdateOperationsInput | string
+    company?: NullableStringFieldUpdateOperationsInput | string | null
+    start?: NullableStringFieldUpdateOperationsInput | string | null
+    end?: NullableStringFieldUpdateOperationsInput | string | null
     jobs?: JobUncheckedUpdateManyWithoutExperienceNestedInput
   }
 
   export type ExperienceUncheckedUpdateManyWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number
-    company?: StringFieldUpdateOperationsInput | string
-    start?: StringFieldUpdateOperationsInput | string
-    end?: StringFieldUpdateOperationsInput | string
+    company?: NullableStringFieldUpdateOperationsInput | string | null
+    start?: NullableStringFieldUpdateOperationsInput | string | null
+    end?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type GraduationUpdateWithoutUserInput = {
-    institution?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    year?: StringFieldUpdateOperationsInput | string
+    institution?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    year?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type GraduationUncheckedUpdateWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number
-    institution?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    year?: StringFieldUpdateOperationsInput | string
+    institution?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    year?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type GraduationUncheckedUpdateManyWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number
-    institution?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    year?: StringFieldUpdateOperationsInput | string
+    institution?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    year?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type PortfolioUpdateWithoutUserInput = {
-    name?: StringFieldUpdateOperationsInput | string
-    url?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     technologies?: PortfolioUpdatetechnologiesInput | string[]
   }
 
   export type PortfolioUncheckedUpdateWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
-    url?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     technologies?: PortfolioUpdatetechnologiesInput | string[]
   }
 
   export type PortfolioUncheckedUpdateManyWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
-    url?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     technologies?: PortfolioUpdatetechnologiesInput | string[]
   }
 
   export type JobCreateManyExperienceInput = {
     id?: number
-    function: string
-    description: string
-    start: string
-    end: string
+    function?: string | null
+    description?: string | null
+    start?: string | null
+    end?: string | null
   }
 
   export type JobUpdateWithoutExperienceInput = {
-    function?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    start?: StringFieldUpdateOperationsInput | string
-    end?: StringFieldUpdateOperationsInput | string
+    function?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    start?: NullableStringFieldUpdateOperationsInput | string | null
+    end?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type JobUncheckedUpdateWithoutExperienceInput = {
     id?: IntFieldUpdateOperationsInput | number
-    function?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    start?: StringFieldUpdateOperationsInput | string
-    end?: StringFieldUpdateOperationsInput | string
+    function?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    start?: NullableStringFieldUpdateOperationsInput | string | null
+    end?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type JobUncheckedUpdateManyWithoutExperienceInput = {
     id?: IntFieldUpdateOperationsInput | number
-    function?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    start?: StringFieldUpdateOperationsInput | string
-    end?: StringFieldUpdateOperationsInput | string
+    function?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    start?: NullableStringFieldUpdateOperationsInput | string | null
+    end?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
 
