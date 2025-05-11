@@ -3,11 +3,7 @@
 import { prisma } from '@/lib/prisma';
 import { hashEmail } from '@/utils/hash.email';
 import { encryptData } from '@/utils/encrypt.data';
-import {
-  DataCreateCurriculoForm,
-  Portfolio,
-  UserDataResult,
-} from '@/app/types/types';
+import { DataCreateCurriculoForm, Portfolio, UserDataResult } from '@/app/types/types';
 import { User } from './generated/prisma';
 import { decryptData } from '@/utils/decrypt.data';
 
@@ -25,7 +21,8 @@ export async function getUserByUserName(username: string) {
     console.error('Erro ao buscar usuário por username:', error);
     return {
       user: null,
-      message: 'Ocorreu um problema ao processar os dados do usuário. Tente novamente mais tarde.',
+      message:
+        'Ocorreu um problema ao processar os dados do usuário. Seus dados serão salvos localmente.',
       error: true,
     };
   }
@@ -46,7 +43,7 @@ export async function getUserByEmailHash(userEmail: string): Promise<UserDataRes
     });
     console.log('usuário: ', user);
 
-    if (!user) return { profile: null, message: 'Nenhum usuário encontrado!', error: true };
+    if (!user) return { profile: null, message: 'Currículo ainda não cadastrado.', error: true };
 
     const { id, emailHash, phoneEncrypted, emailEncrypted, ...dataUser } = user;
 
@@ -62,7 +59,8 @@ export async function getUserByEmailHash(userEmail: string): Promise<UserDataRes
     console.error('Ocorreu um problema ao acessar o banco de dados: ', error?.message);
     return {
       profile: null,
-      message: 'Ocorreu um problema ao acessar o banco de dados. Tente novamente mais tarde.',
+      message:
+        'Ocorreu um problema ao acessar o banco de dados. Seus dados serão salvos localmente.',
       error: true,
     };
   }
@@ -70,13 +68,13 @@ export async function getUserByEmailHash(userEmail: string): Promise<UserDataRes
 
 /**
  * Creates or updates a user in the database.
- * 
+ *
  * @param {DataCreateCurriculoForm} data - The data for creating or updating the user.
  * @returns {Promise<UserDataResult>} - The result of the user creation or update.
  * @throws Will throw an error if the user data or email is not provided.
  */
 export async function createOrUpdateUser(data: DataCreateCurriculoForm): Promise<UserDataResult> {
-  console.log('Dados do usuário:', data);
+  const LOCAL_STORAGE_KEY = 'curriculoPendentes';
 
   if (!data) {
     throw new Error('Dados do usuário são obrigatórios');
@@ -197,6 +195,11 @@ export async function createOrUpdateUser(data: DataCreateCurriculoForm): Promise
     } else {
       // Create new user with related data
       user = await prisma.user.create({
+        include: {
+          portfolio: true,
+          graduation: true,
+          experiences: true,
+        },
         data: {
           ...rest,
           emailHash: getEmailHash,
@@ -260,21 +263,59 @@ export async function createOrUpdateUser(data: DataCreateCurriculoForm): Promise
       });
     }
 
-    const { id, emailHash, phoneEncrypted, emailEncrypted, ...userData } = user;
+    // Busca novamente o usuário com os dados atualizados
+    const updatedUser = await prisma.user.findUnique({
+      where: { emailHash: getEmailHash },
+      include: {
+        portfolio: true,
+        courses: true,
+        experiences: true,
+        graduation: true,
+      },
+    });
+
+    if (!updatedUser) {
+      throw new Error('Erro ao buscar usuário atualizado.');
+    }
+
+    const {
+      id,
+      emailHash: _,
+      emailEncrypted: encryptedEmail,
+      phoneEncrypted: encryptedPhone,
+      ...updatedUserData
+    } = updatedUser;
+
+    const emailDecrypted = encryptedEmail ? await decryptData(encryptedEmail) : '';
+    const phoneDecrypted = encryptedPhone ? await decryptData(encryptedPhone) : '';
 
     return {
-      profile: { email, phone, ...userData },
+      profile: { ...updatedUserData, email: emailDecrypted, phone: phoneDecrypted },
       message: existing
-        ? `Olá, ${user.name}. Seus dados foram atualizados com sucesso!`
-        : `Bem-vindo, ${user.name}. Seu usuário foi criado com sucesso!`,
+        ? `${updatedUser.name}. Seus dados foram atualizados com sucesso!`
+        : `Bem-vindo, ${updatedUser.name}. Seu usuário foi criado com sucesso!`,
       error: false,
     };
   } catch (error) {
     console.error('Erro ao criar ou atualizar usuário:', error);
 
+    try {
+      const pendentes = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY) || '[]');
+
+      // Evita duplicação se tiver um campo identificador
+      const jaSalvo = pendentes.some((item: DataCreateCurriculoForm) => item?.email === data.email);
+
+      if (!jaSalvo) {
+        pendentes.push(data);
+        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(pendentes));
+      }
+    } catch (storageError) {
+      console.error('Erro ao salvar no localStorage:', storageError);
+    }
+
     return {
       profile: null,
-      message: 'Ocorreu um problema ao processar os dados do usuário. Tente novamente mais tarde.',
+      message: 'Ocorreu um problema ao salvar no banco de dados. Dados salvos localmente.',
       error: true,
     };
   }
