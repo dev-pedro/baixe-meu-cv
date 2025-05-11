@@ -32,7 +32,7 @@ function UserProvider({ children }: { children: React.ReactNode }) {
           const result = await getUserByEmailHash(session.user.email);
           const curriculo = {
             profile: result?.profile || null,
-            message: result?.message || 'Usuário encontrado com sucesso!',
+            message: result?.message,
             error: result?.error || false,
           };
           console.log('curriculo contexto: ', curriculo)
