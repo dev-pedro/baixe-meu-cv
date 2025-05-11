@@ -22,7 +22,9 @@ interface Props {
 export default function PortfolioEditor({ projects, setProjects }: Props) {
   const handleChange = (index: number, field: keyof Portfolio, value: string) => {
     const updated = [...projects];
-    updated[index][field] = value;
+    if (updated[index]) {
+      updated[index][field] = value as Portfolio[keyof Portfolio];
+    }
     setProjects(updated);
   };
 
@@ -45,11 +47,10 @@ export default function PortfolioEditor({ projects, setProjects }: Props) {
           <AccordionItem key={index} value={`project-${index}`}>
             <Card>
               <CardHeader className="flex flex-row justify-between items-center pr-4">
-                <div className='w-full'>
-
-                <AccordionTrigger className='cursor-pointer'>
-                  <CardTitle>{project.name || `Projeto ${index + 1}`}</CardTitle>
-                </AccordionTrigger>
+                <div className="w-full">
+                  <AccordionTrigger className="cursor-pointer">
+                    <CardTitle>{project && typeof project === 'object' && 'name' in project && project.name ? project.name : `Projeto ${index + 1}`}</CardTitle>
+                  </AccordionTrigger>
                 </div>
                 <Button
                   type="button"
@@ -66,7 +67,7 @@ export default function PortfolioEditor({ projects, setProjects }: Props) {
                     <Label htmlFor={`name-${index}`}>Nome do Projeto</Label>
                     <Input
                       id={`name-${index}`}
-                      value={project.name}
+                      value={project && typeof project === 'object' && 'name' in project && project.name && project?.name || ''}
                       onChange={(e) => handleChange(index, 'name', e.target.value)}
                       placeholder="Ex: Meu projeto legal"
                     />
