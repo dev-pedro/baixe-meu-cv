@@ -22,15 +22,12 @@ interface Props {
 export default function GraduationEditor({ graduation, setGraduation }: Props) {
   const handleChange = (index: number, field: keyof Graduation, value: string) => {
     const updated = [...graduation];
-    updated[index][field] = value;
+    updated[index][field] = value as Graduation[keyof Graduation];
     setGraduation(updated);
   };
 
   const handleAdd = () => {
-    setGraduation([
-      ...graduation,
-      { name: '', institution: '', year: '', description: '' },
-    ]);
+    setGraduation([...graduation, { name: '', institution: '', year: '', description: '' }]);
   };
 
   const handleRemove = (index: number) => {
@@ -65,7 +62,9 @@ export default function GraduationEditor({ graduation, setGraduation }: Props) {
               <AccordionContent>
                 <CardContent className="space-y-4">
                   <div>
-                    <Label htmlFor={`instituicao-${index}`} className='pb-2'>Instituição</Label>
+                    <Label htmlFor={`instituicao-${index}`} className="pb-2">
+                      Instituição
+                    </Label>
                     <Input
                       id={`instituicao-${index}`}
                       value={formacao.institution}
@@ -75,7 +74,9 @@ export default function GraduationEditor({ graduation, setGraduation }: Props) {
                   </div>
 
                   <div>
-                    <Label htmlFor={`curso-${index}`} className='pb-2'>Nome do curso</Label>
+                    <Label htmlFor={`curso-${index}`} className="pb-2">
+                      Nome do curso
+                    </Label>
                     <Input
                       id={`curso-${index}`}
                       value={formacao.name}
@@ -85,7 +86,9 @@ export default function GraduationEditor({ graduation, setGraduation }: Props) {
                   </div>
 
                   <div>
-                    <Label htmlFor={`ano-${index}`} className='pb-2'>Ano</Label>
+                    <Label htmlFor={`ano-${index}`} className="pb-2">
+                      Ano
+                    </Label>
                     <Input
                       id={`ano-${index}`}
                       value={formacao.year}
@@ -95,7 +98,9 @@ export default function GraduationEditor({ graduation, setGraduation }: Props) {
                   </div>
 
                   <div>
-                    <Label htmlFor={`descricao-${index}`} className='pb-2'>Descrição</Label>
+                    <Label htmlFor={`descricao-${index}`} className="pb-2">
+                      Descrição
+                    </Label>
                     <Textarea
                       id={`descricao-${index}`}
                       value={formacao.description}
