@@ -43,23 +43,23 @@ export type UserSession = {
 
 export type Portfolio =
   | {
-      id: number;
+      id?: number | null | undefined;
       name?: string | null | undefined;
       url?: string | null | undefined;
       description?: string | null | undefined;
       technologies?: string[] | null | undefined;
+      userId?: number | null | undefined;
     }
-  | []
-  | null
-  | undefined;
+  | [];
 
 export type Graduation =
   | {
-      id: number | null | undefined;
+      id?: number | null | undefined;
       name?: string | null | undefined;
       institution?: string | null | undefined;
       description?: string | null | undefined;
       year?: string | null | undefined;
+      userId?: number | null | undefined;
     }
   | [];
 
@@ -81,6 +81,7 @@ export type Experience =
       start?: string | null | undefined;
       end?: string | null | undefined;
       jobs?: Job[] | [];
+      userId?: number | null | undefined;
     }
   | [];
 
@@ -92,6 +93,7 @@ export type Course =
       year?: string | null | undefined;
       description?: string | null | undefined;
       online?: boolean | null | undefined;
+      userId?: number | null | undefined;
     }
   | [];
 export type DataCreateCurriculoForm = {
@@ -125,4 +127,4 @@ export type UserDataForm = {
   profile: DataCreateCurriculoForm;
   message: string | null | undefined;
   error: boolean | false;
-}|null;
+} | null;
