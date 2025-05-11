@@ -64,7 +64,7 @@ export function MenuBarUser({ props }: { props: any }) {
                 Olá, {user?.name || userSession?.name || 'Usuário'}
                 {user?.image || userSession?.image ? (
                   <Image
-                    src={user?.image || '/default-user.svg'}
+                    src={user?.image || userSession?.image || '/default-user.svg'}
                     alt="User_Image"
                     width={40}
                     height={40}
