@@ -35,7 +35,7 @@ export function MenuBarUser({ props }: { props: any }) {
   };
 
   return (
-    <Menubar className="sticky top-0 z-50 justify-between w-full h-full py-4 mx-auto border-none shadow-none px-14 bg-background sm:justify-end">
+    <Menubar className="sticky top-0 z-50 justify-between w-full h-full px-4 py-4 mx-auto border-none shadow-none sm:px-14 bg-background sm:justify-end">
       <div className="flex items-center justify-between w-full">
         <Link href="/">
           <Image
