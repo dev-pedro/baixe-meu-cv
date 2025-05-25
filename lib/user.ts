@@ -41,7 +41,6 @@ export async function getUserByEmailHash(userEmail: string): Promise<UserDataRes
         // Se quiser incluir mais:
       },
     });
-    console.log('usuário: ', user);
 
     if (!user) return { profile: null, message: 'Currículo ainda não cadastrado.', error: true };
 
@@ -92,14 +91,7 @@ export async function createOrUpdateUser(data: DataCreateCurriculoForm): Promise
     // Check if user already exists
     const existing = await prisma.user.findUnique({
       where: { emailHash: getEmailHash },
-      include: {
-        portfolio: true,
-        courses: true,
-        experiences: true,
-        graduation: true,
-      },
     });
-
     let user: User;
 
     if (existing) {
@@ -135,19 +127,26 @@ export async function createOrUpdateUser(data: DataCreateCurriculoForm): Promise
         },
       });
 
+
       // Recreate new portfolios
       if (Array.isArray(portfolio)) {
         await prisma.portfolio.createMany({
-          data: portfolio.map((p) => ({
-            ...p,
-            userId: user.id,
-            technologies:
-              p && 'technologies' in p && Array.isArray(p.technologies)
-                ? p.technologies
-                : p && 'technologies' in p && typeof p.technologies === 'string'
-                ? (p.technologies as string).split(',')
-                : [],
-          })),
+          data: portfolio.map((p) => {
+            // Remove id if it's null or undefined
+            const { id, ...rest } = p;
+            return {
+              ...rest,
+              userId: user.id,
+              tags: p && 'tags' in p && Array.isArray(p.tags) ? p.tags : [],
+              customTags:
+                p && 'customTags' in p && Array.isArray(p.customTags)
+                  ? p.customTags
+                  : p && 'customTags' in p && typeof p.customTags === 'string'
+                  ? (p.customTags as string).split(',')
+                  : [],
+              category: p && 'category' in p && p.category ? p.category : null,
+            };
+          }),
         });
       }
 
@@ -211,12 +210,13 @@ export async function createOrUpdateUser(data: DataCreateCurriculoForm): Promise
                   name: p && 'name' in p ? p.name : '',
                   url: p && 'url' in p ? p.url : '',
                   description: p && 'description' in p ? p.description : '',
-                  technologies:
-                    p && 'technologies' in p && Array.isArray(p.technologies)
-                      ? p.technologies
-                      : p && 'technologies' in p && typeof p.technologies === 'string'
-                      ? (p.technologies as string).split(',')
+                  customTags:
+                    p && 'customTags' in p && Array.isArray(p.customTags)
+                      ? p.customTags
+                      : p && 'customTags' in p && typeof p.customTags === 'string'
+                      ? (p.customTags as string).split(',')
                       : [],
+                  category: p && 'category' in p && p.category ? p.category : null,
                 }))
               : [],
           },
@@ -289,14 +289,66 @@ export async function createOrUpdateUser(data: DataCreateCurriculoForm): Promise
     const emailDecrypted = encryptedEmail ? await decryptData(encryptedEmail) : '';
     const phoneDecrypted = encryptedPhone ? await decryptData(encryptedPhone) : '';
 
+    // Map portfolio, graduation, experiences, and courses to ensure correct types
+    const mappedPortfolio = Array.isArray(updatedUserData.portfolio)
+      ? updatedUserData.portfolio.map((p) => ({
+          ...p,
+          name: p.name ?? undefined,
+          description: p.description ?? undefined,
+          url: p.url ?? undefined,
+          category: p.category ?? undefined,
+          customCategory: p.customCategory ?? undefined,
+        }))
+      : undefined;
+
+    const mappedGraduation = Array.isArray(updatedUserData.graduation)
+      ? updatedUserData.graduation.map((g) => ({
+          ...g,
+          institution: g.institution ?? undefined,
+          name: g.name ?? undefined,
+          year: g.year ?? undefined,
+          description: g.description ?? undefined,
+          online: g.online ?? undefined,
+        }))
+      : undefined;
+
+    const mappedExperiences = Array.isArray(updatedUserData.experiences)
+      ? updatedUserData.experiences.map((e) => ({
+          ...e,
+          company: e.company ?? undefined,
+          start: e.start ?? undefined,
+          end: e.end ?? undefined,
+        }))
+      : undefined;
+
+    const mappedCourses = Array.isArray(updatedUserData.courses)
+      ? updatedUserData.courses.map((c) => ({
+          ...c,
+          institution: c.institution ?? undefined,
+          name: c.name ?? undefined,
+          year: c.year ?? undefined,
+          description: c.description ?? undefined,
+          online: c.online ?? undefined,
+        }))
+      : undefined;
+
     return {
-      profile: { ...updatedUserData, email: emailDecrypted, phone: phoneDecrypted },
+      profile: {
+        ...updatedUserData,
+        email: emailDecrypted,
+        phone: phoneDecrypted,
+        portfolio: mappedPortfolio,
+        graduation: mappedGraduation,
+        experiences: mappedExperiences,
+        courses: mappedCourses,
+      },
       message: existing
         ? `${updatedUser.name}. Seus dados foram atualizados com sucesso!`
         : `Bem-vindo, ${updatedUser.name}. Seu usuário foi criado com sucesso!`,
       error: false,
     };
   } catch (error) {
+    //TODO: Adicionar regra para tratar erro de email e username duplicado
     console.error('Erro ao criar ou atualizar usuário:', error);
 
     try {
