@@ -29,36 +29,100 @@ model User {
   experiences    Experience[]
   graduation     Graduation[]
   portfolio      Portfolio[]
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+}
+
+enum PortfolioCategory {
+  NENHUM
+  DESIGN
+  DEVELOPMENT
+  PHOTOGRAPHY
+  MUSIC
+  WRITING
+  MARKETING
+  VIDEO
+  ILLUSTRATION
+  DATA_SCIENCE
+  MARCINEIRO
+  ARQUITETO
+  CHEF
+  ENGENHEIRO
+  OUTRA
+}
+
+enum PortfolioTag {
+  NENHUM
+  FIGMA
+  PHOTOSHOP
+  ILLUSTRATOR
+  REACT
+  NEXTJS
+  NODEJS
+  PYTHON
+  LOGIC_PRO
+  PREMIERE
+  FINAL_CUT
+  WORDPRESS
+  CANVA
+  SQL
+  EXCEL
+  FLUTTER
+  UNITY
+  OUTRA
 }
 
 model Portfolio {
-  id           Int      @id @default(autoincrement())
-  name         String?
-  url          String?
-  description  String?
-  technologies String[]
-  userId       Int
-  user         User     @relation(fields: [userId], references: [id])
+  id             Int                @id @default(autoincrement())
+  name           String?
+  url            String?
+  description    String?
+  tags           PortfolioTag[]
+  customTags     String[] // Aceita valores fora do enum
+  category       PortfolioCategory?
+  customCategory String? // Aceita categoria personalizada
+  createdAt      DateTime           @default(now())
+  updatedAt      DateTime           @updatedAt
+  userId         Int
+  user           User               @relation(fields: [userId], references: [id])
 }
 
 model Graduation {
-  id          Int     @id @default(autoincrement())
+  id          Int      @id @default(autoincrement())
   institution String?
   name        String?
   year        String?
   description String?
+  online      Boolean? @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
   userId      Int
-  user        User    @relation(fields: [userId], references: [id])
+  user        User     @relation(fields: [userId], references: [id])
+}
+
+model Course {
+  id          Int      @id @default(autoincrement())
+  institution String?
+  name        String?
+  year        String?
+  description String?
+  online      Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  userId      Int
+  user        User     @relation(fields: [userId], references: [id])
 }
 
 model Experience {
-  id      Int     @id @default(autoincrement())
-  company String?
-  start   String?
-  end     String?
-  userId  Int
-  user    User    @relation(fields: [userId], references: [id])
-  jobs    Job[]
+  id        Int      @id @default(autoincrement())
+  company   String?
+  start     String?
+  end       String?
+  jobs      Job[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id])
 }
 
 model Job {
@@ -67,17 +131,8 @@ model Job {
   description  String?
   start        String?
   end          String?
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
   experienceId Int
   experience   Experience @relation(fields: [experienceId], references: [id])
-}
-
-model Course {
-  id          Int     @id @default(autoincrement())
-  institution String?
-  name        String?
-  year        String?
-  description String?
-  online      Boolean @default(false)
-  userId      Int
-  user        User    @relation(fields: [userId], references: [id])
 }
