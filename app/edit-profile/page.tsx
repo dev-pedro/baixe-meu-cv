@@ -15,7 +15,6 @@ export default async function EditProfilePage() {
 
   try {
     const result = await getUserByEmailHash(session?.user?.email || '');
-    console.log('userSession: ', userSession);
     const message = result?.message || '';
     const error = result?.error || false;
     if (error) {
