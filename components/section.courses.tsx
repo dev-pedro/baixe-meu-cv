@@ -16,7 +16,7 @@ import {
 } from '@/components/ui/dialog';
 import { ImBooks } from 'react-icons/im';
 import { LuSchool } from 'react-icons/lu';
-import { TbWorldWww } from 'react-icons/tb';
+import { PiVideoDuotone } from "react-icons/pi";
 
 export default function Courses({ props }: { props: any }) {
   const { curriculo } = props;
@@ -34,14 +34,14 @@ export default function Courses({ props }: { props: any }) {
             }`}
           >
             {curriculo.courses.map((curso: any, index: number) => {
-              const Icon = curso.online ? TbWorldWww : LuSchool;
+              const Icon = curso.online ? PiVideoDuotone : LuSchool;
               return (
                 <Card key={index} className="min-h-full flex flex-col justify-between">
                   <div>
                     <CardHeader className="flex flex-row items-start gap-4">
                       <Icon className="w-5 h-5 text-muted-foreground mt-1" />
                       <div>
-                        <CardTitle className="text-lg">{curso?.curso}</CardTitle>
+                        <CardTitle className="text-lg">{(curso?.curso).toUpperCase()}</CardTitle>
                         <CardDescription className="text-sm text-muted-foreground/60">
                           {curso?.instituicao} — {curso?.ano}
                         </CardDescription>
