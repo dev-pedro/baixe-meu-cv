@@ -1,6 +1,6 @@
 'use client';
 
-import { colors } from '@/app/data/colors';
+import { colorPalette } from '@/app/data/colors';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
@@ -21,11 +21,11 @@ export default function PickColor({ color, setPickColor }: Props) {
         </div>
         <div
           className="w-6 h-6 ml-4 border rounded-full"
-          style={{ backgroundColor: color !== null ? colors[color - 1] : 'transparent' }}
+          style={{ backgroundColor: color !== null ? colorPalette[color - 1] : 'transparent' }}
         />
       </div>
       <div className="flex flex-wrap justify-center gap-2">
-        {colors.map((colorHex, index) => {
+        {colorPalette.map((colorHex, index) => {
           const selected = color === index + 1;
           return (
             <Button
