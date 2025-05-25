@@ -1,3 +1,5 @@
+import { PortfolioCategory, PortfolioTag } from '@/lib/generated/prisma';
+
 export interface IMenuItem {
   text: string;
   url: string;
@@ -41,16 +43,17 @@ export type UserSession = {
   image?: string | null | undefined;
 } | null;
 
-export type Portfolio =
-  | {
-      id?: number | null | undefined;
-      name?: string | null | undefined;
-      url?: string | null | undefined;
-      description?: string | null | undefined;
-      technologies?: string[] | null | undefined;
-      userId?: number | null | undefined;
-    }
-  | [];
+export type Portfolio = {
+  id?: number
+  name?: string | '';
+  url?: string | '';
+  description?: string | '';
+  tags?: PortfolioTag[] | [];
+  customTags?: string[] | [];
+  category?: PortfolioCategory | '';
+  customCategory?: string | '';
+  userId?: number;
+};
 
 export type Graduation =
   | {
@@ -121,7 +124,7 @@ export type UserDataResult = {
   profile: DataCreateCurriculoForm;
   message: string | null | undefined;
   error: boolean | false;
-};
+} | null;
 
 export type UserDataForm = {
   profile: DataCreateCurriculoForm;
