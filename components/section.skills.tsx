@@ -13,11 +13,13 @@ export default async function Skills({ props }: { props: any }) {
         <h2 className="text-2xl font-semibold">Skills</h2>
       </div>
       <div className="flex flex-wrap gap-2">
-        {curriculo.skills?.map((skill: string, i: number) => (
-          <Badge key={i} variant="outline" className={`${bg} text-sm`}>
-            {skill}
-          </Badge>
-        ))}
+        {curriculo.skills
+          ?.sort((a: string, b: string) => b.length - a.length) // Ordena maior texto para o menor
+          .map((skill: string, i: number) => (
+            <Badge key={i} variant="outline" className={`${bg} text-sm`}>
+              {skill}
+            </Badge>
+          ))}
       </div>
     </section>
   );
