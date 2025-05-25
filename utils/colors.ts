@@ -9,13 +9,13 @@ const PICKER_COLORS_HOVER = {
 } as const;
 
 const PICKER_COLORS_BG = {
-  1: 'bg-pick-1/50',
-  2: 'bg-pick-2/50',
-  3: 'bg-pick-3/50',
-  4: 'bg-pick-4/50',
-  5: 'bg-pick-5/50',
-  6: 'bg-pick-6/50',
-  7: 'bg-pick-7/50',
+  1: 'bg-pick-1/30',
+  2: 'bg-pick-2/30',
+  3: 'bg-pick-3/30',
+  4: 'bg-pick-4/30',
+  5: 'bg-pick-5/30',
+  6: 'bg-pick-6/30',
+  7: 'bg-pick-7/30',
 } as const;
 
 /**
@@ -29,4 +29,3 @@ export function getPickerBg(pickColor: number): { bg: string; hover: string } {
 
   return { bg: `${bg}`, hover: `${hover}` };
 }
-({});
