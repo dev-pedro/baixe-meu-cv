@@ -8,6 +8,24 @@ const config: Config = {
     './src/**/*.{js,ts,jsx,tsx}',
   ],
 
+  safelist: [
+    // Garante as classes dinâmicas para os toggles
+    'data-[state=on]:bg-pick-1',
+    'data-[state=on]:bg-pick-2',
+    'data-[state=on]:bg-pick-3',
+    'data-[state=on]:bg-pick-4',
+    'data-[state=on]:bg-pick-5',
+    'data-[state=on]:bg-pick-6',
+    'data-[state=on]:bg-pick-7',
+    'data-[state=on]:bg-pick-1/30',
+    'data-[state=on]:bg-pick-2/30',
+    'data-[state=on]:bg-pick-3/30',
+    'data-[state=on]:bg-pick-4/30',
+    'data-[state=on]:bg-pick-5/30',
+    'data-[state=on]:bg-pick-6/30',
+    'data-[state=on]:bg-pick-7/30',
+  ],
+
   theme: {
     extend: {
       fontFamily: {
