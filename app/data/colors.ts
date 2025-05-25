@@ -1,4 +1,6 @@
-export const colors = [
+
+// Cores para o pickColor
+export const colorPalette = [
     "#ff8ac4", // oklch(0.78 0.1556 350)
     "#ffa32d", // oklch(0.79 0.16 67)
     "#fede1c", // oklch(0.9 0.18 98)
