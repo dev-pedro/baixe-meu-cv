@@ -10,30 +10,31 @@ export const curriculo = {
   city: 'Hortolândia, SP',
   bio: 'Entusiasta de tecnologia com foco em desenvolvimento web e aprendizado constante.',
   public: true,
-  pickColor: 4,
+  pickColor: 5,
   portifolio: [
     {
       name: 'Siscomex Json Validation',
       url: 'https://siscomex-json-validation.vercel.app/',
       descricao:
         'Validação de arquivos JSON do Siscomex, consulta de atributos por NCM e mais, com interface intuitiva e fácil de usar. O projeto foi desenvolvido utilizando React, Next.js e Tailwind CSS.',
-      tecnologias: ['Node.Js','React', 'Next.js', 'Tailwind CSS', 'TypeScript', 'Vercel'],
+      tecnologias: ['Node.Js', 'Next.js', 'Tailwind CSS', , 'Vercel', 'TypeScript'],
     },
     {
-      name: 'Currículo Online',
-      url: 'https://curriculo-online.vercel.app/',
+      name: 'Baixe Meu CV',
+      url: 'https://baixemeucv.com.br/',
       descricao:
-        'Currículo online, desenvolvido com Next.js, TypeScript e Tailwind CSS. Permite que os usuários criem e compartilhem seus currículos de forma simples e rápida.',
-      tecnologias: ['Next.js', 'Tailwind CSS', 'Vercel', 'PostgreSQL', 'TypeScript'],
+        'Baixe Meu CV, desenvolvido com Next.js, TypeScript e Tailwind CSS. Permite que os usuários criem e compartilhem seus currículos de forma simples e rápida.',
+      tecnologias: ['Node.Js', 'Next.js', 'Tailwind CSS', 'Vercel', 'TypeScript', 'PostgreSQL'],
     },
   ],
   formacoes: [
     {
       instituicao: 'Facudade Anhanguera Campinas',
-      curso: 'Desenvoolvimento de Sistemas',
+      curso: 'Tecnologia em Análise e Desenvoolvimento de Sistemas',
       ano: '2015',
       descricao:
         'Ao longo da graduação em Desenvolvimento de Sistemas, foram adquiridas competências essenciais em lógica de programação, algoritmos e estruturas de dados, com foco na resolução de problemas computacionais. A formação abrangeu também programação orientada a objetos, desenvolvimento web (front-end e back-end), modelagem e manipulação de bancos de dados relacionais e não relacionais. Além dos conhecimentos técnicos, foram exploradas práticas de engenharia de software, testes, versionamento com Git e segurança da informação. A utilização de metodologias ágeis como Scrum e Kanban favoreceu o trabalho em equipe e a organização de projetos. Projetos integradores e estágios supervisionados proporcionaram experiência prática e aproximaram os aprendizados acadêmicos das demandas do mercado.',
+      online: false,
     },
   ],
   experiences: [
@@ -44,16 +45,24 @@ export const curriculo = {
       jobs: [
         {
           cargo: 'Team Leader',
-          descricao: 'Liderança de equipe de produção',
-          inicio: '2005',
+          descricao:
+            'Atuei como Team Leader, liderando equipe na linha de produção, garantindo qualidade, segurança e eficiência. Fui responsável pela organização de tarefas, treinamento de operadores, resolução de problemas operacionais e apoio às práticas de melhoria contínua no processo produtivo, entre outras atividades.',
+          inicio: '2007',
           fim: '2011',
         },
         {
-          cargo: 'Analista de Qualidade',
+          cargo: 'Operador de Máquinas',
           descricao:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim aeque doleamus animo, cum corpore dolemus, fieri tamen permagna accessio potest, si aliquod aeternum et infinitum impendere malum nobis opinemur. Quod idem licet transferre in voluptatem, ut postea variari voluptas distinguique possit, augeri amplificarique non possit. At etiam.',
-          inicio: '2019',
-          fim: '2023',
+            'Na função de Operador de Máquinas de Usinagem, realizando setup, ajuste e operação de equipamentos para fabricação de peças, seguindo rigorosamente os padrões de qualidade e segurança. Fui responsável pela interpretação de desenhos técnicos, controle de medidas e manutenção preventiva básica das máquinas.',
+          inicio: '2005',
+          fim: '2007',
+        },
+        {
+          cargo: 'Montador',
+          descricao:
+            'Cmo Montador na linha de montagem de automóveis, executando a instalação de componentes e conjuntos conforme padrões técnicos e de qualidade. Fui responsável por seguir instruções de trabalho, utilizar ferramentas específicas e garantir a segurança e eficiência no processo produtivo.',
+          inicio: '2003',
+          fim: '2005',
         },
       ],
     },
@@ -65,14 +74,14 @@ export const curriculo = {
         {
           cargo: 'Ferramenteiro',
           descricao:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim aeque doleamus animo, cum corpore dolemus, fieri tamen permagna accessio potest, si aliquod aeternum et infinitum impendere malum nobis opinemur. Quod idem licet transferre in voluptatem, ut postea variari voluptas distinguique possit, augeri amplificarique non possit. At etiam.',
+            'Na função de Ferramenteiro realizando a fabricação, ajuste e manutenção de dispositivos, ferramentas e moldes utilizados na produção. Fui responsável por interpretar desenhos técnicos, operar máquinas de usinagem e garantir a precisão e qualidade dos componentes.',
           inicio: '2014',
           fim: '2017',
         },
         {
           cargo: 'Analista de Processos',
           descricao:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim aeque doleamus animo, cum corpore dolemus, fieri tamen permagna accessio potest, si aliquod aeternum et infinitum impendere malum nobis opinemur. Quod idem licet transferre in voluptatem, ut postea variari voluptas distinguique possit, augeri amplificarique non possit. At etiam.',
+            'Atuei como Analista de Processos, desenvolvendo, padronizando e otimizando processos produtivos. Fui responsável pela elaboração de instruções de trabalho, acompanhamento no processo produtivo, análise de indicadores, implementação de melhorias e suporte técnico às áreas de produção e qualidade.',
           inicio: '2012',
           fim: '2014',
         },
@@ -86,14 +95,14 @@ export const curriculo = {
         {
           cargo: 'Sócio Fundador',
           descricao:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim aeque doleamus animo, cum corpore dolemus, fieri tamen permagna accessio potest, si aliquod aeternum et infinitum impendere malum nobis opinemur. Quod idem licet transferre in voluptatem, ut postea variari voluptas distinguique possit, augeri amplificarique non possit. At etiam.',
+            'Estando Sócio Fundador da empresa Medical H7 - Soluções Médicas, participei da criação, estruturação e gestão do negócio. Fui responsável pelo desenvolvimento de estratégias comerciais, relacionamento com clientes, coordenação de equipes técnicas e garantia da qualidade dos serviços prestados.',
           inicio: '2018',
           fim: '2023',
         },
         {
           cargo: 'Técnico Mecânico e Eletrônico',
           descricao:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim aeque doleamus animo, cum corpore dolemus, fieri tamen permagna accessio potest, si aliquod aeternum et infinitum impendere malum nobis opinemur. Quod idem licet transferre in voluptatem, ut postea variari voluptas distinguique possit, augeri amplificarique non possit. At etiam.',
+            'Como Técnico Mecânico e Eletrônico em equipamentos cirúrgicos, realizando diagnóstico, reparo e calibração de dispositivos, entre outras atividades. Fui responsável por interpretar esquemas técnicos, substituir componentes, realizar testes de funcionalidade e assegurar a conformidade com normas de qualidade e segurança.',
           inicio: '2018',
           fim: '2023',
         },
@@ -124,67 +133,50 @@ export const curriculo = {
   courses: [
     {
       instituicao: 'Senai',
-      curso: 'Técnico em Mecatrônica',
+      curso: 'TWI - Ensino correto de um trabalho - Fase I e II',
       ano: '2011',
-      descricao: 'Aprendizado em mecânica e eletrônica.',
+      descricao:
+        'Curso TWI – Ensino Correto de um Trabalho (Fase I e II) realizado no SENAI, com foco no desenvolvimento de habilidades para padronizar, instruir e treinar colaboradores de forma eficiente, entre outras atividades. Aprendi técnicas de desdobramento de tarefas, elaboração de instruções claras, acompanhamento de desempenho e aplicação de métodos para garantir a qualidade, segurança e produtividade no ambiente de trabalho.',
       online: false,
     },
     {
-      instituicao: 'Udemy',
-      curso: 'Curso de JavaScript',
-      ano: '2018',
-      descricao: 'Aprendizado em JavaScript e suas aplicações.',
-      online: true,
-    },
-    {
-      instituicao: 'Udemy',
-      curso: 'Curso de JavaScript',
-      ano: '2018',
-      descricao: 'Aprendizado em JavaScript e suas aplicações.',
-      online: true,
-    },
-    {
-      instituicao: 'Udemy',
-      curso: 'Curso de JavaScript',
-      ano: '2018',
-      descricao: 'Aprendizado em JavaScript e suas aplicações.',
-      online: true,
-    },
-    {
-      instituicao: 'Udemy',
-      curso: 'Curso de React',
-      ano: '2019',
-      descricao: 'Aprendizado em React e suas aplicações.',
-      online: true,
+      instituicao: 'Heller Máquinas Operatrizes',
+      curso: 'Programação CNC',
+      ano: '2007',
+      descricao: 'Curso de Programação CNC, com foco na criação e otimização de programas para máquinas de comando numérico computadorizado. Aprendi a interpretar desenhos técnicos, definir estratégias de usinagem, elaborar códigos G e M, ajustar parâmetros de corte e garantir a precisão e eficiência dos processos produtivos.',
+      online: false,
     },
   ],
 
   skills: [
-    'React',
-    'Node.js',
-    'MongoDB',
-    'Next.js',
-    'JavaScript',
-    'TypeScript',
-    'NestJs',
-    'PostgreSQL',
-    'Tailwind CSS',
-    'HTML',
-    'CSS',
+    'Tecnologias de desenvolvimento Web',
+    'Banco de Dados',
     'Git e GitHub',
-    'Firebase',
-  ],
+    'Softwares CAD',
+    'Softwares de Edição de Imagem e Vídeo',
+    'Gestão de Projetos',
+    'Análise de Dados',
+    'Metodologias Ágeis (Scrum, Kanban)',
+    'Comunicação Interpessoal',
+    'Resolução de Problemas',
+    'Liderança e Motivação de Equipe',
+    'Normas de Qualidade e Segurança',
+    'Lean Manufacturing e Kaizen'
+]
+,
+  
   softSkills: [
     'Comunicação',
-    'Trabalho em equipe',
-    'Resolução de problemas',
+    'Trabalho em Equipe',
+    'Segurança no Trabalho',
+    'Resolução de Problemas',
     'Adaptabilidade',
-    'Pensamento crítico',
-    'Gestão do tempo',
-    'Empatia',
-    'Criatividade',
+    'Pensamento Crítico e Analítico',
+    'Gestão do Tempo',
+    'Empatia e Inteligência Emocional',
+    'Criatividade e Inovação',
     'Liderança',
-    'Organização',
-    'Proatividade',
-  ],
+    'Organização e Planejamento Estratégico',
+    'Proatividade e Iniciativa'
+]
 };
