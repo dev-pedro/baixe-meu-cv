@@ -17,18 +17,15 @@ import PickColor from '@/components/form.pick.color';
 import GraduationEditor from '@/components/form.graduations.editor';
 import { FaShieldAlt } from 'react-icons/fa';
 import { IoCloud, IoCloudOffline } from 'react-icons/io5';
-import { ProfileSkeleton } from '@/components/loading.component';
 import { handleChange } from './functions/handle.change';
-
-
+import { ProfileSkeleton } from '@/components/form.skeleton.user.perfil';
 
 export default function EditProfileClient({ userSession }: { userSession?: UserSession }) {
   //const { profile, message, error } = userProfile || {};
   const [formData, setFormData] = useState<DataCreateCurriculoForm>();
   const { setMyCurriculo, myCurriculo, loading } = useUser();
   const [isLocalData, setIsLocalData] = useState<boolean>();
-  const message = myCurriculo?.message;
-console.log('myCurriculo: ', myCurriculo)
+
   useEffect(() => {
     if (!loading && myCurriculo?.profile) {
       const profile = myCurriculo.profile;
@@ -58,53 +55,41 @@ console.log('myCurriculo: ', myCurriculo)
 
   // limpa a mensagem após 5 segundos
   useEffect(() => {
-    if (message) {
-      if (message.includes('sucesso!')) {
+    if (!loading && myCurriculo?.message) {
+      if (myCurriculo?.message.includes('sucesso!')) {
         setIsLocalData(false);
-        toast.success(message, {
+        toast.success(myCurriculo?.message, {
           closeButton: true,
           duration: 5000,
           className: '!text-green-700',
         });
-      } else if (message && message.includes('localmente')) {
-        toast.warning(message, {
+      } else if (myCurriculo?.message && myCurriculo?.message.includes('localmente')) {
+        toast.warning(myCurriculo?.message, {
           closeButton: true,
           duration: 5000,
           className: '!text-orange-500',
         });
         setIsLocalData(true);
       } else {
-        toast.error(message, {
+        toast.error(myCurriculo?.message, {
           closeButton: true,
           duration: 5000,
           className: '!text-red-700',
         });
       }
-
-      /* const timeout = setTimeout(() => {
-        setMyCurriculo(null);
-      }, 5000); */
-
-      //return () => clearTimeout(timeout);
     }
-  }, [message, setMyCurriculo]);
-
-  
+  }, [myCurriculo, loading]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    console.log('Dados do formulário:', formData);
 
     try {
       const payload: DataCreateCurriculoForm = formData || null; // certifique-se que formData siga o tipo
 
       const result = await createOrUpdateUser(payload);
-      console.log('Resultado do update:', result);
 
       if (result?.profile) {
         setFormData({
-          
           ...result.profile, // atualiza campos modificados pelo backend, se houver
         });
       }
@@ -122,6 +107,8 @@ console.log('myCurriculo: ', myCurriculo)
   if (loading) {
     return <ProfileSkeleton />;
   }
+
+  console.log(formData)
 
   return (
     <div className="flex flex-col items-center justify-center p-4 mx-auto overflow-hidden md:overflow-hidden">
@@ -201,7 +188,7 @@ console.log('myCurriculo: ', myCurriculo)
               id="username"
               name="username"
               value={formData?.username || ''}
-              onChange={(e)=>handleChange(setFormData, e, 'username')}
+              onChange={(e) => handleChange(setFormData, e, 'username')}
               required
             />
           </div>
@@ -214,7 +201,7 @@ console.log('myCurriculo: ', myCurriculo)
               id="name"
               name="name"
               value={formData?.name || ''}
-              onChange={(e)=>handleChange(setFormData, e, 'name')}
+              onChange={(e) => handleChange(setFormData, e, 'name')}
               required
             />
           </div>
@@ -228,7 +215,7 @@ console.log('myCurriculo: ', myCurriculo)
               id="email"
               name="email"
               value={formData?.email || ''}
-              onChange={(e)=>handleChange(setFormData, e, 'email')}
+              onChange={(e) => handleChange(setFormData, e, 'email')}
               required
             />
           </div>
@@ -242,7 +229,7 @@ console.log('myCurriculo: ', myCurriculo)
               id="phone"
               name="phone"
               value={formData?.phone || ''}
-              onChange={(e)=>handleChange(setFormData, e, 'phone')}
+              onChange={(e) => handleChange(setFormData, e, 'phone')}
             />
           </div>
           <div>
@@ -254,7 +241,7 @@ console.log('myCurriculo: ', myCurriculo)
               id="city"
               name="city"
               value={formData?.city || ''}
-              onChange={(e)=>handleChange(setFormData, e, 'city')}
+              onChange={(e) => handleChange(setFormData, e, 'city')}
             />
           </div>
           <div>
@@ -265,7 +252,7 @@ console.log('myCurriculo: ', myCurriculo)
               id="bio"
               name="bio"
               value={formData?.bio || ''}
-              onChange={(e)=>handleChange(setFormData, e, 'bio')}
+              onChange={(e) => handleChange(setFormData, e, 'bio')}
               placeholder="Descreva um pouco sobre você..."
             />
           </div>
@@ -296,6 +283,7 @@ console.log('myCurriculo: ', myCurriculo)
 
           <PortfolioEditor
             projects={formData?.portfolio || []}
+            pickColor={formData?.pickColor || 1}
             setProjects={(e) => handleChange(setFormData, e, 'portfolio')}
           />
 
