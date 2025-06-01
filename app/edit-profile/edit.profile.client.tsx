@@ -19,10 +19,12 @@ import { FaShieldAlt } from 'react-icons/fa';
 import { IoCloud, IoCloudOffline } from 'react-icons/io5';
 import { handleChange } from './functions/handle.change';
 import { ProfileSkeleton } from '@/components/form.skeleton.user.perfil';
+import { checkUsernameRegex } from './functions/check.username.regex';
 
 export default function EditProfileClient({ userSession }: { userSession?: UserSession }) {
   //const { profile, message, error } = userProfile || {};
   const [formData, setFormData] = useState<DataCreateCurriculoForm>();
+  const [usernameError, setUsernameError] = useState<string | null>(null);
   const { setMyCurriculo, myCurriculo, loading } = useUser();
   const [isLocalData, setIsLocalData] = useState<boolean>();
 
@@ -80,8 +82,29 @@ export default function EditProfileClient({ userSession }: { userSession?: UserS
     }
   }, [myCurriculo, loading]);
 
+  // Verifica se o username atinje os critérios
+  const handleUsernameBlur = () => {
+    if (formData?.username && !checkUsernameRegex(formData.username)) {
+      setUsernameError(
+        "Username inválido. Use apenas letras, números, '.', '-', '_'. Não inicie ou termine com símbolos. Sem repetições como '__', '..', '--'."
+      );
+    } else {
+      setUsernameError(null);
+    }
+  };
+
+  // Atualiza o estado do username
+  const handleUsernameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    handleChange(setFormData, e, 'username');
+  };
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    if (usernameError) {
+      toast.error('Por favor, corrija o erro no username antes de salvar.');
+      return;
+    }
 
     try {
       const payload: DataCreateCurriculoForm = formData || null; // certifique-se que formData siga o tipo
@@ -107,8 +130,6 @@ export default function EditProfileClient({ userSession }: { userSession?: UserS
   if (loading) {
     return <ProfileSkeleton />;
   }
-
-  console.log(formData)
 
   return (
     <div className="flex flex-col items-center justify-center p-4 mx-auto overflow-hidden md:overflow-hidden">
@@ -173,6 +194,14 @@ export default function EditProfileClient({ userSession }: { userSession?: UserS
         </div>
       </div>
 
+      {/* Sua Url personalizada */}
+      <div>
+        <p className="text-lg text-center text-gray-500">
+          Link para seu currículo:{' '}
+          <span className="font-bold">baixemeucv.com.br/{formData?.username}</span>
+        </p>
+      </div>
+
       {/* Área de rolagem para o formulário */}
       <div className="w-full sm:w-8/12">
         {' '}
@@ -187,10 +216,15 @@ export default function EditProfileClient({ userSession }: { userSession?: UserS
               type="text"
               id="username"
               name="username"
+              placeholder="Ex: pedro-henrique"
               value={formData?.username || ''}
-              onChange={(e) => handleChange(setFormData, e, 'username')}
+              onChange={handleUsernameChange}
+              onBlur={handleUsernameBlur}
+              aria-invalid={!!usernameError}
+              className={usernameError ? 'border-2 border-red-500' : ''}
               required
             />
+            {usernameError && <p className="mt-1 text-sm text-red-500">{usernameError}</p>}
           </div>
           <div>
             <Label htmlFor="name" className="pb-2">
