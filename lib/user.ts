@@ -42,7 +42,13 @@ export async function getUserByEmailHash(userEmail: string): Promise<UserDataRes
       },
     });
 
-    if (!user) return { profile: null, message: 'Currículo ainda não cadastrado.', error: true };
+    if (!user)
+      return {
+        profile: null,
+        message: 'Currículo ainda não cadastrado.',
+        errorMessage: null,
+        error: true,
+      };
 
     const { id, emailHash, phoneEncrypted, emailEncrypted, ...dataUser } = user;
 
@@ -52,6 +58,7 @@ export async function getUserByEmailHash(userEmail: string): Promise<UserDataRes
     return {
       profile: { ...dataUser, email, phone },
       message: '',
+      errorMessage: null,
       error: false,
     };
   } catch (error: any) {
@@ -60,6 +67,7 @@ export async function getUserByEmailHash(userEmail: string): Promise<UserDataRes
       profile: null,
       message:
         'Ocorreu um problema ao acessar o banco de dados. Seus dados serão salvos localmente.',
+      errorMessage: error instanceof Error ? error.message : 'Erro desconhecido',
       error: true,
     };
   }
@@ -80,9 +88,17 @@ export async function createOrUpdateUser(data: DataCreateCurriculoForm): Promise
   }
 
   try {
-    const { email, phone, portfolio, graduation, ...rest } = data;
+    const { email, phone, portfolio, graduation, username, ...rest } = data;
 
     if (!email) throw new Error('Email é obrigatório');
+
+    const existsUsername = await prisma.user.findUnique({
+      where: { username: username || '' },
+    });
+
+    if (existsUsername) {
+      throw new Error('Username já está em uso. Por favor, escolha outro.');
+    }
 
     const getEmailHash = await hashEmail(email);
     const getEmailEncrypted = await encryptData(email);
@@ -110,7 +126,7 @@ export async function createOrUpdateUser(data: DataCreateCurriculoForm): Promise
             deleteMany: {}, // Clear old graduations
           },
           username: {
-            set: rest.username || '',
+            set: username || '',
           },
           experiences: {
             deleteMany: {}, // Clear old experiences
@@ -126,7 +142,6 @@ export async function createOrUpdateUser(data: DataCreateCurriculoForm): Promise
           },
         },
       });
-
 
       // Recreate new portfolios
       if (Array.isArray(portfolio)) {
@@ -345,6 +360,7 @@ export async function createOrUpdateUser(data: DataCreateCurriculoForm): Promise
       message: existing
         ? `${updatedUser.name}. Seus dados foram atualizados com sucesso!`
         : `Bem-vindo, ${updatedUser.name}. Seu usuário foi criado com sucesso!`,
+      errorMessage: null,
       error: false,
     };
   } catch (error) {
@@ -367,7 +383,8 @@ export async function createOrUpdateUser(data: DataCreateCurriculoForm): Promise
 
     return {
       profile: null,
-      message: 'Ocorreu um problema ao salvar no banco de dados. Dados salvos localmente.',
+      message: `Ocorreu um problema ao salvar seu currícluo. Dados salvos localmente.`,
+      errorMessage: error instanceof Error ? error.message : 'Erro desconhecido',
       error: true,
     };
   }
