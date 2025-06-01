@@ -123,6 +123,7 @@ export type DataCreateCurriculoForm = {
 export type UserDataResult = {
   profile: DataCreateCurriculoForm;
   message: string | null | undefined;
+  errorMessage: string | null | undefined;
   error: boolean | false;
 } | null;
 
