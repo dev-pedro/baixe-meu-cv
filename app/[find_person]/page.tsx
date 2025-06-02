@@ -7,11 +7,12 @@ import { FaUserSlash } from 'react-icons/fa6';
 import { Metadata } from 'next';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
-import { curriculo } from '../data/curriculo.exemple';
+import { example } from '../data/curriculo.exemple';
 import { FloatingActionMenu } from '@/components/float.download.share';
 import Header from '@/components/section.header';
 import Skills from '@/components/section.skills';
 import SoftSkills from '@/components/section.soft.skills';
+import { getUserByUserName } from '@/lib/user';
 
 type PageProps = {
   params: {
@@ -22,8 +23,7 @@ type PageProps = {
 // 👇 Função usada pelo Next.js para gerar <head> dinamicamente
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { find_person } = await params;
-  // const user = await getUserByUserName(find_person);
-  const user = await curriculo;
+  const user = await getUserByUserName(find_person);
 
   if (!user || !user.public) {
     return {
@@ -69,9 +69,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 export default async function ShowCurriculoPage({ params }: PageProps) {
   // Acessando corretamente o username
   const { find_person } = await params;
-  // const curriculo = await getUserByUserName(find_person);
+  const user = await getUserByUserName(find_person);
 
-  if (!curriculo) {
+  if (!user?.profile) {
     return (
       <div className="flex flex-col items-center justify-center h-[70vh] text-center text-gray-600 space-y-4">
         <FaUserSlash className="w-16 h-16 text-red-400" />
@@ -89,13 +89,13 @@ export default async function ShowCurriculoPage({ params }: PageProps) {
   const userSession = (await session?.user) || null;
 
   const props = {
-    curriculo,
+    profile: user.profile,
     userSession,
   };
 
   return (
     <div className="mx-auto max-w-12/12">
-      {curriculo.public ? (
+      {user?.profile.public ? (
         <div className="flex flex-col gap-4 mx-auto max-w-11/12 md:max-w-10/12">
           <Header props={props} />
           <Portifolio props={props} />
