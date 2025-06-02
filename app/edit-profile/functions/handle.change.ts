@@ -32,7 +32,6 @@ export const handleChange = (
   }
 
   // Caso seja um input tradicional
-  console.log(e);
   const { name: targetName, type, value } = e.target as HTMLInputElement;
   const checked = type === 'checkbox' ? (e.target as HTMLInputElement).checked : undefined;
   const finalValue = type === 'checkbox' ? checked : value;
