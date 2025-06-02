@@ -46,7 +46,6 @@ export async function getUserByEmailHash(userEmail: string): Promise<UserDataRes
       return {
         profile: null,
         message: 'Currículo ainda não cadastrado.',
-        errorMessage: null,
         error: true,
       };
 
@@ -58,7 +57,6 @@ export async function getUserByEmailHash(userEmail: string): Promise<UserDataRes
     return {
       profile: { ...dataUser, email, phone },
       message: '',
-      errorMessage: null,
       error: false,
     };
   } catch (error: any) {
@@ -67,7 +65,6 @@ export async function getUserByEmailHash(userEmail: string): Promise<UserDataRes
       profile: null,
       message:
         'Ocorreu um problema ao acessar o banco de dados. Seus dados serão salvos localmente.',
-      errorMessage: error instanceof Error ? error.message : 'Erro desconhecido',
       error: true,
     };
   }
@@ -92,14 +89,6 @@ export async function createOrUpdateUser(data: DataCreateCurriculoForm): Promise
 
     if (!email) throw new Error('Email é obrigatório');
 
-    const existsUsername = await prisma.user.findUnique({
-      where: { username: username || '' },
-    });
-
-    if (existsUsername) {
-      throw new Error('Username já está em uso. Por favor, escolha outro.');
-    }
-
     const getEmailHash = await hashEmail(email);
     const getEmailEncrypted = await encryptData(email);
     const getEhoneEncrypted = await encryptData(phone || '');
@@ -108,6 +97,15 @@ export async function createOrUpdateUser(data: DataCreateCurriculoForm): Promise
     const existing = await prisma.user.findUnique({
       where: { emailHash: getEmailHash },
     });
+
+    const existsUsername = await prisma.user.findUnique({
+      where: { username: username || '' },
+    });
+
+    if (existsUsername && existing?.emailHash !== existsUsername.emailHash) {
+      throw new Error('Username já está em uso. Por favor, escolha outro.');
+    }
+
     let user: User;
 
     if (existing) {
@@ -271,7 +269,7 @@ export async function createOrUpdateUser(data: DataCreateCurriculoForm): Promise
               : [],
           },
           name: rest.name || '',
-          username: rest.username || '',
+          username: username || '',
           skills: rest.skills || [],
           softSkills: rest.softSkills || [],
         },
@@ -360,31 +358,14 @@ export async function createOrUpdateUser(data: DataCreateCurriculoForm): Promise
       message: existing
         ? `${updatedUser.name}. Seus dados foram atualizados com sucesso!`
         : `Bem-vindo, ${updatedUser.name}. Seu usuário foi criado com sucesso!`,
-      errorMessage: null,
       error: false,
     };
   } catch (error) {
-    //TODO: Adicionar regra para tratar erro de email e username duplicado
-    console.error('Erro ao criar ou atualizar usuário:', error);
-
-    try {
-      const pendentes = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY) || '[]');
-
-      // Evita duplicação se tiver um campo identificador
-      const jaSalvo = pendentes.some((item: DataCreateCurriculoForm) => item?.email === data.email);
-
-      if (!jaSalvo) {
-        pendentes.push(data);
-        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(pendentes));
-      }
-    } catch (storageError) {
-      console.error('Erro ao salvar no localStorage:', storageError);
-    }
-
     return {
       profile: null,
-      message: `Ocorreu um problema ao salvar seu currícluo. Dados salvos localmente.`,
-      errorMessage: error instanceof Error ? error.message : 'Erro desconhecido',
+      message: `Ocorreu um problema ao salvar seu currícluo. ${
+        error instanceof Error ? error.message : 'Erro desconhecido'
+      }`,
       error: true,
     };
   }
