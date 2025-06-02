@@ -44,14 +44,14 @@ export type UserSession = {
 } | null;
 
 export type Portfolio = {
-  id?: number
-  name?: string | '';
-  url?: string | '';
-  description?: string | '';
+  id?: number;
+  name?: string | null | '';
+  url?: string | null | '';
+  description?: string | null | '';
   tags?: PortfolioTag[] | [];
   customTags?: string[] | [];
-  category?: PortfolioCategory | '';
-  customCategory?: string | '';
+  category?: PortfolioCategory | null | undefined |'';
+  customCategory?: string | null | '';
   userId?: number;
 };
 
@@ -123,7 +123,6 @@ export type DataCreateCurriculoForm = {
 export type UserDataResult = {
   profile: DataCreateCurriculoForm;
   message: string | null | undefined;
-  errorMessage: string | null | undefined;
   error: boolean | false;
 } | null;
 
