@@ -7,7 +7,7 @@ import { DataCreateCurriculoForm, Portfolio, UserDataResult } from '@/app/types/
 import { User } from './generated/prisma';
 import { decryptData } from '@/utils/decrypt.data';
 
-export async function getUserByUserName(username: string) {
+export async function getUserByUserName(username: string): Promise<UserDataResult> {
   try {
     const user = await prisma.user.findUnique({
       where: { username: username },
@@ -15,12 +15,12 @@ export async function getUserByUserName(username: string) {
 
     if (!user) return null;
 
-    const { id, ...rest } = user;
-    return rest;
+    const { id, phoneEncrypted, emailHash, ...profile } = user;
+    return { profile: { email: '', ...profile }, message: '', error: false };
   } catch (error) {
     console.error('Erro ao buscar usuário por username:', error);
     return {
-      user: null,
+      profile: null,
       message:
         'Ocorreu um problema ao processar os dados do usuário. Seus dados serão salvos localmente.',
       error: true,
@@ -102,6 +102,7 @@ export async function createOrUpdateUser(data: DataCreateCurriculoForm): Promise
       where: { username: username || '' },
     });
 
+    // TODO: Implementar validação de username com usuários diferentes colocando mesmo emailHash
     if (existsUsername && existing?.emailHash !== existsUsername.emailHash) {
       throw new Error('Username já está em uso. Por favor, escolha outro.');
     }
