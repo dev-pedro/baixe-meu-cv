@@ -191,14 +191,15 @@ export default function EditProfileClient({ userSession }: { userSession?: UserS
         setPickColor={(e) => handleChange(setFormData, e, 'pickColor')}
       />
 
-      <div className="flex flex-col items-center justify-center w-full mt-2 sm:flex-row sm:justify-between sm:w-8/12">
+      {/* Indicador de onde os dados estão sendo salvos */}
+      <div className="flex flex-col items-center justify-center w-full my-2 sm:flex-row sm:justify-between sm:w-8/12">
         {isLocalData ? (
           <div className="flex items-center">
             <IoCloudOffline className="mr-1 text-nowrap" /> Dados salvos localmente
           </div>
         ) : (
           <div className="flex items-center">
-            <IoCloud className="mr-1 text-nowrap" /> Dados serão salvos na nuvem
+            <IoCloud className="mr-1 text-nowrap" /> Dados salvos na nuvem
           </div>
         )}
         <div className="flex items-center">
