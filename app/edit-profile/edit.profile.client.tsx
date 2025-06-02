@@ -58,6 +58,10 @@ export default function EditProfileClient({ userSession }: { userSession?: UserS
   // limpa a mensagem após 5 segundos
   useEffect(() => {
     if (!loading && myCurriculo?.message) {
+      // Exibe a mensagem de sucesso ou erro
+      if (myCurriculo.message.includes('Username já está em uso.')) {
+        setUsernameError(myCurriculo.message);
+      }
       if (myCurriculo?.message.includes('sucesso!')) {
         setIsLocalData(false);
         toast.success(myCurriculo?.message, {
@@ -79,6 +83,7 @@ export default function EditProfileClient({ userSession }: { userSession?: UserS
           className: '!text-red-700',
         });
       }
+      myCurriculo.message = null; // Limpa a mensagem após exibir
     }
   }, [myCurriculo, loading]);
 
@@ -95,17 +100,24 @@ export default function EditProfileClient({ userSession }: { userSession?: UserS
 
   // Atualiza o estado do username
   const handleUsernameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setUsernameError(null); // Limpa o erro ao digitar
+    // Atualiza o estado do username
     handleChange(setFormData, e, 'username');
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (usernameError) {
+    // Verifica se o username é válido antes de enviar
+    if (formData?.username && !checkUsernameRegex(formData.username)) {
+      setUsernameError(
+        "Username inválido. Use apenas letras, números, '.', '-', '_'. Não inicie ou termine com símbolos. Sem repetições como '__', '..', '--'."
+      );
       toast.error('Por favor, corrija o erro no username antes de salvar.');
       return;
     }
 
+    // Se o username for válido, prossegue com o envio
     try {
       const payload: DataCreateCurriculoForm = formData || null; // certifique-se que formData siga o tipo
 
