@@ -8,11 +8,11 @@ import { Badge } from './ui/badge';
 import { getPickerBg } from '@/utils/colors';
 
 export default function Portifolio({ props }: { props: any }) {
-  const { curriculo } = props;
-  const { bg, hover } = getPickerBg(curriculo.pickColor);
+  const { profile } = props;
+  const { bg, hover } = getPickerBg(profile.pickColor);
   return (
     <section id="portfolio" className="mt-20 sm:mt-36">
-      {curriculo?.portifolio?.length > 0 && (
+      {profile?.portifolio?.length > 0 && (
         <section className="pt-6">
           <div className="flex items-center mb-4">
             <FolderGit2 className="w-8 h-8 mr-2 text-primary" />
@@ -21,10 +21,10 @@ export default function Portifolio({ props }: { props: any }) {
 
           <div
             className={`grid gap-4 ${
-              curriculo.portifolio.length > 1 ? 'sm:grid-cols-2 md:grid-cols-3' : 'grid-cols-1'
+              profile.portifolio.length > 1 ? 'sm:grid-cols-2 md:grid-cols-3' : 'grid-cols-1'
             }`}
           >
-            {curriculo.portifolio.map((projeto: any, index: number) => (
+            {profile.portifolio.map((projeto: any, index: number) => (
               <Card key={index} className="flex flex-col justify-between rounded-xl">
                 <CardContent className="p-4">
                   <Link

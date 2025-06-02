@@ -9,8 +9,8 @@ import { getPickerBg } from '@/utils/colors';
 
 export function FloatingActionMenu({ props }: { props: any }) {
   const [isVisible, setIsVisible] = useState(false);
-  const { curriculo, userSession }: { curriculo: any; userSession: any } = props;
-  const { bg, hover } = getPickerBg(curriculo.pickColor);
+  const { profile, userSession }: { profile: any; userSession: any } = props;
+  const { bg, hover } = getPickerBg(profile.pickColor);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -43,7 +43,7 @@ export function FloatingActionMenu({ props }: { props: any }) {
               className="justify-start gap-2"
               onClick={() => console.log('Baixar currículo')}
             >
-              <FaDownload /> {`Baixar Currículo de ${props.curriculo.name}`}
+              <FaDownload /> {`Baixar Currículo de ${props.profile.name}`}
             </Button>
             <Button
               variant="ghost"

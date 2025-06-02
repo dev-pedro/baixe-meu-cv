@@ -3,8 +3,8 @@ import { GiSwissArmyKnife } from 'react-icons/gi';
 import { Badge } from './ui/badge';
 
 export default async function Skills({ props }: { props: any }) {
-  const { curriculo, userSession }: { curriculo: any; userSession: any } = await props;
-  const { bg, hover } = getPickerBg(curriculo.pickColor);
+  const { profile } = await props;
+  const { bg, hover } = getPickerBg(profile.pickColor);
 
   return (
     <section id="skills" className="scroll-mt-20">
@@ -13,7 +13,7 @@ export default async function Skills({ props }: { props: any }) {
         <h2 className="text-2xl font-semibold">Skills</h2>
       </div>
       <div className="flex flex-wrap gap-2">
-        {curriculo.skills
+        {profile.skills
           ?.sort((a: string, b: string) => b.length - a.length) // Ordena maior texto para o menor
           .map((skill: string, i: number) => (
             <Badge key={i} variant="outline" className={`${bg} text-sm`}>
