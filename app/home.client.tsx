@@ -5,9 +5,10 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import Image from 'next/image';
 import logo from '../public/thumbnail.svg';
+import { UserSession } from './types/types';
 
 interface HomeClientProps {
-  session: any;
+  session: UserSession;
 }
 
 export default function HomeClient({ session }: HomeClientProps) {
@@ -46,7 +47,7 @@ export default function HomeClient({ session }: HomeClientProps) {
               </Button>
             )}
 
-            <Link href="/pedro" passHref>
+            <Link href="/curriculo-example" passHref>
               <Button asChild variant="outline" className="rounded-2xl p-6">
                 <span>Ver exemplo</span>
               </Button>
