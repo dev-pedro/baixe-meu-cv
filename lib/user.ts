@@ -11,18 +11,34 @@ export async function getUserByUserName(username: string): Promise<UserDataResul
   try {
     const user = await prisma.user.findUnique({
       where: { username: username },
+      include: {
+        portfolio: true,
+        courses: true,
+        experiences: {
+          include: {
+            jobs: true, // ✅ Inclui os jobs dentro de cada experience
+          },
+        },
+        graduation: true,
+        // Se quiser incluir mais:
+      },
     });
 
-    if (!user) return null;
+    if (!user)
+      return {
+        profile: null,
+        message: 'Currículo ainda não cadastrado ou usuário não encontrado.',
+        error: true,
+      };
+    const { id, phoneEncrypted, emailHash, emailEncrypted, ...profile } = user;
+    const email = emailEncrypted ? await decryptData(emailEncrypted) : 'baixemeucv@gmail.com';
 
-    const { id, phoneEncrypted, emailHash, ...profile } = user;
-    return { profile: { email: '', ...profile }, message: '', error: false };
-  } catch (error) {
+    return { profile: { email, ...profile }, message: '', error: false };
+  } catch (error: any) {
     console.error('Erro ao buscar usuário por username:', error);
     return {
       profile: null,
-      message:
-        'Ocorreu um problema ao processar os dados do usuário. Seus dados serão salvos localmente.',
+      message: 'Ocorreu um problema ao processar os dados do usuário.',
       error: true,
     };
   }
@@ -31,6 +47,7 @@ export async function getUserByUserName(username: string): Promise<UserDataResul
 export async function getUserByEmailHash(userEmail: string): Promise<UserDataResult> {
   try {
     const getEmailHash = await hashEmail(userEmail);
+    console.log('getEmailHash', getEmailHash);
     const user = await prisma.user.findUnique({
       where: { emailHash: getEmailHash },
       include: {
@@ -41,6 +58,7 @@ export async function getUserByEmailHash(userEmail: string): Promise<UserDataRes
         // Se quiser incluir mais:
       },
     });
+    console.log('user', user);
 
     if (!user)
       return {
@@ -59,12 +77,11 @@ export async function getUserByEmailHash(userEmail: string): Promise<UserDataRes
       message: '',
       error: false,
     };
-  } catch (error: any) {
-    console.error('Ocorreu um problema ao acessar o banco de dados: ', error?.message);
+  } catch (error) {
+    console.error('Ocorreu um problema ao acessar o banco de dados: ', error);
     return {
       profile: null,
-      message:
-        'Ocorreu um problema ao acessar o banco de dados. Seus dados serão salvos localmente.',
+      message: 'Ocorreu um problema ao acessar o banco de dados.',
       error: true,
     };
   }
@@ -78,7 +95,7 @@ export async function getUserByEmailHash(userEmail: string): Promise<UserDataRes
  * @throws Will throw an error if the user data or email is not provided.
  */
 export async function createOrUpdateUser(data: DataCreateCurriculoForm): Promise<UserDataResult> {
-  const LOCAL_STORAGE_KEY = 'curriculoPendentes';
+  //const LOCAL_STORAGE_KEY = 'curriculoPendentes';
 
   if (!data) {
     throw new Error('Dados do usuário são obrigatórios');
@@ -92,7 +109,6 @@ export async function createOrUpdateUser(data: DataCreateCurriculoForm): Promise
     const getEmailHash = await hashEmail(email);
     const getEmailEncrypted = await encryptData(email);
     const getEhoneEncrypted = await encryptData(phone || '');
-
     // Check if user already exists
     const existing = await prisma.user.findUnique({
       where: { emailHash: getEmailHash },
@@ -207,6 +223,7 @@ export async function createOrUpdateUser(data: DataCreateCurriculoForm): Promise
       }
     } else {
       // Create new user with related data
+
       user = await prisma.user.create({
         include: {
           portfolio: true,
@@ -241,17 +258,30 @@ export async function createOrUpdateUser(data: DataCreateCurriculoForm): Promise
                   name: g && 'name' in g ? g.name : '',
                   year: g && 'year' in g ? g.year : '',
                   description: g && 'description' in g ? g.description : '',
+                  online:
+                    g && 'online' in g && g.online !== null && g.online !== undefined
+                      ? g.online
+                      : false,
                 }))
               : [],
           },
           experiences: {
             create: Array.isArray(data.experiences)
               ? data.experiences.map((e) => ({
-                  name: e && 'name' in e ? e.name : '',
                   company: e && 'company' in e ? e.company : '',
                   start: e && 'start' in e ? e.start : '',
                   end: e && 'end' in e ? e.end : '',
-                  jobs: 'jobs' in e ? e.jobs : [],
+                  jobs: {
+                    create:
+                      'jobs' in e && Array.isArray(e.jobs)
+                        ? e.jobs.map((j) => ({
+                            function: j && 'function' in j ? j.function : '',
+                            description: j && 'description' in j ? j.description : '',
+                            start: j && 'start' in j ? j.start : '',
+                            end: j && 'end' in j ? j.end : '',
+                          }))
+                        : [],
+                  },
                 }))
               : [],
           },
@@ -362,6 +392,7 @@ export async function createOrUpdateUser(data: DataCreateCurriculoForm): Promise
       error: false,
     };
   } catch (error) {
+    console.error('Erro ao criar ou atualizar usuário:', error);
     return {
       profile: null,
       message: `Ocorreu um problema ao salvar seu currícluo. ${
