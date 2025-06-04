@@ -21,7 +21,13 @@ import { handleChange } from './functions/handle.change';
 import { ProfileSkeleton } from '@/components/form.skeleton.user.perfil';
 import { checkUsernameRegex } from './functions/check.username.regex';
 
-export default function EditProfileClient({ userSession }: { userSession?: UserSession }) {
+export default function EditProfileClient({
+  userSession,
+  message,
+}: {
+  userSession?: UserSession;
+  message?: string;
+}) {
   //const { profile, message, error } = userProfile || {};
   const [formData, setFormData] = useState<DataCreateCurriculoForm>();
   const [usernameError, setUsernameError] = useState<string | null>(null);
@@ -35,7 +41,7 @@ export default function EditProfileClient({ userSession }: { userSession?: UserS
       setFormData({
         username: profile.username || '',
         name: profile.name || '',
-        email: profile.email || '',
+        email: userSession?.email || '',
         phone: profile.phone || '',
         image: profile.image || userSession?.image || '',
         bio: profile.bio || '',
@@ -119,7 +125,10 @@ export default function EditProfileClient({ userSession }: { userSession?: UserS
 
     // Se o username for válido, prossegue com o envio
     try {
-      const payload: DataCreateCurriculoForm = formData || null; // certifique-se que formData siga o tipo
+      const payload: DataCreateCurriculoForm = {
+        ...formData,
+        email: userSession?.email || formData?.email || '',
+      }; // certifique-se que formData siga o tipo
 
       const result = await createOrUpdateUser(payload);
 
@@ -261,8 +270,9 @@ export default function EditProfileClient({ userSession }: { userSession?: UserS
               type="email"
               id="email"
               name="email"
-              value={formData?.email || ''}
-              onChange={(e) => handleChange(setFormData, e, 'email')}
+              value={userSession?.email || ''}
+              //onChange={(e) => handleChange(setFormData, e, 'email')}
+              readOnly
               required
             />
           </div>
