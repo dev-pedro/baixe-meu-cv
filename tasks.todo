@@ -1,19 +1,18 @@
 //TODO: Tasks list for App - Baixe Meu CV
 
-Features:
-    //NOTE - Example of a feature description
-    ☐ Implement user profile page with editable fields @critical (03/06/2025, 18:59:42)
-        ☐ Add fields for name, email, phone number, and address
-        ✔ Add a button to save changes @done (03/06/2025, 18:59:42)
-        ☐ Validate input fields before saving
-        ☐ Show success message after saving changes
-
-        
+//NOTE - Example of a feature description
+☐ Implement user profile page with editable fields @critical (03/06/2025, 18:59:42)
+    ☐ Add fields for name, email, phone number, and address
+    ✔ Add a button to save changes @done (03/06/2025, 18:59:42)
+    ☐ Validate input fields before saving
+    ☐ Show success message after saving changes
+    
+Features:       
     ☐ Add loadind spinner in notification toast and a message while profile data is being saved to database
         ☐ message during saving: "Salvando dados, aguarde..."
         ☐ message after saving: "Dados salvos com sucesso"
 
 Bugs:
-    //NOTE - Example of a bug description
-    ☐ Fix bug where the profile data is not being saved correctly in the database
-    ☐ Fix bug where the loading spinner is not displayed while saving data 
+    ✔ Fix add verification for url in project links @done (04/06/2025, 18:22:16)
+        ✔ Add regex validation for URL format @done (04/06/2025, 18:22:06)
+        ✔ Show error message if URL is invalid @done (04/06/2025, 18:22:11)
