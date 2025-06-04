@@ -43,32 +43,30 @@ export type UserSession = {
   image?: string | null | undefined;
 } | null;
 
-export type Portfolio = {
-  id?: number;
-  name?: string | null | '';
-  url?: string | null | '';
-  description?: string | null | '';
-  tags?: PortfolioTag[] | [];
-  customTags?: string[] | [];
-  category?: PortfolioCategory | null | undefined |'';
-  customCategory?: string | null | '';
-  userId?: number;
-};
+export type Portfolio =
+  | {
+      name?: string | null | '';
+      url?: string | null | '';
+      description?: string | null | '';
+      tags?: PortfolioTag[] | string[] | undefined;
+      customTags?: string[] | undefined;
+      category?: PortfolioCategory | string | null | undefined | '';
+      customCategory?: string | null | '';
+    }
+  | [];
 
 export type Graduation =
   | {
-      id?: number | null | undefined;
       name?: string | null | undefined;
       institution?: string | null | undefined;
       description?: string | null | undefined;
+      online?: boolean | null | undefined;
       year?: string | null | undefined;
-      userId?: number | null | undefined;
     }
   | [];
 
 export type Job =
   | {
-      id: number | null | undefined;
       function?: string | null | undefined;
       description?: string | null | undefined;
       start?: string | null | undefined;
@@ -78,25 +76,20 @@ export type Job =
 
 export type Experience =
   | {
-      id: number | null | undefined;
-      name?: string | null | undefined;
       company?: string | null | undefined;
       start?: string | null | undefined;
       end?: string | null | undefined;
-      jobs?: Job[] | [];
-      userId?: number | null | undefined;
+      jobs?: Job[];
     }
   | [];
 
 export type Course =
   | {
-      id: number | null | undefined;
       institution?: string | null | undefined;
       name?: string | null | undefined;
       year?: string | null | undefined;
       description?: string | null | undefined;
       online?: boolean | null | undefined;
-      userId?: number | null | undefined;
     }
   | [];
 export type DataCreateCurriculoForm = {
@@ -131,3 +124,14 @@ export type UserDataForm = {
   message: string | null | undefined;
   error: boolean | false;
 } | null;
+
+export type FindPersonProps = {
+  params: {
+    find_person: string;
+  };
+};
+
+export type SectionProps = {
+  profile: DataCreateCurriculoForm;
+  userSession: UserSession | null;
+};
