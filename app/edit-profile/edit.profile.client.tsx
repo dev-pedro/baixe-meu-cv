@@ -43,7 +43,7 @@ export default function EditProfileClient({
         name: profile.name || '',
         email: userSession?.email || '',
         phone: profile.phone || '',
-        image: profile.image || userSession?.image || '',
+        image: profile.image || '',
         bio: profile.bio || '',
         pickColor: profile.pickColor || 1,
         profession: profile.profession,
