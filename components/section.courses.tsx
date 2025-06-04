@@ -1,3 +1,4 @@
+import { Course, SectionProps } from '@/app/types/types';
 import {
   Card,
   CardHeader,
@@ -16,13 +17,13 @@ import {
 } from '@/components/ui/dialog';
 import { ImBooks } from 'react-icons/im';
 import { LuSchool } from 'react-icons/lu';
-import { PiVideoDuotone } from "react-icons/pi";
+import { PiVideoDuotone } from 'react-icons/pi';
 
-export default function Courses({ props }: { props: any }) {
-  const { curriculo } = props;
+export default async function Courses({ props }: { props: SectionProps }) {
+  const { profile } = await props;
   return (
     <section id="courses" className="scroll-mt-20">
-      {curriculo?.courses?.length > 0 && (
+      {profile && Array.isArray(profile.courses) && profile?.courses.length > 0 && (
         <div className="pt-6">
           <div className="flex items-center mb-4">
             <ImBooks className="w-8 h-8 mr-2" />
@@ -30,51 +31,57 @@ export default function Courses({ props }: { props: any }) {
           </div>
           <div
             className={`grid gap-4 ${
-              curriculo.courses.length > 1 ? 'sm:grid-cols-1 md:grid-cols-2' : 'grid-cols-1'
+              profile?.courses && profile?.courses.length > 1
+                ? 'sm:grid-cols-1 md:grid-cols-2'
+                : 'grid-cols-1'
             }`}
           >
-            {curriculo.courses.map((curso: any, index: number) => {
-              const Icon = curso.online ? PiVideoDuotone : LuSchool;
-              return (
-                <Card key={index} className="min-h-full flex flex-col justify-between">
-                  <div>
-                    <CardHeader className="flex flex-row items-start gap-4">
-                      <Icon className="w-5 h-5 text-muted-foreground mt-1" />
-                      <div>
-                        <CardTitle className="text-lg">{(curso?.curso).toUpperCase()}</CardTitle>
-                        <CardDescription className="text-sm text-muted-foreground/60">
-                          {curso?.instituicao} — {curso?.ano}
-                        </CardDescription>
-                      </div>
-                    </CardHeader>
-                    <CardContent>
-                      <p className="text-muted-foreground text-sm line-clamp-1">
-                        {curso?.descricao}
-                      </p>
-                    </CardContent>
-                  </div>
-                  {curso?.descricao && (
-                    <CardFooter>
-                      <Dialog>
-                        <DialogTrigger className="text-sm underline text-primary/50 hover:text-primary">
-                          Mostrar mais
-                        </DialogTrigger>
-                        <DialogContent className="!max-w-2xl w-11/12">
-                          <DialogHeader>
-                            <DialogTitle>
-                              {curso?.curso} — {curso?.ano}
-                            </DialogTitle>
-                          </DialogHeader>
-                          <DialogDescription>
-                            {curso?.descricao || 'Sem descrição disponível.'}
-                          </DialogDescription>
-                        </DialogContent>
-                      </Dialog>
-                    </CardFooter>
-                  )}
-                </Card>
-              );
-            })}
+            {profile?.courses &&
+              profile?.courses.map((curso: Course, index: number) => {
+                const Icon = 'online' in curso && curso?.online ? PiVideoDuotone : LuSchool;
+                return (
+                  <Card key={index} className="min-h-full flex flex-col justify-between">
+                    <div>
+                      <CardHeader className="flex flex-row items-start gap-4">
+                        <Icon className="w-5 h-5 text-muted-foreground mt-1" />
+                        <div>
+                          <CardTitle className="text-lg">
+                            {(('name' in curso && curso?.name) as string).toUpperCase()}
+                          </CardTitle>
+                          <CardDescription className="text-sm text-muted-foreground/60">
+                            {'institution' in curso && curso?.institution} -{' '}
+                            {'year' in curso && curso?.year}
+                          </CardDescription>
+                        </div>
+                      </CardHeader>
+                      <CardContent>
+                        <p className="text-muted-foreground text-sm line-clamp-1">
+                          {'description' in curso && curso?.description}
+                        </p>
+                      </CardContent>
+                    </div>
+                    {'description' in curso && curso?.description && (
+                      <CardFooter>
+                        <Dialog>
+                          <DialogTrigger className="text-sm underline text-primary/50 hover:text-primary">
+                            Mostrar mais
+                          </DialogTrigger>
+                          <DialogContent className="!max-w-2xl w-11/12">
+                            <DialogHeader>
+                              <DialogTitle>
+                                {curso?.name} - {curso?.year}
+                              </DialogTitle>
+                            </DialogHeader>
+                            <DialogDescription>
+                              {curso?.description || 'Sem descrição disponível.'}
+                            </DialogDescription>
+                          </DialogContent>
+                        </Dialog>
+                      </CardFooter>
+                    )}
+                  </Card>
+                );
+              })}
           </div>
         </div>
       )}

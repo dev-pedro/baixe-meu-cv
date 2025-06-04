@@ -1,4 +1,5 @@
-import { Button } from '@/components/ui/button';
+'use server';
+import { DataCreateCurriculoForm, Graduation, SectionProps } from '@/app/types/types';
 import {
   Card,
   CardContent,
@@ -17,11 +18,11 @@ import {
 } from '@/components/ui/dialog';
 import { FaGraduationCap } from 'react-icons/fa6';
 
-export default function Education({ props }: { props: any }) {
-  const { curriculo } = props;
+export default async function Education({ props }: { props: SectionProps }) {
+  const { profile } = await props;
   return (
     <section id="graduation" className="scroll-mt-20">
-      {curriculo?.formacoes?.length > 0 && (
+      {profile?.graduation && profile?.graduation?.length > 0 && (
         <div className="pt-6">
           <div className="flex items-center mb-4">
             <FaGraduationCap className="w-8 h-8 mr-2" />
@@ -29,23 +30,27 @@ export default function Education({ props }: { props: any }) {
           </div>
           <div
             className={`grid gap-4 ${
-              curriculo.formacoes.length === 1 ? 'grid-cols-1' : 'sm:grid-cols-1 md:grid-cols-2'
+              profile?.graduation.length === 1 ? 'grid-cols-1' : 'sm:grid-cols-1 md:grid-cols-2'
             }`}
           >
-            {curriculo.formacoes.map((formacao: any, index: number) => (
+            {profile?.graduation.map((g: Graduation, index: number) => (
               <Card key={index} className="min-h-full flex flex-col justify-between">
                 <div>
                   <CardHeader>
-                    <CardTitle className="text-lg">{formacao?.instituicao}</CardTitle>
+                    <CardTitle className="text-lg">
+                      {'institution' in g && g?.institution}
+                    </CardTitle>
                     <CardDescription className="text-sm text-muted-foreground/60">
-                      {formacao?.curso} — {formacao?.ano}
+                      {'name' in g && g?.name} — {'year' in g && g?.year}
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-muted-foreground line-clamp-3">{formacao?.descricao}</p>
+                    <p className="text-muted-foreground line-clamp-3">
+                      {'description' in g && g?.description}
+                    </p>
                   </CardContent>
                 </div>
-                {formacao?.descricao && (
+                {'description' in g && g?.description && (
                   <CardFooter>
                     <Dialog>
                       <DialogTrigger className="text-sm underline text-primary/50 hover:text-primary">
@@ -54,11 +59,11 @@ export default function Education({ props }: { props: any }) {
                       <DialogContent className="w-full lg:max-w-4xl h-auto -mt-20 rounded-xl">
                         <DialogHeader>
                           <DialogTitle className="sm:text-lg pt-4">
-                            {formacao?.curso} — {formacao?.ano}
+                            {g?.name} — {g?.year}
                           </DialogTitle>
                           <DialogDescription>
                             <div className="mt-2 sm:text-lg text-muted-foreground text-pretty">
-                              {formacao?.descricao}
+                              {g?.description || 'Descrição não disponível.'}
                             </div>
                           </DialogDescription>
                         </DialogHeader>
