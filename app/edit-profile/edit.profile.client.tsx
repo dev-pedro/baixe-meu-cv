@@ -238,6 +238,7 @@ export default function EditProfileClient({
               type="text"
               id="username"
               name="username"
+              maxLength={30}
               placeholder="Ex: pedro-henrique"
               value={formData?.username || ''}
               onChange={handleUsernameChange}
@@ -256,6 +257,7 @@ export default function EditProfileClient({
               type="text"
               id="name"
               name="name"
+              maxLength={70}
               value={formData?.name || ''}
               onChange={(e) => handleChange(setFormData, e, 'name')}
               required
@@ -270,6 +272,7 @@ export default function EditProfileClient({
               type="email"
               id="email"
               name="email"
+              maxLength={50}
               value={userSession?.email || ''}
               //onChange={(e) => handleChange(setFormData, e, 'email')}
               readOnly
@@ -285,6 +288,7 @@ export default function EditProfileClient({
               type="text"
               id="phone"
               name="phone"
+              maxLength={30}
               value={formData?.phone || ''}
               onChange={(e) => handleChange(setFormData, e, 'phone')}
             />
@@ -297,6 +301,7 @@ export default function EditProfileClient({
               type="text"
               id="city"
               name="city"
+              maxLength={50}
               value={formData?.city || ''}
               onChange={(e) => handleChange(setFormData, e, 'city')}
             />
@@ -306,8 +311,10 @@ export default function EditProfileClient({
               Bio
             </Label>
             <Textarea
+            className='resize-none'
               id="bio"
               name="bio"
+              maxLength={700}
               value={formData?.bio || ''}
               onChange={(e) => handleChange(setFormData, e, 'bio')}
               placeholder="Descreva um pouco sobre você..."
