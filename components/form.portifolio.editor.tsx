@@ -1,6 +1,4 @@
 'use client';
-
-import validator from 'validator';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
@@ -18,8 +16,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '.
 import { PortfolioCategory, PortfolioTag } from '@/lib/generated/prisma';
 import { ToggleGroup, ToggleGroupItem } from './ui/toggle-group';
 import { getPickerBg } from '@/utils/colors';
-import { error } from 'console';
 import { useState } from 'react';
+import { PortfolioSchema } from '@/app/lib/schemas/form.perfil.editor.schema';
 
 interface Props {
   projects: Portfolio[];
@@ -65,10 +63,10 @@ export default function PortfolioEditor({ projects, setProjects, pickColor }: Pr
 
   // Validação correta de URL
   const handleUrlBlur = (project: Portfolio) => {
-    if (project?.url && !validator.isURL(project.url, { require_protocol: true })) {
-      setUrlError('URL inválida. Informe uma URL válida, exemplo: https://exemplo.com');
-    } else {
-      setUrlError(null);
+    const result = PortfolioSchema.pick({ url: true }).safeParse({ url: project?.url });
+
+  if (!result.success) {
+    setUrlError(result.error.format().url?._errors?.[0] || 'URL');
     }
   };
 
