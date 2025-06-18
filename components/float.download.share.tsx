@@ -32,7 +32,10 @@ export function FloatingActionMenu({ props }: { props: any }) {
     >
       <Popover>
         <PopoverTrigger asChild>
-          <Button className={`rounded-full w-14 h-14 p-0 shadow`} variant="default">
+          <Button
+            className={`rounded-full w-14 h-14 p-0 shadow ${bg} ${hover} text-foreground`}
+            variant="default"
+          >
             <FaRegShareSquare size={24} />
           </Button>
         </PopoverTrigger>
@@ -40,17 +43,18 @@ export function FloatingActionMenu({ props }: { props: any }) {
           <div className="flex flex-col gap-2">
             <Button
               variant="ghost"
-              className="justify-start gap-2"
+              className={`justify-start gap-2 ${hover}`}
               onClick={() => console.log('Baixar currículo')}
             >
               <FaDownload /> {`Baixar Currículo de ${props.profile.name}`}
             </Button>
             <Button
               variant="ghost"
-              className="justify-start gap-2"
+              className={`justify-start gap-2 ${hover}`}
               onClick={() => console.log('Compartilhar')}
             >
-              <FaShareAlt />Compartilhar este Currículo
+              <FaShareAlt />
+              Compartilhar este Currículo
             </Button>
           </div>
         </PopoverContent>
