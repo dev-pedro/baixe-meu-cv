@@ -45,13 +45,17 @@ export type UserSession = {
 
 export type Portfolio =
   | {
-      name?: string | null | '';
-      url?: string | null | '';
-      description?: string | null | '';
-      tags?: PortfolioTag[] | string[] | undefined;
+      id?: number | undefined | null;
+      name?: string | null;
+      url?: string | null;
+      description?: string | null;
+      tags?: PortfolioTag[] | undefined;
       customTags?: string[] | undefined;
-      category?: PortfolioCategory | string | null | undefined | '';
-      customCategory?: string | null | '';
+      category?: PortfolioCategory | null | undefined;
+      customCategory?: string | null;
+      createdAt?: Date | string;
+      updatedAt?: Date | string;
+      userId: number;
     }
   | [];
 
@@ -85,13 +89,12 @@ export type Experience =
 
 export type Course =
   | {
-      institution?: string | null | undefined;
-      name?: string | null | undefined;
-      year?: string | null | undefined;
-      description?: string | null | undefined;
-      online?: boolean | null | undefined;
-    }
-  | [];
+      institution?: string
+      name?: string
+      year?: string
+      description?: string
+      online?: boolean
+    };
 export type DataCreateCurriculoForm = {
   username?: string | null | undefined;
   name?: string | null | undefined;
