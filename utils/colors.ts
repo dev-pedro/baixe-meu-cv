@@ -22,7 +22,7 @@ const PICKER_COLORS_BG = {
  * Retorna a classe de fundo para o picker com base em um número válido (1-7).
  * Se o número for inválido, retorna 'bg-pick-1' como padrão.
  */
-export function getPickerBg(pickColor: number): { bg: string; hover: string } {
+export function getPickerBg(pickColor?: number): { bg: string; hover: string } {
   const bg = PICKER_COLORS_BG[pickColor as keyof typeof PICKER_COLORS_BG] ?? 'bg-pick-5';
   const hover =
     PICKER_COLORS_HOVER[pickColor as keyof typeof PICKER_COLORS_HOVER] ?? 'hover:bg-pick-5';
