@@ -98,16 +98,16 @@ export default async function RootLayout({
 }>) {
   const session = await getServerSession(authOptions);
   const userSession = session?.user || null;
-  const props = {
+  /* const userSession = {
     userSession,
-  };
+  }; */
   return (
     <html lang="pt-BR">
       <Providers>
         <body
           className={`${globalTheme} ${montserrat.variable} ${leckerli.variable} ${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen`}
         >
-          <MenuBarUser props={props} />
+          <MenuBarUser userSession={userSession} />
           <main className="flex-grow">{children}</main>
           <Footer />
           <Toaster />
