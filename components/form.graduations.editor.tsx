@@ -13,13 +13,19 @@ import {
 } from '@/components/ui/accordion';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Graduation } from '@/app/types/types';
+import { IoIosAddCircle } from 'react-icons/io';
+import { getPickerBg } from '@/utils/colors';
+import { Checkbox } from './ui/checkbox';
 
 interface Props {
   graduation: Graduation[];
   setGraduation: (graduation: Graduation[]) => void;
+  pickColor: number;
 }
 
-export default function GraduationEditor({ graduation, setGraduation }: Props) {
+export default function GraduationEditor({ graduation, setGraduation, pickColor }: Props) {
+  const { bg, hover } = getPickerBg(pickColor);
+
   const handleChange = (index: number, field: keyof Graduation, value: string) => {
     const updated = [...graduation];
     updated[index][field] = value as Graduation[keyof Graduation];
@@ -38,7 +44,12 @@ export default function GraduationEditor({ graduation, setGraduation }: Props) {
 
   return (
     <div className="space-y-4 border-t pt-2">
-      <h2 className="text-lg font-semibold">Formações Acadêmicas</h2>
+      <div className="flex justify-between items-center">
+        <h2 className="text-lg font-semibold">Formações Acadêmicas</h2>
+        <Button className={`${bg} ${hover}`} type="button" variant="download" onClick={handleAdd}>
+          <IoIosAddCircle />
+        </Button>
+      </div>
 
       <Accordion type="multiple" className="space-y-2">
         {graduation.map((formacao, index) => (
@@ -47,7 +58,9 @@ export default function GraduationEditor({ graduation, setGraduation }: Props) {
               <CardHeader className="flex flex-row justify-between items-center pr-4">
                 <div className="w-full">
                   <AccordionTrigger className="cursor-pointer">
-                    <CardTitle>{formacao.name || `Formação ${index + 1}`}</CardTitle>
+                    <CardTitle>
+                      {('name' in formacao && formacao.name) || `Formação ${index + 1}`}
+                    </CardTitle>
                   </AccordionTrigger>
                 </div>
                 <Button
@@ -67,7 +80,7 @@ export default function GraduationEditor({ graduation, setGraduation }: Props) {
                     </Label>
                     <Input
                       id={`instituicao-${index}`}
-                      value={formacao.institution}
+                      value={('institution' in formacao && formacao.institution) || ''}
                       onChange={(e) => handleChange(index, 'institution', e.target.value)}
                       placeholder="Faculdade Anhanguera"
                     />
@@ -79,7 +92,7 @@ export default function GraduationEditor({ graduation, setGraduation }: Props) {
                     </Label>
                     <Input
                       id={`curso-${index}`}
-                      value={formacao.name}
+                      value={('name' in formacao && formacao.name) || ''}
                       onChange={(e) => handleChange(index, 'name', e.target.value)}
                       placeholder="Desenvolvimento de Sistemas"
                     />
@@ -91,7 +104,7 @@ export default function GraduationEditor({ graduation, setGraduation }: Props) {
                     </Label>
                     <Input
                       id={`ano-${index}`}
-                      value={formacao.year}
+                      value={('year' in formacao && formacao.year) || ''}
                       onChange={(e) => handleChange(index, 'year', e.target.value)}
                       placeholder="2015"
                     />
@@ -103,10 +116,19 @@ export default function GraduationEditor({ graduation, setGraduation }: Props) {
                     </Label>
                     <Textarea
                       id={`descricao-${index}`}
-                      value={formacao.description}
+                      value={('description' in formacao && formacao?.description) || ''}
                       onChange={(e) => handleChange(index, 'description', e.target.value)}
                       placeholder="Detalhes da formação..."
                     />
+                  </div>
+
+                  <div className="flex items-center space-x-2">
+                    <Checkbox
+                      id={`online-${index}`}
+                      checked={'online' in formacao && !!formacao.online}
+                      onCheckedChange={(checked) => handleChange(index, 'online', !!checked)}
+                    />
+                    <Label htmlFor={`online-${index}`}>Graduação Online</Label>
                   </div>
                 </CardContent>
               </AccordionContent>
@@ -115,9 +137,9 @@ export default function GraduationEditor({ graduation, setGraduation }: Props) {
         ))}
       </Accordion>
 
-      <Button type="button" variant="outline" onClick={handleAdd}>
+      {/* <Button type="button" variant="outline" onClick={handleAdd}>
         Adicionar Formação
-      </Button>
+      </Button> */}
     </div>
   );
 }
