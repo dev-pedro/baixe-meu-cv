@@ -1,14 +1,14 @@
 import { Portfolio } from "@/lib/generated/prisma";
 import { updateFormData } from "./update.form.data";
-import { DataCreateCurriculoForm, Graduation } from "@/app/types/types";
+import { DataCreateCurriculoForm, Experience, Graduation } from "@/app/types/types";
 
 type InputChangeEvent = React.ChangeEvent<
   HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
 >;
 type CheckedState = boolean | 'indeterminate';
 export const handleChange = (
-  setFormData: React.Dispatch<React.SetStateAction<DataCreateCurriculoForm | undefined>>,
-  e: InputChangeEvent | CheckedState | number | Array<Portfolio | Graduation>,
+  setFormData: React.Dispatch<React.SetStateAction<DataCreateCurriculoForm | undefined | null>>,
+  e: InputChangeEvent | CheckedState | number | Array<Portfolio | Graduation | Experience>,
   name?: string
 ) => {
   // Caso seja o ShadCN Checkbox
