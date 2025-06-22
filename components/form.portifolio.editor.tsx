@@ -1,4 +1,5 @@
 'use client';
+import { IoIosAddCircle } from 'react-icons/io';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
@@ -27,7 +28,7 @@ interface Props {
 
 export default function PortfolioEditor({ projects, setProjects, pickColor }: Props) {
   const [urlError, setUrlError] = useState<string | null>(null);
-  const { bg } = getPickerBg(pickColor);
+  const { bg, hover } = getPickerBg(pickColor);
   const handleChange = <K extends keyof Portfolio>(
     index: number,
     field: K,
@@ -65,8 +66,8 @@ export default function PortfolioEditor({ projects, setProjects, pickColor }: Pr
   const handleUrlBlur = (project: Portfolio) => {
     const result = PortfolioSchema.pick({ url: true }).safeParse({ url: project?.url });
 
-  if (!result.success) {
-    setUrlError(result.error.format().url?._errors?.[0] || 'URL');
+    if (!result.success) {
+      setUrlError(result.error.format().url?._errors?.[0] || 'URL');
     }
   };
 
@@ -77,8 +78,13 @@ export default function PortfolioEditor({ projects, setProjects, pickColor }: Pr
   };
 
   return (
-    <div className="pt-2 space-y-4 border-t">
-      <h2 className="text-lg font-semibold">Portfólio</h2>
+    <div className="pt-4 space-y-4 border-t">
+      <div className="flex justify-between items-center">
+        <h2 className="text-lg font-semibold">Portfólio</h2>
+        <Button className={`${bg} ${hover}`} type="button" variant="download" onClick={handleAdd}>
+          <IoIosAddCircle />
+        </Button>
+      </div>
 
       <Accordion type="multiple" className="space-y-2">
         {projects &&
@@ -244,9 +250,9 @@ export default function PortfolioEditor({ projects, setProjects, pickColor }: Pr
           })}
       </Accordion>
 
-      <Button type="button" variant="outline" onClick={handleAdd}>
+      {/* <Button type="button" variant="outline" onClick={handleAdd}>
         Adicionar Projeto
-      </Button>
+      </Button> */}
     </div>
   );
 }
