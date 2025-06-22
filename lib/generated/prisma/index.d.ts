@@ -49,7 +49,6 @@ export type Job = $Result.DefaultSelection<Prisma.$JobPayload>
  */
 export namespace $Enums {
   export const PortfolioCategory: {
-  NENHUM: 'NENHUM',
   DESIGN: 'DESIGN',
   DEVELOPMENT: 'DEVELOPMENT',
   PHOTOGRAPHY: 'PHOTOGRAPHY',
@@ -70,7 +69,6 @@ export type PortfolioCategory = (typeof PortfolioCategory)[keyof typeof Portfoli
 
 
 export const PortfolioTag: {
-  NENHUM: 'NENHUM',
   FIGMA: 'FIGMA',
   PHOTOSHOP: 'PHOTOSHOP',
   ILLUSTRATOR: 'ILLUSTRATOR',

@@ -34,7 +34,6 @@ model User {
 }
 
 enum PortfolioCategory {
-  NENHUM
   DESIGN
   DEVELOPMENT
   PHOTOGRAPHY
@@ -52,7 +51,6 @@ enum PortfolioCategory {
 }
 
 enum PortfolioTag {
-  NENHUM
   FIGMA
   PHOTOSHOP
   ILLUSTRATOR
