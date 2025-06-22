@@ -7,20 +7,20 @@ import { getUserByEmailHash } from '@/lib/user';
 import { UserDataResult } from '../types/types';
 
 type UserContextType = {
-  myCurriculo: UserDataResult | null;
-  setMyCurriculo: React.Dispatch<React.SetStateAction<UserDataResult | null>>;
+  dataProfile: UserDataResult | null;
+  setProfile: React.Dispatch<React.SetStateAction<UserDataResult | null>>;
   loading: boolean;
 };
 
 const UserContext = createContext<UserContextType>({
-  myCurriculo: null,
-  setMyCurriculo: () => {},
+  dataProfile: null,
+  setProfile: () => {},
   loading: true,
 });
 
 function UserProvider({ children }: { children: React.ReactNode }) {
   const { data: session, status } = useSession();
-  const [myCurriculo, setMyCurriculo] = useState<UserDataResult | null>(null);
+  const [dataProfile, setDataProfile] = useState<UserDataResult | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(
@@ -36,7 +36,7 @@ function UserProvider({ children }: { children: React.ReactNode }) {
             error: result?.error || false,
           };
           console.log('curriculo contexto: ', curriculo)
-          setMyCurriculo(curriculo);
+          setDataProfile(curriculo);
         } catch (error) {
           console.error('Erro ao buscar usuário', error);
         } finally {
@@ -50,7 +50,7 @@ function UserProvider({ children }: { children: React.ReactNode }) {
   );
 
   return (
-    <UserContext.Provider value={{ myCurriculo, setMyCurriculo, loading }}>
+    <UserContext.Provider value={{ dataProfile: dataProfile, setProfile: setDataProfile, loading }}>
       {children}
     </UserContext.Provider>
   );
