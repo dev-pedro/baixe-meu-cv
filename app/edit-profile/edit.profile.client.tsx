@@ -20,6 +20,8 @@ import { IoCloud, IoCloudOffline } from 'react-icons/io5';
 import { handleChange } from './functions/handle.change';
 import { ProfileSkeleton } from '@/components/form.skeleton.user.perfil';
 import { checkUsernameRegex } from './functions/check.username.regex';
+import ExperienceEditor from '@/components/form.experiences.editor';
+import CourseEditor from '@/components/form.courses.editor';
 
 export default function EditProfileClient({
   userSession,
@@ -31,7 +33,7 @@ export default function EditProfileClient({
   //const { profile, message, error } = userProfile || {};
   const [formData, setFormData] = useState<DataCreateCurriculoForm>();
   const [usernameError, setUsernameError] = useState<string | null>(null);
-  const { setMyCurriculo, myCurriculo, loading } = useUser();
+  const { setProfile: setMyCurriculo, dataProfile: myCurriculo, loading } = useUser();
   const [isLocalData, setIsLocalData] = useState<boolean>();
 
   useEffect(() => {
@@ -212,7 +214,7 @@ export default function EditProfileClient({
           </div>
         )}
         <div className="flex items-center">
-          <FaShieldAlt className="mr-1 text-nowrap" /> dados protegidos
+          <FaShieldAlt className="mr-1 text-nowrap" /> dados criptografados
         </div>
       </div>
 
@@ -311,7 +313,7 @@ export default function EditProfileClient({
               Bio
             </Label>
             <Textarea
-            className='resize-none'
+              className="resize-none"
               id="bio"
               name="bio"
               maxLength={700}
@@ -353,11 +355,24 @@ export default function EditProfileClient({
 
           <GraduationEditor
             graduation={formData?.graduation || []}
+            pickColor={formData?.pickColor || 1}
             setGraduation={(e) => handleChange(setFormData, e, 'graduation')}
           />
 
+          <ExperienceEditor
+            experience={formData?.experiences || []}
+            pickColor={formData?.pickColor || 1}
+            setExperience={(e) => handleChange(setFormData, e, 'experiences')}
+          />
+
+          <CourseEditor
+            courses={formData?.courses || []}
+            setCourses={(e) => handleChange(setFormData, e, 'courses')}
+            pickColor={formData?.pickColor || 1}
+          />
+
           <div className="flex justify-end w-full p-4">
-            <Button type="submit" className="w-full sm:w-2/12">
+            <Button type="submit" variant="default" className={`w-full sm:w-2/12`}>
               Salvar
             </Button>
           </div>
