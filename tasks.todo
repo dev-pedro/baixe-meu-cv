@@ -1,7 +1,7 @@
 //TODO: Tasks list for App - Baixe Meu CV
 
 //NOTE - Example of a feature description
-☐ Implement user profile page with editable fields @critical (03/06/2025, 18:59:42)
+☐ Implement user profile page with editable fields @low (03/06/2025, 18:59:42)
     ☐ Add fields for name, email, phone number, and address
     ✔ Add a button to save changes @done (03/06/2025, 18:59:42)
     ☐ Validate input fields before saving
@@ -16,3 +16,25 @@ Bugs:
     ✔ Fix add verification for url in project links @done (04/06/2025, 18:22:16)
         ✔ Add regex validation for URL format @done (04/06/2025, 18:22:06)
         ✔ Show error message if URL is invalid @done (04/06/2025, 18:22:11)
+
+Backlog:
+    ☐ Implement dark mode toggle feature @low (06/--/2025, --:--:--)
+        ☐ Add a switch in settings to toggle dark mode
+        ☐ Save user preference in local storage
+        ☐ Apply dark mode styles across the app
+    
+    ☐ Add Limiteation to Bio @low 
+        ✔ Limit bio to 700 characters @done (12/06/2025, 07:44:01)
+        ☐ Show character count in real-time
+        ☐ Display error message if limit is exceeded
+
+
+    ☐ Optimize image loading for project thumbnails @medium (04/06/2025, 18:35:00)
+        ☐ Use lazy loading for images
+        ☐ Compress images to reduce load time
+        ☐ Test performance improvements on various devices
+
+    Implementation zod validation for user profile form
+        ✔ Define Zod schema for user profile fields @done (08/06/2025, 19:38:05)
+        ☐ Integrate Zod validation with form submission
+        ✔ Display validation errors in the UI @done (08/06/2025, 19:38:25)
