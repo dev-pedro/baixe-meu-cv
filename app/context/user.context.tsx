@@ -4,13 +4,7 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 import { useSession } from 'next-auth/react';
 import { getUserByEmailHash } from '@/lib/user';
-import { UserDataResult } from '../types/types';
-
-type UserContextType = {
-  dataProfile: UserDataResult | null;
-  setProfile: React.Dispatch<React.SetStateAction<UserDataResult | null>>;
-  loading: boolean;
-};
+import { UserContextType, UserDataResult } from '../types/types';
 
 const UserContext = createContext<UserContextType>({
   dataProfile: null,

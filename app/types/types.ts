@@ -89,10 +89,10 @@ export type Experience =
 
 export type Course =
   | {
-      institution?: string
-      name?: string
-      year?: string
-      description?: string
+      institution?: string | null | undefined
+      name?: string | null | undefined
+      year?: string | null | undefined
+      description?: string | null | undefined
       online?: boolean
     };
 export type DataCreateCurriculoForm = {
@@ -137,4 +137,10 @@ export type FindPersonProps = {
 export type SectionProps = {
   profile: DataCreateCurriculoForm;
   userSession: UserSession | null;
+};
+
+export type UserContextType = {
+  dataProfile: UserDataResult | null;
+  setProfile: React.Dispatch<React.SetStateAction<UserDataResult | null>>;
+  loading: boolean;
 };
