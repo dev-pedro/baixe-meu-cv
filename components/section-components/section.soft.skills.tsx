@@ -1,6 +1,6 @@
 import { getPickerBg } from '@/utils/colors';
 import { RiEmpathizeFill } from 'react-icons/ri';
-import { Badge } from './ui/badge';
+import { Badge } from '../ui/badge';
 import { SectionProps } from '@/app/types/types';
 
 export default async function SoftSkills({ props }: { props: SectionProps }) {

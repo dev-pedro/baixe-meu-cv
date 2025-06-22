@@ -3,7 +3,7 @@
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
 import { redirect } from 'next/navigation';
-import EditProfileClient from './edit.profile.client';
+import EditProfileClient from './form.profile.client';
 import { getUserByEmailHash } from '@/lib/user';
 
 export default async function EditProfilePage() {

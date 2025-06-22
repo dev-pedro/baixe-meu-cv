@@ -15,7 +15,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Graduation } from '@/app/types/types';
 import { IoIosAddCircle } from 'react-icons/io';
 import { getPickerBg } from '@/utils/colors';
-import { Checkbox } from './ui/checkbox';
+import { Checkbox } from '../ui/checkbox';
 
 interface Props {
   graduation: Graduation[];

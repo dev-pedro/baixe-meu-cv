@@ -12,16 +12,16 @@ import { toast } from 'sonner';
 import { Camera } from 'lucide-react';
 import Image from 'next/image';
 import { useUser } from '../context/user.context';
-import PortfolioEditor from '@/components/form.portifolio.editor';
-import PickColor from '@/components/form.pick.color';
-import GraduationEditor from '@/components/form.graduations.editor';
+import PortfolioEditor from '@/components/form-components/form.portifolio.editor';
+import PickColor from '@/components/form-components/form.pick.color';
+import GraduationEditor from '@/components/form-components/form.graduations.editor';
 import { FaShieldAlt } from 'react-icons/fa';
 import { IoCloud, IoCloudOffline } from 'react-icons/io5';
 import { handleChange } from './functions/handle.change';
-import { ProfileSkeleton } from '@/components/form.skeleton.user.perfil';
+import { ProfileSkeleton } from '@/components/form-components/form.skeleton.user.perfil';
 import { checkUsernameRegex } from './functions/check.username.regex';
-import ExperienceEditor from '@/components/form.experiences.editor';
-import CourseEditor from '@/components/form.courses.editor';
+import ExperienceEditor from '@/components/form-components/form.experiences.editor';
+import CourseEditor from '@/components/form-components/form.courses.editor';
 
 export default function EditProfileClient({
   userSession,

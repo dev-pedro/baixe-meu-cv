@@ -1,6 +1,6 @@
 import { getPickerBg } from '@/utils/colors';
 import { GiSwissArmyKnife } from 'react-icons/gi';
-import { Badge } from './ui/badge';
+import { Badge } from '../ui/badge';
 import { SectionProps } from '@/app/types/types';
 
 export default async function Skills({ props }: { props: SectionProps }) {

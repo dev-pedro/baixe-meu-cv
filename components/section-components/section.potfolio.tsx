@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { FolderGit2, ExternalLink } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { Badge } from './ui/badge';
+import { Badge } from '../ui/badge';
 import { getPickerBg } from '@/utils/colors';
 import { DataCreateCurriculoForm, SectionProps } from '@/app/types/types';
 

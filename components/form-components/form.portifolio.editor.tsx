@@ -13,9 +13,9 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select';
 import { PortfolioCategory, PortfolioTag } from '@/lib/generated/prisma';
-import { ToggleGroup, ToggleGroupItem } from './ui/toggle-group';
+import { ToggleGroup, ToggleGroupItem } from '../ui/toggle-group';
 import { getPickerBg } from '@/utils/colors';
 import { useState } from 'react';
 import { PortfolioSchema } from '@/app/lib/schemas/form.perfil.editor.schema';

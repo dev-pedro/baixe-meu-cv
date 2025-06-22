@@ -1,17 +1,17 @@
 'use server';
-import Education from '../../components/section.education';
-import SectionExperience from '../../components/section.experience';
-import Courses from '../../components/section.courses';
-import Portifolio from '../../components/section.potfolio';
+import Education from '../../components/section-components/section.education';
+import SectionExperience from '../../components/section-components/section.experience';
+import Courses from '../../components/section-components/section.courses';
+import Portifolio from '../../components/section-components/section.potfolio';
 import NotPublishedYet from '../../components/not.public.yet';
 import { FaUserSlash } from 'react-icons/fa6';
 import { Metadata } from 'next';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
 import { FloatingActionMenu } from '@/components/float.download.share';
-import Header from '@/components/section.header';
-import Skills from '@/components/section.skills';
-import SoftSkills from '@/components/section.soft.skills';
+import Header from '@/components/section-components/section.header';
+import Skills from '@/components/section-components/section.skills';
+import SoftSkills from '@/components/section-components/section.soft.skills';
 import { getUserByUserName } from '@/lib/user';
 import { FindPersonProps, SectionProps } from '../types/types';
 

@@ -4,8 +4,8 @@ import { Button } from '@/components/ui/button';
 import { FaFilePdf, FaLocationDot } from 'react-icons/fa6';
 import clsx from 'clsx';
 import { getPickerBg } from '@/utils/colors';
-import { SendEmailButton } from './send.email.button';
-import ShareButton from './share.button';
+import { SendEmailButton } from '../send.email.button';
+import ShareButton from '../share.button';
 import Image from 'next/image';
 import { SectionProps } from '@/app/types/types';
 
