@@ -3,8 +3,7 @@
 import { prisma } from '@/lib/prisma';
 import { hashEmail } from '@/utils/hash.email';
 import { encryptData } from '@/utils/encrypt.data';
-import { DataCreateCurriculoForm, Job, Portfolio, UserDataResult } from '@/app/types/types';
-import { User } from './generated/prisma';
+import { DataCreateCurriculoForm, UserDataResult } from '@/app/types/types';
 import { decryptData } from '@/utils/decrypt.data';
 import { updateUser } from './update.user';
 import { createUser } from './user.create';
@@ -98,7 +97,10 @@ export async function getUserByEmailHash(userEmail: string): Promise<UserDataRes
  * @returns {Promise<UserDataResult>} - The result of the user creation or update.
  * @throws Will throw an error if the user data or email is not provided.
  */
-export async function createOrUpdateUser(data: DataCreateCurriculoForm): Promise<UserDataResult> {
+export async function createOrUpdateUser(
+  data: DataCreateCurriculoForm,
+  profile: DataCreateCurriculoForm
+): Promise<UserDataResult> {
   if (!data) {
     throw new Error('Dados do usuário são obrigatórios');
   }
@@ -120,7 +122,7 @@ export async function createOrUpdateUser(data: DataCreateCurriculoForm): Promise
     }
 
     const result = existing
-      ? await updateUser(existing.id, data, emailEncrypted, phoneEncrypted)
+      ? await updateUser(existing.id, data, emailEncrypted, phoneEncrypted, profile)
       : await createUser(data, emailHash, emailEncrypted, phoneEncrypted);
 
     return result;

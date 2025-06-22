@@ -33,12 +33,12 @@ export default function EditProfileClient({
   //const { profile, message, error } = userProfile || {};
   const [formData, setFormData] = useState<DataCreateCurriculoForm>();
   const [usernameError, setUsernameError] = useState<string | null>(null);
-  const { setProfile: setMyCurriculo, dataProfile: myCurriculo, loading } = useUser();
+  const { setProfile, dataProfile, loading } = useUser();
   const [isLocalData, setIsLocalData] = useState<boolean>();
 
   useEffect(() => {
-    if (!loading && myCurriculo?.profile) {
-      const profile = myCurriculo.profile;
+    if (!loading && dataProfile?.profile) {
+      const profile = dataProfile.profile;
 
       setFormData({
         username: profile.username || '',
@@ -61,39 +61,39 @@ export default function EditProfileClient({
         softSkills: profile.softSkills || [],
       });
     }
-  }, [loading, myCurriculo, userSession]);
+  }, [loading, dataProfile, userSession]);
 
   // limpa a mensagem após 5 segundos
   useEffect(() => {
-    if (!loading && myCurriculo?.message) {
+    if (!loading && dataProfile?.message) {
       // Exibe a mensagem de sucesso ou erro
-      if (myCurriculo.message.includes('Username já está em uso.')) {
-        setUsernameError(myCurriculo.message);
+      if (dataProfile.message.includes('Username já está em uso.')) {
+        setUsernameError(dataProfile.message);
       }
-      if (myCurriculo?.message.includes('sucesso!')) {
+      if (dataProfile?.message.includes('sucesso!')) {
         setIsLocalData(false);
-        toast.success(myCurriculo?.message, {
+        toast.success(dataProfile?.message, {
           closeButton: true,
           duration: 5000,
           className: '!text-green-700',
         });
-      } else if (myCurriculo?.message && myCurriculo?.message.includes('localmente')) {
-        toast.warning(myCurriculo?.message, {
+      } else if (dataProfile?.message && dataProfile?.message.includes('localmente')) {
+        toast.warning(dataProfile?.message, {
           closeButton: true,
           duration: 5000,
           className: '!text-orange-500',
         });
         setIsLocalData(true);
       } else {
-        toast.error(myCurriculo?.message, {
+        toast.error(dataProfile?.message, {
           closeButton: true,
           duration: 5000,
           className: '!text-red-700',
         });
       }
-      myCurriculo.message = null; // Limpa a mensagem após exibir
+      dataProfile.message = null; // Limpa a mensagem após exibir
     }
-  }, [myCurriculo, loading]);
+  }, [dataProfile, loading]);
 
   // Verifica se o username atinje os critérios
   const handleUsernameBlur = () => {
@@ -132,7 +132,7 @@ export default function EditProfileClient({
         email: userSession?.email || formData?.email || '',
       }; // certifique-se que formData siga o tipo
 
-      const result = await createOrUpdateUser(payload);
+      const result = await createOrUpdateUser(payload, dataProfile?.profile || null);
 
       if (result?.profile) {
         setFormData({
@@ -140,8 +140,8 @@ export default function EditProfileClient({
         });
       }
 
-      setMyCurriculo(result);
-      // Atualiza o estado do usuário no contexto
+      // Atualiza o estado do perfil no contexto
+      setProfile(result);
     } catch (err) {
       if (err instanceof Error) {
         console.error(err?.message);
