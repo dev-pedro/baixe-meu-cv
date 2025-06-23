@@ -9,7 +9,6 @@ import { prisma } from './prisma';
 import { formatUserResponse } from './format.user.response';
 import isEqual from 'lodash.isequal';
 
-
 export async function updateUser(
   userId: number,
   data: DataCreateCurriculoForm,
@@ -42,9 +41,7 @@ export async function updateUser(
   if (!isEqual(profile?.graduation, graduation)) {
     ops.push(...(await updateGraduationsTx(user.id, graduation)));
   }
-
   if (!isEqual(profile?.courses, courses)) {
-    console.log('Mudou o curso')
     ops.push(...(await updateCoursesTx(user.id, courses)));
   }
 
