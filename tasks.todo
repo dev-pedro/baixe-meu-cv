@@ -16,6 +16,7 @@ Bugs:
     ✔ Fix add verification for url in project links @done (04/06/2025, 18:22:16)
         ✔ Add regex validation for URL format @done (04/06/2025, 18:22:06)
         ✔ Show error message if URL is invalid @done (04/06/2025, 18:22:11)
+    ✔ Fix perfil form dont keep data after submit, info back the same @done (22/06/2025, 20:59:10)
 
 Backlog:
     ☐ Implement dark mode toggle feature @low (06/--/2025, --:--:--)
