@@ -132,16 +132,14 @@ export default function EditProfileClient({
         email: userSession?.email || formData?.email || '',
       }; // certifique-se que formData siga o tipo
 
-      const result = await createOrUpdateUser(payload, dataProfile?.profile || null);
+      //Cria umsnapshop para evitar conflito de dados
+      const profileSnapshot = JSON.parse(JSON.stringify(dataProfile?.profile || null));
+      const result = await createOrUpdateUser(payload, profileSnapshot);
 
       if (result?.profile) {
-        setFormData({
-          ...result.profile, // atualiza campos modificados pelo backend, se houver
-        });
+        setFormData(result.profile);
+        setProfile(result);
       }
-
-      // Atualiza o estado do perfil no contexto
-      setProfile(result);
     } catch (err) {
       if (err instanceof Error) {
         console.error(err?.message);
