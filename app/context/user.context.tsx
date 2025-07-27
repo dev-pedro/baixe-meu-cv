@@ -29,7 +29,6 @@ function UserProvider({ children }: { children: React.ReactNode }) {
             message: result?.message,
             error: result?.error || false,
           };
-          console.log('curriculo contexto: ', curriculo)
           setDataProfile(curriculo);
         } catch (error) {
           console.error('Erro ao buscar usuário', error);
