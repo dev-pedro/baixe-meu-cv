@@ -33,10 +33,11 @@ export async function getUserByUserName(username: string): Promise<UserDataResul
       };
     const { id, phoneEncrypted, emailHash, emailEncrypted, ...profile } = user;
     const email = emailEncrypted ? await decryptData(emailEncrypted) : 'baixemeucv@gmail.com';
+    const phone = phoneEncrypted ? await decryptData(phoneEncrypted) : '';
 
-    return { profile: { email, ...profile }, message: '', error: false };
-  } catch (error: any) {
-    //console.error('Erro ao buscar usuário por username:', error);
+    return { profile: { email, phone, ...profile }, message: '', error: false };
+  } catch (error) {
+    console.error('Erro ao buscar usuário por username:', error);
     return {
       profile: null,
       message: 'Ocorreu um problema ao processar os dados do usuário.',
@@ -81,7 +82,7 @@ export async function getUserByEmailHash(userEmail: string): Promise<UserDataRes
       error: false,
     };
   } catch (error) {
-    //console.error('Ocorreu um problema ao acessar o banco de dados: ', error);
+    console.error('Ocorreu um problema ao acessar o banco de dados: ', error);
     return {
       profile: null,
       message: 'Ocorreu um problema ao acessar o banco de dados.',
@@ -99,7 +100,7 @@ export async function getUserByEmailHash(userEmail: string): Promise<UserDataRes
  */
 export async function createOrUpdateUser(
   data: DataCreateCurriculoForm,
-  profile: DataCreateCurriculoForm
+  profile?: DataCreateCurriculoForm
 ): Promise<UserDataResult> {
   if (!data) {
     throw new Error('Dados do usuário são obrigatórios');
@@ -109,6 +110,8 @@ export async function createOrUpdateUser(
     const { email, phone, username } = data;
 
     if (!email) throw new Error('Email é obrigatório');
+
+    console.log('Criando ou atualizando usuário com dados:', data);
 
     const emailHash = await hashEmail(email || '');
     const emailEncrypted = await encryptData(email || '');
@@ -122,12 +125,10 @@ export async function createOrUpdateUser(
     }
 
     const result = existing
-      ? await updateUser(existing.id, data, emailEncrypted, phoneEncrypted, profile)
+      ? await updateUser(existing.id, data, emailEncrypted, phoneEncrypted, profile || null)
       : await createUser(data, emailHash, emailEncrypted, phoneEncrypted);
-
     return result;
   } catch (error) {
-    //console.error('Erro ao criar ou atualizar usuário:', error);
     return {
       profile: null,
       message: `Ocorreu um problema ao salvar seu currículo. ${

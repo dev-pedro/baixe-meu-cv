@@ -1,6 +1,6 @@
-import { DataCreateCurriculoForm, UserDataResult } from "@/app/types/types";
-import { formatUserResponse } from "./format.user.response";
-import { prisma } from "./prisma";
+import { DataCreateCurriculoForm, Job, UserDataResult } from '@/app/types/types';
+import { formatUserResponse } from './format.user.response';
+import { prisma } from './prisma';
 
 export async function createUser(
   data: DataCreateCurriculoForm,
@@ -8,7 +8,7 @@ export async function createUser(
   emailEncrypted: string,
   phoneEncrypted: string
 ): Promise<UserDataResult> {
-  const { portfolio, graduation, experiences, courses, username, ...rest } = data;
+  const { email, phone, portfolio, graduation, experiences, courses, username, ...rest } = data;
 
   const user = await prisma.user.create({
     include: {
@@ -57,11 +57,11 @@ export async function createUser(
               end: e.end || '',
               jobs: {
                 create: Array.isArray(e.jobs)
-                  ? e.jobs.map((j) => ({
-                      function: j.function || '',
-                      description: j.description || '',
-                      start: j.start || '',
-                      end: j.end || '',
+                  ? e.jobs.map((j: Job) => ({
+                      function: ('function' in j && j.function) || '',
+                      description: ('description' in j && j.description) || '',
+                      start: ('start' in j && j.start) || '',
+                      end: ('end' in j && j.end) || '',
                     }))
                   : [],
               },

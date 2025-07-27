@@ -66,16 +66,16 @@ export type Graduation = {
 };
 
 export type Job = {
-  function?: string;
-  description?: string;
-  start?: string;
-  end?: string;
+  function?: string | null | undefined;
+  description?: string | null | undefined;
+  start?: string | null | undefined;
+  end?: string | null | undefined;
 };
 
 export type Experience = {
-  company?: string;
-  start?: string;
-  end?: string;
+  company?: string | null | undefined;
+  start?: string | null | undefined;
+  end?: string | null | undefined;
   jobs?: Job[];
 };
 
