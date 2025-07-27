@@ -9,24 +9,28 @@ const imageBase64 = imageBuffer.toString('base64');
 export const curriculoExample = {
   username: 'curriculo-example',
   name: 'Pedro Henrique',
-  email: 'pedro.coder@gmail.com',
+  email: 'baixemeucv@gmail.com',
   image: `data:image/png;base64,${imageBase64}`,
-  profession: 'Analista de Qualidade Pleno',
+  profession: 'Desenvolvedor de Software',
   phone: '19994513631',
   showPhoneInPDF: true,
+  showEmailInPDF: true,
+  public: true,
+  template: 'modern',
   city: 'Hortolândia, SP',
   bio: 'Entusiasta de tecnologia com foco em desenvolvimento web e aprendizado constante.',
-  public: true,
   pickColor: 5,
+  createdAt: new Date(),
+  updatedAt: new Date(),
   portfolio: [
     {
       name: 'Siscomex Json Validation',
       url: 'https://siscomex-json-validation.vercel.app/',
       description:
         'Validação de arquivos JSON do Siscomex, consulta de atributos por NCM e mais, com interface intuitiva e fácil de usar. O projeto foi desenvolvido utilizando React, Next.js e Tailwind CSS.',
-      tags: ['OUTRA'],
+      tags: [PortfolioTag.OUTRA],
       customTags: ['Node.Js', 'Next.js', 'Tailwind CSS', 'Vercel', 'TypeScript'],
-      category: 'OUTRA',
+      category: PortfolioCategory.OUTRA,
       customCategory: 'WEB APP',
     },
     {
