@@ -48,14 +48,16 @@ export function MenuBarUser({ userSession }: { userSession: UserSession }) {
   return (
     <Menubar className="sticky top-0 z-50 justify-between w-full h-full px-4 py-4 mx-auto border-none shadow-xs sm:px-14 bg-background sm:justify-end">
       <div className="flex items-center justify-between w-full">
-        <Link
-          href="/"
-          className={`relative w-auto h-full sm:block ${userSession ? 'hidden' : 'block'}`}
-        >
-          <div className="w-32 h-12">
-            <Image src={logo} alt="logo" fill />
-          </div>
-        </Link>
+        {!userSession && (
+          <Link
+            href="/"
+            className={`relative w-auto h-full sm:block ${userSession ? 'hidden' : 'block'}`}
+          >
+            <div className="w-32 h-12">
+              <Image src={logo} alt="logo" fill />
+            </div>
+          </Link>
+        )}
 
         {loading ? (
           <PerfilBarSkeleton />

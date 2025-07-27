@@ -6,12 +6,15 @@ import Link from 'next/link';
 import Image from 'next/image';
 import logo from '../public/thumbnail.svg';
 import { UserSession } from './types/types';
+import { redirect } from 'next/navigation';
 
 interface HomeClientProps {
   session: UserSession;
 }
 
 export default function HomeClient({ session }: HomeClientProps) {
+  if (session) redirect('/meu_perfil');
+
   return (
     <main className="flex flex-col justify-start mx-auto w-full sm:max-w-7xl px-4">
       <div className="flex flex-col items-center text-center gap-4">
