@@ -41,14 +41,14 @@ export default function HomeClient({ session }: HomeClientProps) {
               <Button
                 onClick={() => signIn('google')}
                 variant="default"
-                className="rounded-2xl !p-6"
+                className="rounded-2xl p-6 w-40"
               >
                 Entrar com Google
               </Button>
             )}
 
             <Link href="/curriculo-example" passHref>
-              <Button asChild variant="outline" className="rounded-2xl p-6">
+              <Button asChild variant="outline" className="rounded-2xl p-6 w-40">
                 <span>Ver exemplo</span>
               </Button>
             </Link>
