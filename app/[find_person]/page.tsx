@@ -13,10 +13,10 @@ import Header from '@/components/section-components/section.header';
 import Skills from '@/components/section-components/section.skills';
 import SoftSkills from '@/components/section-components/section.soft.skills';
 import { getUserByUserName } from '@/lib/user';
-import { FindPersonProps, SectionProps } from '../types/types';
+import { Props, SectionProps } from '../types/types';
 
 // 👇 Função usada pelo Next.js para gerar <head> dinamicamente
-export async function generateMetadata({ params }: FindPersonProps): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { find_person } = await params;
   const user = await getUserByUserName(find_person);
 
@@ -61,7 +61,7 @@ export async function generateMetadata({ params }: FindPersonProps): Promise<Met
   };
 }
 
-export default async function ShowCurriculoPage({ params }: FindPersonProps) {
+export default async function ShowCurriculoPage({ params }: Props) {
   // Acessando corretamente o username
   const { find_person } = await params;
   const user = await getUserByUserName(find_person);
