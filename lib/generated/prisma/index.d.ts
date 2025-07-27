@@ -2863,8 +2863,6 @@ export namespace Prisma {
     description: string | null
     category: $Enums.PortfolioCategory | null
     customCategory: string | null
-    createdAt: Date | null
-    updatedAt: Date | null
     userId: number | null
   }
 
@@ -2875,8 +2873,6 @@ export namespace Prisma {
     description: string | null
     category: $Enums.PortfolioCategory | null
     customCategory: string | null
-    createdAt: Date | null
-    updatedAt: Date | null
     userId: number | null
   }
 
@@ -2889,8 +2885,6 @@ export namespace Prisma {
     customTags: number
     category: number
     customCategory: number
-    createdAt: number
-    updatedAt: number
     userId: number
     _all: number
   }
@@ -2913,8 +2907,6 @@ export namespace Prisma {
     description?: true
     category?: true
     customCategory?: true
-    createdAt?: true
-    updatedAt?: true
     userId?: true
   }
 
@@ -2925,8 +2917,6 @@ export namespace Prisma {
     description?: true
     category?: true
     customCategory?: true
-    createdAt?: true
-    updatedAt?: true
     userId?: true
   }
 
@@ -2939,8 +2929,6 @@ export namespace Prisma {
     customTags?: true
     category?: true
     customCategory?: true
-    createdAt?: true
-    updatedAt?: true
     userId?: true
     _all?: true
   }
@@ -3040,8 +3028,6 @@ export namespace Prisma {
     customTags: string[]
     category: $Enums.PortfolioCategory | null
     customCategory: string | null
-    createdAt: Date
-    updatedAt: Date
     userId: number
     _count: PortfolioCountAggregateOutputType | null
     _avg: PortfolioAvgAggregateOutputType | null
@@ -3073,8 +3059,6 @@ export namespace Prisma {
     customTags?: boolean
     category?: boolean
     customCategory?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
     userId?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["portfolio"]>
@@ -3088,8 +3072,6 @@ export namespace Prisma {
     customTags?: boolean
     category?: boolean
     customCategory?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
     userId?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["portfolio"]>
@@ -3103,8 +3085,6 @@ export namespace Prisma {
     customTags?: boolean
     category?: boolean
     customCategory?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
     userId?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["portfolio"]>
@@ -3118,12 +3098,10 @@ export namespace Prisma {
     customTags?: boolean
     category?: boolean
     customCategory?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
     userId?: boolean
   }
 
-  export type PortfolioOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "url" | "description" | "tags" | "customTags" | "category" | "customCategory" | "createdAt" | "updatedAt" | "userId", ExtArgs["result"]["portfolio"]>
+  export type PortfolioOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "url" | "description" | "tags" | "customTags" | "category" | "customCategory" | "userId", ExtArgs["result"]["portfolio"]>
   export type PortfolioInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }
@@ -3148,8 +3126,6 @@ export namespace Prisma {
       customTags: string[]
       category: $Enums.PortfolioCategory | null
       customCategory: string | null
-      createdAt: Date
-      updatedAt: Date
       userId: number
     }, ExtArgs["result"]["portfolio"]>
     composites: {}
@@ -3583,8 +3559,6 @@ export namespace Prisma {
     readonly customTags: FieldRef<"Portfolio", 'String[]'>
     readonly category: FieldRef<"Portfolio", 'PortfolioCategory'>
     readonly customCategory: FieldRef<"Portfolio", 'String'>
-    readonly createdAt: FieldRef<"Portfolio", 'DateTime'>
-    readonly updatedAt: FieldRef<"Portfolio", 'DateTime'>
     readonly userId: FieldRef<"Portfolio", 'Int'>
   }
     
@@ -4029,8 +4003,6 @@ export namespace Prisma {
     year: string | null
     description: string | null
     online: boolean | null
-    createdAt: Date | null
-    updatedAt: Date | null
     userId: number | null
   }
 
@@ -4041,8 +4013,6 @@ export namespace Prisma {
     year: string | null
     description: string | null
     online: boolean | null
-    createdAt: Date | null
-    updatedAt: Date | null
     userId: number | null
   }
 
@@ -4053,8 +4023,6 @@ export namespace Prisma {
     year: number
     description: number
     online: number
-    createdAt: number
-    updatedAt: number
     userId: number
     _all: number
   }
@@ -4077,8 +4045,6 @@ export namespace Prisma {
     year?: true
     description?: true
     online?: true
-    createdAt?: true
-    updatedAt?: true
     userId?: true
   }
 
@@ -4089,8 +4055,6 @@ export namespace Prisma {
     year?: true
     description?: true
     online?: true
-    createdAt?: true
-    updatedAt?: true
     userId?: true
   }
 
@@ -4101,8 +4065,6 @@ export namespace Prisma {
     year?: true
     description?: true
     online?: true
-    createdAt?: true
-    updatedAt?: true
     userId?: true
     _all?: true
   }
@@ -4200,8 +4162,6 @@ export namespace Prisma {
     year: string | null
     description: string | null
     online: boolean | null
-    createdAt: Date
-    updatedAt: Date
     userId: number
     _count: GraduationCountAggregateOutputType | null
     _avg: GraduationAvgAggregateOutputType | null
@@ -4231,8 +4191,6 @@ export namespace Prisma {
     year?: boolean
     description?: boolean
     online?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
     userId?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["graduation"]>
@@ -4244,8 +4202,6 @@ export namespace Prisma {
     year?: boolean
     description?: boolean
     online?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
     userId?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["graduation"]>
@@ -4257,8 +4213,6 @@ export namespace Prisma {
     year?: boolean
     description?: boolean
     online?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
     userId?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["graduation"]>
@@ -4270,12 +4224,10 @@ export namespace Prisma {
     year?: boolean
     description?: boolean
     online?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
     userId?: boolean
   }
 
-  export type GraduationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "institution" | "name" | "year" | "description" | "online" | "createdAt" | "updatedAt" | "userId", ExtArgs["result"]["graduation"]>
+  export type GraduationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "institution" | "name" | "year" | "description" | "online" | "userId", ExtArgs["result"]["graduation"]>
   export type GraduationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }
@@ -4298,8 +4250,6 @@ export namespace Prisma {
       year: string | null
       description: string | null
       online: boolean | null
-      createdAt: Date
-      updatedAt: Date
       userId: number
     }, ExtArgs["result"]["graduation"]>
     composites: {}
@@ -4731,8 +4681,6 @@ export namespace Prisma {
     readonly year: FieldRef<"Graduation", 'String'>
     readonly description: FieldRef<"Graduation", 'String'>
     readonly online: FieldRef<"Graduation", 'Boolean'>
-    readonly createdAt: FieldRef<"Graduation", 'DateTime'>
-    readonly updatedAt: FieldRef<"Graduation", 'DateTime'>
     readonly userId: FieldRef<"Graduation", 'Int'>
   }
     
@@ -5177,8 +5125,6 @@ export namespace Prisma {
     year: string | null
     description: string | null
     online: boolean | null
-    createdAt: Date | null
-    updatedAt: Date | null
     userId: number | null
   }
 
@@ -5189,8 +5135,6 @@ export namespace Prisma {
     year: string | null
     description: string | null
     online: boolean | null
-    createdAt: Date | null
-    updatedAt: Date | null
     userId: number | null
   }
 
@@ -5201,8 +5145,6 @@ export namespace Prisma {
     year: number
     description: number
     online: number
-    createdAt: number
-    updatedAt: number
     userId: number
     _all: number
   }
@@ -5225,8 +5167,6 @@ export namespace Prisma {
     year?: true
     description?: true
     online?: true
-    createdAt?: true
-    updatedAt?: true
     userId?: true
   }
 
@@ -5237,8 +5177,6 @@ export namespace Prisma {
     year?: true
     description?: true
     online?: true
-    createdAt?: true
-    updatedAt?: true
     userId?: true
   }
 
@@ -5249,8 +5187,6 @@ export namespace Prisma {
     year?: true
     description?: true
     online?: true
-    createdAt?: true
-    updatedAt?: true
     userId?: true
     _all?: true
   }
@@ -5348,8 +5284,6 @@ export namespace Prisma {
     year: string | null
     description: string | null
     online: boolean
-    createdAt: Date
-    updatedAt: Date
     userId: number
     _count: CourseCountAggregateOutputType | null
     _avg: CourseAvgAggregateOutputType | null
@@ -5379,8 +5313,6 @@ export namespace Prisma {
     year?: boolean
     description?: boolean
     online?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
     userId?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["course"]>
@@ -5392,8 +5324,6 @@ export namespace Prisma {
     year?: boolean
     description?: boolean
     online?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
     userId?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["course"]>
@@ -5405,8 +5335,6 @@ export namespace Prisma {
     year?: boolean
     description?: boolean
     online?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
     userId?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["course"]>
@@ -5418,12 +5346,10 @@ export namespace Prisma {
     year?: boolean
     description?: boolean
     online?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
     userId?: boolean
   }
 
-  export type CourseOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "institution" | "name" | "year" | "description" | "online" | "createdAt" | "updatedAt" | "userId", ExtArgs["result"]["course"]>
+  export type CourseOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "institution" | "name" | "year" | "description" | "online" | "userId", ExtArgs["result"]["course"]>
   export type CourseInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }
@@ -5446,8 +5372,6 @@ export namespace Prisma {
       year: string | null
       description: string | null
       online: boolean
-      createdAt: Date
-      updatedAt: Date
       userId: number
     }, ExtArgs["result"]["course"]>
     composites: {}
@@ -5879,8 +5803,6 @@ export namespace Prisma {
     readonly year: FieldRef<"Course", 'String'>
     readonly description: FieldRef<"Course", 'String'>
     readonly online: FieldRef<"Course", 'Boolean'>
-    readonly createdAt: FieldRef<"Course", 'DateTime'>
-    readonly updatedAt: FieldRef<"Course", 'DateTime'>
     readonly userId: FieldRef<"Course", 'Int'>
   }
     
@@ -6323,8 +6245,6 @@ export namespace Prisma {
     company: string | null
     start: string | null
     end: string | null
-    createdAt: Date | null
-    updatedAt: Date | null
     userId: number | null
   }
 
@@ -6333,8 +6253,6 @@ export namespace Prisma {
     company: string | null
     start: string | null
     end: string | null
-    createdAt: Date | null
-    updatedAt: Date | null
     userId: number | null
   }
 
@@ -6343,8 +6261,6 @@ export namespace Prisma {
     company: number
     start: number
     end: number
-    createdAt: number
-    updatedAt: number
     userId: number
     _all: number
   }
@@ -6365,8 +6281,6 @@ export namespace Prisma {
     company?: true
     start?: true
     end?: true
-    createdAt?: true
-    updatedAt?: true
     userId?: true
   }
 
@@ -6375,8 +6289,6 @@ export namespace Prisma {
     company?: true
     start?: true
     end?: true
-    createdAt?: true
-    updatedAt?: true
     userId?: true
   }
 
@@ -6385,8 +6297,6 @@ export namespace Prisma {
     company?: true
     start?: true
     end?: true
-    createdAt?: true
-    updatedAt?: true
     userId?: true
     _all?: true
   }
@@ -6482,8 +6392,6 @@ export namespace Prisma {
     company: string | null
     start: string | null
     end: string | null
-    createdAt: Date
-    updatedAt: Date
     userId: number
     _count: ExperienceCountAggregateOutputType | null
     _avg: ExperienceAvgAggregateOutputType | null
@@ -6511,8 +6419,6 @@ export namespace Prisma {
     company?: boolean
     start?: boolean
     end?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
     userId?: boolean
     jobs?: boolean | Experience$jobsArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -6524,8 +6430,6 @@ export namespace Prisma {
     company?: boolean
     start?: boolean
     end?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
     userId?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["experience"]>
@@ -6535,8 +6439,6 @@ export namespace Prisma {
     company?: boolean
     start?: boolean
     end?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
     userId?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["experience"]>
@@ -6546,12 +6448,10 @@ export namespace Prisma {
     company?: boolean
     start?: boolean
     end?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
     userId?: boolean
   }
 
-  export type ExperienceOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "company" | "start" | "end" | "createdAt" | "updatedAt" | "userId", ExtArgs["result"]["experience"]>
+  export type ExperienceOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "company" | "start" | "end" | "userId", ExtArgs["result"]["experience"]>
   export type ExperienceInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     jobs?: boolean | Experience$jobsArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -6575,8 +6475,6 @@ export namespace Prisma {
       company: string | null
       start: string | null
       end: string | null
-      createdAt: Date
-      updatedAt: Date
       userId: number
     }, ExtArgs["result"]["experience"]>
     composites: {}
@@ -7007,8 +6905,6 @@ export namespace Prisma {
     readonly company: FieldRef<"Experience", 'String'>
     readonly start: FieldRef<"Experience", 'String'>
     readonly end: FieldRef<"Experience", 'String'>
-    readonly createdAt: FieldRef<"Experience", 'DateTime'>
-    readonly updatedAt: FieldRef<"Experience", 'DateTime'>
     readonly userId: FieldRef<"Experience", 'Int'>
   }
     
@@ -7476,8 +7372,6 @@ export namespace Prisma {
     description: string | null
     start: string | null
     end: string | null
-    createdAt: Date | null
-    updatedAt: Date | null
     experienceId: number | null
   }
 
@@ -7487,8 +7381,6 @@ export namespace Prisma {
     description: string | null
     start: string | null
     end: string | null
-    createdAt: Date | null
-    updatedAt: Date | null
     experienceId: number | null
   }
 
@@ -7498,8 +7390,6 @@ export namespace Prisma {
     description: number
     start: number
     end: number
-    createdAt: number
-    updatedAt: number
     experienceId: number
     _all: number
   }
@@ -7521,8 +7411,6 @@ export namespace Prisma {
     description?: true
     start?: true
     end?: true
-    createdAt?: true
-    updatedAt?: true
     experienceId?: true
   }
 
@@ -7532,8 +7420,6 @@ export namespace Prisma {
     description?: true
     start?: true
     end?: true
-    createdAt?: true
-    updatedAt?: true
     experienceId?: true
   }
 
@@ -7543,8 +7429,6 @@ export namespace Prisma {
     description?: true
     start?: true
     end?: true
-    createdAt?: true
-    updatedAt?: true
     experienceId?: true
     _all?: true
   }
@@ -7641,8 +7525,6 @@ export namespace Prisma {
     description: string | null
     start: string | null
     end: string | null
-    createdAt: Date
-    updatedAt: Date
     experienceId: number
     _count: JobCountAggregateOutputType | null
     _avg: JobAvgAggregateOutputType | null
@@ -7671,8 +7553,6 @@ export namespace Prisma {
     description?: boolean
     start?: boolean
     end?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
     experienceId?: boolean
     experience?: boolean | ExperienceDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["job"]>
@@ -7683,8 +7563,6 @@ export namespace Prisma {
     description?: boolean
     start?: boolean
     end?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
     experienceId?: boolean
     experience?: boolean | ExperienceDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["job"]>
@@ -7695,8 +7573,6 @@ export namespace Prisma {
     description?: boolean
     start?: boolean
     end?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
     experienceId?: boolean
     experience?: boolean | ExperienceDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["job"]>
@@ -7707,12 +7583,10 @@ export namespace Prisma {
     description?: boolean
     start?: boolean
     end?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
     experienceId?: boolean
   }
 
-  export type JobOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "function" | "description" | "start" | "end" | "createdAt" | "updatedAt" | "experienceId", ExtArgs["result"]["job"]>
+  export type JobOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "function" | "description" | "start" | "end" | "experienceId", ExtArgs["result"]["job"]>
   export type JobInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     experience?: boolean | ExperienceDefaultArgs<ExtArgs>
   }
@@ -7734,8 +7608,6 @@ export namespace Prisma {
       description: string | null
       start: string | null
       end: string | null
-      createdAt: Date
-      updatedAt: Date
       experienceId: number
     }, ExtArgs["result"]["job"]>
     composites: {}
@@ -8166,8 +8038,6 @@ export namespace Prisma {
     readonly description: FieldRef<"Job", 'String'>
     readonly start: FieldRef<"Job", 'String'>
     readonly end: FieldRef<"Job", 'String'>
-    readonly createdAt: FieldRef<"Job", 'DateTime'>
-    readonly updatedAt: FieldRef<"Job", 'DateTime'>
     readonly experienceId: FieldRef<"Job", 'Int'>
   }
     
@@ -8631,8 +8501,6 @@ export namespace Prisma {
     customTags: 'customTags',
     category: 'category',
     customCategory: 'customCategory',
-    createdAt: 'createdAt',
-    updatedAt: 'updatedAt',
     userId: 'userId'
   };
 
@@ -8646,8 +8514,6 @@ export namespace Prisma {
     year: 'year',
     description: 'description',
     online: 'online',
-    createdAt: 'createdAt',
-    updatedAt: 'updatedAt',
     userId: 'userId'
   };
 
@@ -8661,8 +8527,6 @@ export namespace Prisma {
     year: 'year',
     description: 'description',
     online: 'online',
-    createdAt: 'createdAt',
-    updatedAt: 'updatedAt',
     userId: 'userId'
   };
 
@@ -8674,8 +8538,6 @@ export namespace Prisma {
     company: 'company',
     start: 'start',
     end: 'end',
-    createdAt: 'createdAt',
-    updatedAt: 'updatedAt',
     userId: 'userId'
   };
 
@@ -8688,8 +8550,6 @@ export namespace Prisma {
     description: 'description',
     start: 'start',
     end: 'end',
-    createdAt: 'createdAt',
-    updatedAt: 'updatedAt',
     experienceId: 'experienceId'
   };
 
@@ -8967,8 +8827,6 @@ export namespace Prisma {
     customTags?: StringNullableListFilter<"Portfolio">
     category?: EnumPortfolioCategoryNullableFilter<"Portfolio"> | $Enums.PortfolioCategory | null
     customCategory?: StringNullableFilter<"Portfolio"> | string | null
-    createdAt?: DateTimeFilter<"Portfolio"> | Date | string
-    updatedAt?: DateTimeFilter<"Portfolio"> | Date | string
     userId?: IntFilter<"Portfolio"> | number
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
@@ -8982,8 +8840,6 @@ export namespace Prisma {
     customTags?: SortOrder
     category?: SortOrderInput | SortOrder
     customCategory?: SortOrderInput | SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
     userId?: SortOrder
     user?: UserOrderByWithRelationInput
   }
@@ -9000,8 +8856,6 @@ export namespace Prisma {
     customTags?: StringNullableListFilter<"Portfolio">
     category?: EnumPortfolioCategoryNullableFilter<"Portfolio"> | $Enums.PortfolioCategory | null
     customCategory?: StringNullableFilter<"Portfolio"> | string | null
-    createdAt?: DateTimeFilter<"Portfolio"> | Date | string
-    updatedAt?: DateTimeFilter<"Portfolio"> | Date | string
     userId?: IntFilter<"Portfolio"> | number
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id">
@@ -9015,8 +8869,6 @@ export namespace Prisma {
     customTags?: SortOrder
     category?: SortOrderInput | SortOrder
     customCategory?: SortOrderInput | SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
     userId?: SortOrder
     _count?: PortfolioCountOrderByAggregateInput
     _avg?: PortfolioAvgOrderByAggregateInput
@@ -9037,8 +8889,6 @@ export namespace Prisma {
     customTags?: StringNullableListFilter<"Portfolio">
     category?: EnumPortfolioCategoryNullableWithAggregatesFilter<"Portfolio"> | $Enums.PortfolioCategory | null
     customCategory?: StringNullableWithAggregatesFilter<"Portfolio"> | string | null
-    createdAt?: DateTimeWithAggregatesFilter<"Portfolio"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"Portfolio"> | Date | string
     userId?: IntWithAggregatesFilter<"Portfolio"> | number
   }
 
@@ -9052,8 +8902,6 @@ export namespace Prisma {
     year?: StringNullableFilter<"Graduation"> | string | null
     description?: StringNullableFilter<"Graduation"> | string | null
     online?: BoolNullableFilter<"Graduation"> | boolean | null
-    createdAt?: DateTimeFilter<"Graduation"> | Date | string
-    updatedAt?: DateTimeFilter<"Graduation"> | Date | string
     userId?: IntFilter<"Graduation"> | number
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
@@ -9065,8 +8913,6 @@ export namespace Prisma {
     year?: SortOrderInput | SortOrder
     description?: SortOrderInput | SortOrder
     online?: SortOrderInput | SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
     userId?: SortOrder
     user?: UserOrderByWithRelationInput
   }
@@ -9081,8 +8927,6 @@ export namespace Prisma {
     year?: StringNullableFilter<"Graduation"> | string | null
     description?: StringNullableFilter<"Graduation"> | string | null
     online?: BoolNullableFilter<"Graduation"> | boolean | null
-    createdAt?: DateTimeFilter<"Graduation"> | Date | string
-    updatedAt?: DateTimeFilter<"Graduation"> | Date | string
     userId?: IntFilter<"Graduation"> | number
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id">
@@ -9094,8 +8938,6 @@ export namespace Prisma {
     year?: SortOrderInput | SortOrder
     description?: SortOrderInput | SortOrder
     online?: SortOrderInput | SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
     userId?: SortOrder
     _count?: GraduationCountOrderByAggregateInput
     _avg?: GraduationAvgOrderByAggregateInput
@@ -9114,8 +8956,6 @@ export namespace Prisma {
     year?: StringNullableWithAggregatesFilter<"Graduation"> | string | null
     description?: StringNullableWithAggregatesFilter<"Graduation"> | string | null
     online?: BoolNullableWithAggregatesFilter<"Graduation"> | boolean | null
-    createdAt?: DateTimeWithAggregatesFilter<"Graduation"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"Graduation"> | Date | string
     userId?: IntWithAggregatesFilter<"Graduation"> | number
   }
 
@@ -9129,8 +8969,6 @@ export namespace Prisma {
     year?: StringNullableFilter<"Course"> | string | null
     description?: StringNullableFilter<"Course"> | string | null
     online?: BoolFilter<"Course"> | boolean
-    createdAt?: DateTimeFilter<"Course"> | Date | string
-    updatedAt?: DateTimeFilter<"Course"> | Date | string
     userId?: IntFilter<"Course"> | number
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
@@ -9142,8 +8980,6 @@ export namespace Prisma {
     year?: SortOrderInput | SortOrder
     description?: SortOrderInput | SortOrder
     online?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
     userId?: SortOrder
     user?: UserOrderByWithRelationInput
   }
@@ -9158,8 +8994,6 @@ export namespace Prisma {
     year?: StringNullableFilter<"Course"> | string | null
     description?: StringNullableFilter<"Course"> | string | null
     online?: BoolFilter<"Course"> | boolean
-    createdAt?: DateTimeFilter<"Course"> | Date | string
-    updatedAt?: DateTimeFilter<"Course"> | Date | string
     userId?: IntFilter<"Course"> | number
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id">
@@ -9171,8 +9005,6 @@ export namespace Prisma {
     year?: SortOrderInput | SortOrder
     description?: SortOrderInput | SortOrder
     online?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
     userId?: SortOrder
     _count?: CourseCountOrderByAggregateInput
     _avg?: CourseAvgOrderByAggregateInput
@@ -9191,8 +9023,6 @@ export namespace Prisma {
     year?: StringNullableWithAggregatesFilter<"Course"> | string | null
     description?: StringNullableWithAggregatesFilter<"Course"> | string | null
     online?: BoolWithAggregatesFilter<"Course"> | boolean
-    createdAt?: DateTimeWithAggregatesFilter<"Course"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"Course"> | Date | string
     userId?: IntWithAggregatesFilter<"Course"> | number
   }
 
@@ -9204,8 +9034,6 @@ export namespace Prisma {
     company?: StringNullableFilter<"Experience"> | string | null
     start?: StringNullableFilter<"Experience"> | string | null
     end?: StringNullableFilter<"Experience"> | string | null
-    createdAt?: DateTimeFilter<"Experience"> | Date | string
-    updatedAt?: DateTimeFilter<"Experience"> | Date | string
     userId?: IntFilter<"Experience"> | number
     jobs?: JobListRelationFilter
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
@@ -9216,8 +9044,6 @@ export namespace Prisma {
     company?: SortOrderInput | SortOrder
     start?: SortOrderInput | SortOrder
     end?: SortOrderInput | SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
     userId?: SortOrder
     jobs?: JobOrderByRelationAggregateInput
     user?: UserOrderByWithRelationInput
@@ -9231,8 +9057,6 @@ export namespace Prisma {
     company?: StringNullableFilter<"Experience"> | string | null
     start?: StringNullableFilter<"Experience"> | string | null
     end?: StringNullableFilter<"Experience"> | string | null
-    createdAt?: DateTimeFilter<"Experience"> | Date | string
-    updatedAt?: DateTimeFilter<"Experience"> | Date | string
     userId?: IntFilter<"Experience"> | number
     jobs?: JobListRelationFilter
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
@@ -9243,8 +9067,6 @@ export namespace Prisma {
     company?: SortOrderInput | SortOrder
     start?: SortOrderInput | SortOrder
     end?: SortOrderInput | SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
     userId?: SortOrder
     _count?: ExperienceCountOrderByAggregateInput
     _avg?: ExperienceAvgOrderByAggregateInput
@@ -9261,8 +9083,6 @@ export namespace Prisma {
     company?: StringNullableWithAggregatesFilter<"Experience"> | string | null
     start?: StringNullableWithAggregatesFilter<"Experience"> | string | null
     end?: StringNullableWithAggregatesFilter<"Experience"> | string | null
-    createdAt?: DateTimeWithAggregatesFilter<"Experience"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"Experience"> | Date | string
     userId?: IntWithAggregatesFilter<"Experience"> | number
   }
 
@@ -9275,8 +9095,6 @@ export namespace Prisma {
     description?: StringNullableFilter<"Job"> | string | null
     start?: StringNullableFilter<"Job"> | string | null
     end?: StringNullableFilter<"Job"> | string | null
-    createdAt?: DateTimeFilter<"Job"> | Date | string
-    updatedAt?: DateTimeFilter<"Job"> | Date | string
     experienceId?: IntFilter<"Job"> | number
     experience?: XOR<ExperienceScalarRelationFilter, ExperienceWhereInput>
   }
@@ -9287,8 +9105,6 @@ export namespace Prisma {
     description?: SortOrderInput | SortOrder
     start?: SortOrderInput | SortOrder
     end?: SortOrderInput | SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
     experienceId?: SortOrder
     experience?: ExperienceOrderByWithRelationInput
   }
@@ -9302,8 +9118,6 @@ export namespace Prisma {
     description?: StringNullableFilter<"Job"> | string | null
     start?: StringNullableFilter<"Job"> | string | null
     end?: StringNullableFilter<"Job"> | string | null
-    createdAt?: DateTimeFilter<"Job"> | Date | string
-    updatedAt?: DateTimeFilter<"Job"> | Date | string
     experienceId?: IntFilter<"Job"> | number
     experience?: XOR<ExperienceScalarRelationFilter, ExperienceWhereInput>
   }, "id">
@@ -9314,8 +9128,6 @@ export namespace Prisma {
     description?: SortOrderInput | SortOrder
     start?: SortOrderInput | SortOrder
     end?: SortOrderInput | SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
     experienceId?: SortOrder
     _count?: JobCountOrderByAggregateInput
     _avg?: JobAvgOrderByAggregateInput
@@ -9333,8 +9145,6 @@ export namespace Prisma {
     description?: StringNullableWithAggregatesFilter<"Job"> | string | null
     start?: StringNullableWithAggregatesFilter<"Job"> | string | null
     end?: StringNullableWithAggregatesFilter<"Job"> | string | null
-    createdAt?: DateTimeWithAggregatesFilter<"Job"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"Job"> | Date | string
     experienceId?: IntWithAggregatesFilter<"Job"> | number
   }
 
@@ -9513,8 +9323,6 @@ export namespace Prisma {
     customTags?: PortfolioCreatecustomTagsInput | string[]
     category?: $Enums.PortfolioCategory | null
     customCategory?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
     user: UserCreateNestedOneWithoutPortfolioInput
   }
 
@@ -9527,8 +9335,6 @@ export namespace Prisma {
     customTags?: PortfolioCreatecustomTagsInput | string[]
     category?: $Enums.PortfolioCategory | null
     customCategory?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
     userId: number
   }
 
@@ -9540,8 +9346,6 @@ export namespace Prisma {
     customTags?: PortfolioUpdatecustomTagsInput | string[]
     category?: NullableEnumPortfolioCategoryFieldUpdateOperationsInput | $Enums.PortfolioCategory | null
     customCategory?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutPortfolioNestedInput
   }
 
@@ -9554,8 +9358,6 @@ export namespace Prisma {
     customTags?: PortfolioUpdatecustomTagsInput | string[]
     category?: NullableEnumPortfolioCategoryFieldUpdateOperationsInput | $Enums.PortfolioCategory | null
     customCategory?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: IntFieldUpdateOperationsInput | number
   }
 
@@ -9568,8 +9370,6 @@ export namespace Prisma {
     customTags?: PortfolioCreatecustomTagsInput | string[]
     category?: $Enums.PortfolioCategory | null
     customCategory?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
     userId: number
   }
 
@@ -9581,8 +9381,6 @@ export namespace Prisma {
     customTags?: PortfolioUpdatecustomTagsInput | string[]
     category?: NullableEnumPortfolioCategoryFieldUpdateOperationsInput | $Enums.PortfolioCategory | null
     customCategory?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type PortfolioUncheckedUpdateManyInput = {
@@ -9594,8 +9392,6 @@ export namespace Prisma {
     customTags?: PortfolioUpdatecustomTagsInput | string[]
     category?: NullableEnumPortfolioCategoryFieldUpdateOperationsInput | $Enums.PortfolioCategory | null
     customCategory?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: IntFieldUpdateOperationsInput | number
   }
 
@@ -9605,8 +9401,6 @@ export namespace Prisma {
     year?: string | null
     description?: string | null
     online?: boolean | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
     user: UserCreateNestedOneWithoutGraduationInput
   }
 
@@ -9617,8 +9411,6 @@ export namespace Prisma {
     year?: string | null
     description?: string | null
     online?: boolean | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
     userId: number
   }
 
@@ -9628,8 +9420,6 @@ export namespace Prisma {
     year?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
     online?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutGraduationNestedInput
   }
 
@@ -9640,8 +9430,6 @@ export namespace Prisma {
     year?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
     online?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: IntFieldUpdateOperationsInput | number
   }
 
@@ -9652,8 +9440,6 @@ export namespace Prisma {
     year?: string | null
     description?: string | null
     online?: boolean | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
     userId: number
   }
 
@@ -9663,8 +9449,6 @@ export namespace Prisma {
     year?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
     online?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type GraduationUncheckedUpdateManyInput = {
@@ -9674,8 +9458,6 @@ export namespace Prisma {
     year?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
     online?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: IntFieldUpdateOperationsInput | number
   }
 
@@ -9685,8 +9467,6 @@ export namespace Prisma {
     year?: string | null
     description?: string | null
     online?: boolean
-    createdAt?: Date | string
-    updatedAt?: Date | string
     user: UserCreateNestedOneWithoutCoursesInput
   }
 
@@ -9697,8 +9477,6 @@ export namespace Prisma {
     year?: string | null
     description?: string | null
     online?: boolean
-    createdAt?: Date | string
-    updatedAt?: Date | string
     userId: number
   }
 
@@ -9708,8 +9486,6 @@ export namespace Prisma {
     year?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
     online?: BoolFieldUpdateOperationsInput | boolean
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutCoursesNestedInput
   }
 
@@ -9720,8 +9496,6 @@ export namespace Prisma {
     year?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
     online?: BoolFieldUpdateOperationsInput | boolean
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: IntFieldUpdateOperationsInput | number
   }
 
@@ -9732,8 +9506,6 @@ export namespace Prisma {
     year?: string | null
     description?: string | null
     online?: boolean
-    createdAt?: Date | string
-    updatedAt?: Date | string
     userId: number
   }
 
@@ -9743,8 +9515,6 @@ export namespace Prisma {
     year?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
     online?: BoolFieldUpdateOperationsInput | boolean
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type CourseUncheckedUpdateManyInput = {
@@ -9754,8 +9524,6 @@ export namespace Prisma {
     year?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
     online?: BoolFieldUpdateOperationsInput | boolean
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: IntFieldUpdateOperationsInput | number
   }
 
@@ -9763,8 +9531,6 @@ export namespace Prisma {
     company?: string | null
     start?: string | null
     end?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
     jobs?: JobCreateNestedManyWithoutExperienceInput
     user: UserCreateNestedOneWithoutExperiencesInput
   }
@@ -9774,8 +9540,6 @@ export namespace Prisma {
     company?: string | null
     start?: string | null
     end?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
     userId: number
     jobs?: JobUncheckedCreateNestedManyWithoutExperienceInput
   }
@@ -9784,8 +9548,6 @@ export namespace Prisma {
     company?: NullableStringFieldUpdateOperationsInput | string | null
     start?: NullableStringFieldUpdateOperationsInput | string | null
     end?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     jobs?: JobUpdateManyWithoutExperienceNestedInput
     user?: UserUpdateOneRequiredWithoutExperiencesNestedInput
   }
@@ -9795,8 +9557,6 @@ export namespace Prisma {
     company?: NullableStringFieldUpdateOperationsInput | string | null
     start?: NullableStringFieldUpdateOperationsInput | string | null
     end?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: IntFieldUpdateOperationsInput | number
     jobs?: JobUncheckedUpdateManyWithoutExperienceNestedInput
   }
@@ -9806,8 +9566,6 @@ export namespace Prisma {
     company?: string | null
     start?: string | null
     end?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
     userId: number
   }
 
@@ -9815,8 +9573,6 @@ export namespace Prisma {
     company?: NullableStringFieldUpdateOperationsInput | string | null
     start?: NullableStringFieldUpdateOperationsInput | string | null
     end?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ExperienceUncheckedUpdateManyInput = {
@@ -9824,8 +9580,6 @@ export namespace Prisma {
     company?: NullableStringFieldUpdateOperationsInput | string | null
     start?: NullableStringFieldUpdateOperationsInput | string | null
     end?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: IntFieldUpdateOperationsInput | number
   }
 
@@ -9834,8 +9588,6 @@ export namespace Prisma {
     description?: string | null
     start?: string | null
     end?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
     experience: ExperienceCreateNestedOneWithoutJobsInput
   }
 
@@ -9845,8 +9597,6 @@ export namespace Prisma {
     description?: string | null
     start?: string | null
     end?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
     experienceId: number
   }
 
@@ -9855,8 +9605,6 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     start?: NullableStringFieldUpdateOperationsInput | string | null
     end?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     experience?: ExperienceUpdateOneRequiredWithoutJobsNestedInput
   }
 
@@ -9866,8 +9614,6 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     start?: NullableStringFieldUpdateOperationsInput | string | null
     end?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     experienceId?: IntFieldUpdateOperationsInput | number
   }
 
@@ -9877,8 +9623,6 @@ export namespace Prisma {
     description?: string | null
     start?: string | null
     end?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
     experienceId: number
   }
 
@@ -9887,8 +9631,6 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     start?: NullableStringFieldUpdateOperationsInput | string | null
     end?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type JobUncheckedUpdateManyInput = {
@@ -9897,8 +9639,6 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     start?: NullableStringFieldUpdateOperationsInput | string | null
     end?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     experienceId?: IntFieldUpdateOperationsInput | number
   }
 
@@ -10200,17 +9940,6 @@ export namespace Prisma {
     not?: NestedEnumPortfolioCategoryNullableFilter<$PrismaModel> | $Enums.PortfolioCategory | null
   }
 
-  export type DateTimeFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
-  }
-
   export type UserScalarRelationFilter = {
     is?: UserWhereInput
     isNot?: UserWhereInput
@@ -10225,8 +9954,6 @@ export namespace Prisma {
     customTags?: SortOrder
     category?: SortOrder
     customCategory?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
     userId?: SortOrder
   }
 
@@ -10242,8 +9969,6 @@ export namespace Prisma {
     description?: SortOrder
     category?: SortOrder
     customCategory?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
     userId?: SortOrder
   }
 
@@ -10254,8 +9979,6 @@ export namespace Prisma {
     description?: SortOrder
     category?: SortOrder
     customCategory?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
     userId?: SortOrder
   }
 
@@ -10274,20 +9997,6 @@ export namespace Prisma {
     _max?: NestedEnumPortfolioCategoryNullableFilter<$PrismaModel>
   }
 
-  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedDateTimeFilter<$PrismaModel>
-    _max?: NestedDateTimeFilter<$PrismaModel>
-  }
-
   export type BoolNullableFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
     not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
@@ -10300,8 +10009,6 @@ export namespace Prisma {
     year?: SortOrder
     description?: SortOrder
     online?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
     userId?: SortOrder
   }
 
@@ -10317,8 +10024,6 @@ export namespace Prisma {
     year?: SortOrder
     description?: SortOrder
     online?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
     userId?: SortOrder
   }
 
@@ -10329,8 +10034,6 @@ export namespace Prisma {
     year?: SortOrder
     description?: SortOrder
     online?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
     userId?: SortOrder
   }
 
@@ -10354,8 +10057,6 @@ export namespace Prisma {
     year?: SortOrder
     description?: SortOrder
     online?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
     userId?: SortOrder
   }
 
@@ -10371,8 +10072,6 @@ export namespace Prisma {
     year?: SortOrder
     description?: SortOrder
     online?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
     userId?: SortOrder
   }
 
@@ -10383,8 +10082,6 @@ export namespace Prisma {
     year?: SortOrder
     description?: SortOrder
     online?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
     userId?: SortOrder
   }
 
@@ -10408,8 +10105,6 @@ export namespace Prisma {
     company?: SortOrder
     start?: SortOrder
     end?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
     userId?: SortOrder
   }
 
@@ -10423,8 +10118,6 @@ export namespace Prisma {
     company?: SortOrder
     start?: SortOrder
     end?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
     userId?: SortOrder
   }
 
@@ -10433,8 +10126,6 @@ export namespace Prisma {
     company?: SortOrder
     start?: SortOrder
     end?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
     userId?: SortOrder
   }
 
@@ -10454,8 +10145,6 @@ export namespace Prisma {
     description?: SortOrder
     start?: SortOrder
     end?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
     experienceId?: SortOrder
   }
 
@@ -10470,8 +10159,6 @@ export namespace Prisma {
     description?: SortOrder
     start?: SortOrder
     end?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
     experienceId?: SortOrder
   }
 
@@ -10481,8 +10168,6 @@ export namespace Prisma {
     description?: SortOrder
     start?: SortOrder
     end?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
     experienceId?: SortOrder
   }
 
@@ -10735,10 +10420,6 @@ export namespace Prisma {
 
   export type NullableEnumPortfolioCategoryFieldUpdateOperationsInput = {
     set?: $Enums.PortfolioCategory | null
-  }
-
-  export type DateTimeFieldUpdateOperationsInput = {
-    set?: Date | string
   }
 
   export type UserUpdateOneRequiredWithoutPortfolioNestedInput = {
@@ -11034,17 +10715,6 @@ export namespace Prisma {
     not?: NestedEnumPortfolioCategoryNullableFilter<$PrismaModel> | $Enums.PortfolioCategory | null
   }
 
-  export type NestedDateTimeFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
-  }
-
   export type NestedEnumPortfolioCategoryNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: $Enums.PortfolioCategory | EnumPortfolioCategoryFieldRefInput<$PrismaModel> | null
     in?: $Enums.PortfolioCategory[] | ListEnumPortfolioCategoryFieldRefInput<$PrismaModel> | null
@@ -11053,20 +10723,6 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedEnumPortfolioCategoryNullableFilter<$PrismaModel>
     _max?: NestedEnumPortfolioCategoryNullableFilter<$PrismaModel>
-  }
-
-  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedDateTimeFilter<$PrismaModel>
-    _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
   export type NestedBoolNullableFilter<$PrismaModel = never> = {
@@ -11088,8 +10744,6 @@ export namespace Prisma {
     year?: string | null
     description?: string | null
     online?: boolean
-    createdAt?: Date | string
-    updatedAt?: Date | string
   }
 
   export type CourseUncheckedCreateWithoutUserInput = {
@@ -11099,8 +10753,6 @@ export namespace Prisma {
     year?: string | null
     description?: string | null
     online?: boolean
-    createdAt?: Date | string
-    updatedAt?: Date | string
   }
 
   export type CourseCreateOrConnectWithoutUserInput = {
@@ -11117,8 +10769,6 @@ export namespace Prisma {
     company?: string | null
     start?: string | null
     end?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
     jobs?: JobCreateNestedManyWithoutExperienceInput
   }
 
@@ -11127,8 +10777,6 @@ export namespace Prisma {
     company?: string | null
     start?: string | null
     end?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
     jobs?: JobUncheckedCreateNestedManyWithoutExperienceInput
   }
 
@@ -11148,8 +10796,6 @@ export namespace Prisma {
     year?: string | null
     description?: string | null
     online?: boolean | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
   }
 
   export type GraduationUncheckedCreateWithoutUserInput = {
@@ -11159,8 +10805,6 @@ export namespace Prisma {
     year?: string | null
     description?: string | null
     online?: boolean | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
   }
 
   export type GraduationCreateOrConnectWithoutUserInput = {
@@ -11181,8 +10825,6 @@ export namespace Prisma {
     customTags?: PortfolioCreatecustomTagsInput | string[]
     category?: $Enums.PortfolioCategory | null
     customCategory?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
   }
 
   export type PortfolioUncheckedCreateWithoutUserInput = {
@@ -11194,8 +10836,6 @@ export namespace Prisma {
     customTags?: PortfolioCreatecustomTagsInput | string[]
     category?: $Enums.PortfolioCategory | null
     customCategory?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
   }
 
   export type PortfolioCreateOrConnectWithoutUserInput = {
@@ -11234,8 +10874,6 @@ export namespace Prisma {
     year?: StringNullableFilter<"Course"> | string | null
     description?: StringNullableFilter<"Course"> | string | null
     online?: BoolFilter<"Course"> | boolean
-    createdAt?: DateTimeFilter<"Course"> | Date | string
-    updatedAt?: DateTimeFilter<"Course"> | Date | string
     userId?: IntFilter<"Course"> | number
   }
 
@@ -11263,8 +10901,6 @@ export namespace Prisma {
     company?: StringNullableFilter<"Experience"> | string | null
     start?: StringNullableFilter<"Experience"> | string | null
     end?: StringNullableFilter<"Experience"> | string | null
-    createdAt?: DateTimeFilter<"Experience"> | Date | string
-    updatedAt?: DateTimeFilter<"Experience"> | Date | string
     userId?: IntFilter<"Experience"> | number
   }
 
@@ -11294,8 +10930,6 @@ export namespace Prisma {
     year?: StringNullableFilter<"Graduation"> | string | null
     description?: StringNullableFilter<"Graduation"> | string | null
     online?: BoolNullableFilter<"Graduation"> | boolean | null
-    createdAt?: DateTimeFilter<"Graduation"> | Date | string
-    updatedAt?: DateTimeFilter<"Graduation"> | Date | string
     userId?: IntFilter<"Graduation"> | number
   }
 
@@ -11327,8 +10961,6 @@ export namespace Prisma {
     customTags?: StringNullableListFilter<"Portfolio">
     category?: EnumPortfolioCategoryNullableFilter<"Portfolio"> | $Enums.PortfolioCategory | null
     customCategory?: StringNullableFilter<"Portfolio"> | string | null
-    createdAt?: DateTimeFilter<"Portfolio"> | Date | string
-    updatedAt?: DateTimeFilter<"Portfolio"> | Date | string
     userId?: IntFilter<"Portfolio"> | number
   }
 
@@ -11679,8 +11311,6 @@ export namespace Prisma {
     description?: string | null
     start?: string | null
     end?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
   }
 
   export type JobUncheckedCreateWithoutExperienceInput = {
@@ -11689,8 +11319,6 @@ export namespace Prisma {
     description?: string | null
     start?: string | null
     end?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
   }
 
   export type JobCreateOrConnectWithoutExperienceInput = {
@@ -11782,8 +11410,6 @@ export namespace Prisma {
     description?: StringNullableFilter<"Job"> | string | null
     start?: StringNullableFilter<"Job"> | string | null
     end?: StringNullableFilter<"Job"> | string | null
-    createdAt?: DateTimeFilter<"Job"> | Date | string
-    updatedAt?: DateTimeFilter<"Job"> | Date | string
     experienceId?: IntFilter<"Job"> | number
   }
 
@@ -11851,8 +11477,6 @@ export namespace Prisma {
     company?: string | null
     start?: string | null
     end?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
     user: UserCreateNestedOneWithoutExperiencesInput
   }
 
@@ -11861,8 +11485,6 @@ export namespace Prisma {
     company?: string | null
     start?: string | null
     end?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
     userId: number
   }
 
@@ -11886,8 +11508,6 @@ export namespace Prisma {
     company?: NullableStringFieldUpdateOperationsInput | string | null
     start?: NullableStringFieldUpdateOperationsInput | string | null
     end?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutExperiencesNestedInput
   }
 
@@ -11896,8 +11516,6 @@ export namespace Prisma {
     company?: NullableStringFieldUpdateOperationsInput | string | null
     start?: NullableStringFieldUpdateOperationsInput | string | null
     end?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: IntFieldUpdateOperationsInput | number
   }
 
@@ -11908,8 +11526,6 @@ export namespace Prisma {
     year?: string | null
     description?: string | null
     online?: boolean
-    createdAt?: Date | string
-    updatedAt?: Date | string
   }
 
   export type ExperienceCreateManyUserInput = {
@@ -11917,8 +11533,6 @@ export namespace Prisma {
     company?: string | null
     start?: string | null
     end?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
   }
 
   export type GraduationCreateManyUserInput = {
@@ -11928,8 +11542,6 @@ export namespace Prisma {
     year?: string | null
     description?: string | null
     online?: boolean | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
   }
 
   export type PortfolioCreateManyUserInput = {
@@ -11941,8 +11553,6 @@ export namespace Prisma {
     customTags?: PortfolioCreatecustomTagsInput | string[]
     category?: $Enums.PortfolioCategory | null
     customCategory?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
   }
 
   export type CourseUpdateWithoutUserInput = {
@@ -11951,8 +11561,6 @@ export namespace Prisma {
     year?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
     online?: BoolFieldUpdateOperationsInput | boolean
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type CourseUncheckedUpdateWithoutUserInput = {
@@ -11962,8 +11570,6 @@ export namespace Prisma {
     year?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
     online?: BoolFieldUpdateOperationsInput | boolean
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type CourseUncheckedUpdateManyWithoutUserInput = {
@@ -11973,16 +11579,12 @@ export namespace Prisma {
     year?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
     online?: BoolFieldUpdateOperationsInput | boolean
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ExperienceUpdateWithoutUserInput = {
     company?: NullableStringFieldUpdateOperationsInput | string | null
     start?: NullableStringFieldUpdateOperationsInput | string | null
     end?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     jobs?: JobUpdateManyWithoutExperienceNestedInput
   }
 
@@ -11991,8 +11593,6 @@ export namespace Prisma {
     company?: NullableStringFieldUpdateOperationsInput | string | null
     start?: NullableStringFieldUpdateOperationsInput | string | null
     end?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     jobs?: JobUncheckedUpdateManyWithoutExperienceNestedInput
   }
 
@@ -12001,8 +11601,6 @@ export namespace Prisma {
     company?: NullableStringFieldUpdateOperationsInput | string | null
     start?: NullableStringFieldUpdateOperationsInput | string | null
     end?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type GraduationUpdateWithoutUserInput = {
@@ -12011,8 +11609,6 @@ export namespace Prisma {
     year?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
     online?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type GraduationUncheckedUpdateWithoutUserInput = {
@@ -12022,8 +11618,6 @@ export namespace Prisma {
     year?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
     online?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type GraduationUncheckedUpdateManyWithoutUserInput = {
@@ -12033,8 +11627,6 @@ export namespace Prisma {
     year?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
     online?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type PortfolioUpdateWithoutUserInput = {
@@ -12045,8 +11637,6 @@ export namespace Prisma {
     customTags?: PortfolioUpdatecustomTagsInput | string[]
     category?: NullableEnumPortfolioCategoryFieldUpdateOperationsInput | $Enums.PortfolioCategory | null
     customCategory?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type PortfolioUncheckedUpdateWithoutUserInput = {
@@ -12058,8 +11648,6 @@ export namespace Prisma {
     customTags?: PortfolioUpdatecustomTagsInput | string[]
     category?: NullableEnumPortfolioCategoryFieldUpdateOperationsInput | $Enums.PortfolioCategory | null
     customCategory?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type PortfolioUncheckedUpdateManyWithoutUserInput = {
@@ -12071,8 +11659,6 @@ export namespace Prisma {
     customTags?: PortfolioUpdatecustomTagsInput | string[]
     category?: NullableEnumPortfolioCategoryFieldUpdateOperationsInput | $Enums.PortfolioCategory | null
     customCategory?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type JobCreateManyExperienceInput = {
@@ -12081,8 +11667,6 @@ export namespace Prisma {
     description?: string | null
     start?: string | null
     end?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
   }
 
   export type JobUpdateWithoutExperienceInput = {
@@ -12090,8 +11674,6 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     start?: NullableStringFieldUpdateOperationsInput | string | null
     end?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type JobUncheckedUpdateWithoutExperienceInput = {
@@ -12100,8 +11682,6 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     start?: NullableStringFieldUpdateOperationsInput | string | null
     end?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type JobUncheckedUpdateManyWithoutExperienceInput = {
@@ -12110,8 +11690,6 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     start?: NullableStringFieldUpdateOperationsInput | string | null
     end?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
 

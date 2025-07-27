@@ -33,7 +33,7 @@ export default function EditProfileClient({
   message?: string;
 }) {
   //const { profile, message, error } = userProfile || {};
-  const [formData, setFormData] = useState<DataCreateCurriculoForm>();
+  const [formData, setFormData] = useState<DataCreateCurriculoForm | null | undefined>();
   const [usernameError, setUsernameError] = useState<string | null>(null);
   const { setProfile, dataProfile, loading } = useUser();
   const [isLocalData, setIsLocalData] = useState<boolean>();
@@ -133,9 +133,9 @@ export default function EditProfileClient({
       const payload: DataCreateCurriculoForm = {
         ...formData,
         email: userSession?.email || formData?.email || '',
-        showPhoneInPDF: formData?.showPhoneInPDF,
-        showEmailInPDF: formData?.showEmailInPDF,
-        public: formData?.public,
+        showPhoneInPDF: formData?.showPhoneInPDF || false,
+        showEmailInPDF: formData?.showEmailInPDF || false,
+        public: formData?.public || false,
       }; // certifique-se que formData siga o tipo
 
       //Cria umsnapshop para evitar conflito de dados

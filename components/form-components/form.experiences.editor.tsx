@@ -41,9 +41,18 @@ export default function ExperienceEditor({ experience, setExperience, pickColor 
   const handleJobChange = (expIndex: number, jobIndex: number, field: keyof Job, value: string) => {
     const updated = [...experience];
     if (Array.isArray(updated[expIndex])) return;
+
+    // Ensure jobs array exists
     if (!updated[expIndex].jobs) updated[expIndex].jobs = [];
+
+    // Get the job object safely
     const job = updated[expIndex].jobs![jobIndex] as Job;
-    job[field] = value; // TypeScript will infer the correct type here
+
+    // Assign the value to the field, ensuring it's safe to do so
+    if (field === 'function' || field === 'description' || field === 'start' || field === 'end') {
+      job[field] = value; // TypeScript will infer the correct type here
+    }
+
     setExperience(updated);
   };
 

@@ -1,6 +1,10 @@
 import type { Config } from 'tailwindcss';
 
-const config: Config = {
+interface CustomConfig extends Config {
+  safelist?: string[];
+}
+
+const config: CustomConfig = {
   content: [
     './app/**/*.{js,ts,jsx,tsx}',
     './components/**/*.{js,ts,jsx,tsx}',

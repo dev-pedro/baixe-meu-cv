@@ -20,7 +20,7 @@ export async function updatePortfolioEntriesTx(userId: number, portfolio?: Portf
       url: p.url || '',
       description: p.description || '',
       tags: Array.isArray(p.tags) ? p.tags : [],
-      customTags: typeof p.customTags === 'string' ? p.customTags.split(',') : p.customTags || [],
+      customTags: Array.isArray(p?.customTags) ? p.customTags : [],
       category: p.category || null,
       userId,
     };
@@ -82,7 +82,7 @@ export async function updateGraduationsTx(userId: number, graduation?: Graduatio
 export async function updateCoursesTx(userId: number, courses?: Course[]) {
   const existing = await prisma.course.findMany({ where: { userId }, select: { id: true } });
   const incoming = courses || [];
-console.log('Courses: ', courses)
+  console.log('Courses: ', courses);
   const incomingIds = new Set(incoming.filter((c) => c.id).map((c) => c.id));
   const toDelete = existing.filter((c) => !incomingIds.has(c.id)).map((c) => c.id);
 
@@ -125,7 +125,7 @@ export async function updateExperiencesAndJobsTx(
   const existing = await prisma.experience.findMany({ where: { userId }, select: { id: true } });
   const incoming = experiences || [];
 
-  console.log('teste: ', (experiences && 'jobs' in experiences) && experiences?.jobs)
+  console.log('teste: ', experiences && 'jobs' in experiences && experiences?.jobs);
 
   const incomingExperienceIds = new Set(incoming.filter((e) => e.id).map((e) => e.id));
   const toDeleteExperienceIds = existing

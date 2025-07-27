@@ -1,4 +1,5 @@
 // app/pages/export/route.tsx
+'use server'
 import { NextRequest, NextResponse } from 'next/server';
 import { pdf } from '@react-pdf/renderer';
 import { ModernResume } from '@/app/pages/pdfs/modern';
@@ -24,7 +25,9 @@ export async function POST(req: NextRequest) {
       doc = <ModernResume profile={profile} />;
   }
 
-  const pdfBuffer = await pdf(doc).toBuffer();
+  const pdfBlob = await pdf(doc).toBlob(); // If you are in Edge runtime
+  const arrayBuffer = await pdfBlob.arrayBuffer();
+  const pdfBuffer = Buffer.from(arrayBuffer);
 
   return new NextResponse(pdfBuffer, {
     headers: {

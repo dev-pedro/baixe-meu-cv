@@ -24,12 +24,15 @@ function UserProvider({ children }: { children: React.ReactNode }) {
 
         try {
           const result = await getUserByEmailHash(session.user.email);
-          const curriculo = {
-            profile: result?.profile || null,
-            message: result?.message,
-            error: result?.error || false,
-          };
-          setDataProfile(curriculo);
+          if (result?.profile) {
+            setDataProfile({
+              profile: result.profile,
+              message: result.message,
+              error: result.error || false,
+            });
+          } else {
+            setDataProfile(null);
+          }
         } catch (error) {
           console.error('Erro ao buscar usuário', error);
         } finally {

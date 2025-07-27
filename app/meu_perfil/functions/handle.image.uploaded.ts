@@ -22,10 +22,10 @@ export function handleImageUpload(
       setFormData((prev) => {
         const currentData: DataCreateCurriculoForm = {
           image: pngDataUrl,
-          username: prev?.username ?? null,
-          name: prev?.name ?? null,
-          email: prev?.email ?? null,
-          phone: prev?.phone ?? null,
+          username: prev?.username ?? '',
+          name: prev?.name ?? '',
+          email: prev?.email ?? '',
+          phone: prev?.phone ?? '',
           bio: prev?.bio ?? '',
           pickColor: prev?.pickColor ?? 5,
           profession: prev?.profession ?? '',

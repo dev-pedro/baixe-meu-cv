@@ -35,7 +35,24 @@ export async function getUserByUserName(username: string): Promise<UserDataResul
     const email = emailEncrypted ? await decryptData(emailEncrypted) : 'baixemeucv@gmail.com';
     const phone = phoneEncrypted ? await decryptData(phoneEncrypted) : '';
 
-    return { profile: { email, phone, ...profile }, message: '', error: false };
+    return {
+      profile: {
+        ...profile,
+        email: email || '',
+        phone: phone || '',
+        image: profile.image === null ? undefined : profile.image,
+        bio: profile.bio === null ? undefined : profile.bio,
+        pickColor: profile.pickColor || 5,
+        profession: profile.profession || '',
+        city: profile.city || '',
+        showPhoneInPDF: profile.showPhoneInPDF || false,
+        showEmailInPDF: profile.showEmailInPDF || false,
+        public: profile.public || false,
+        template: profile.template || 'modern',
+      },
+      message: '',
+      error: false,
+    };
   } catch (error) {
     console.error('Erro ao buscar usuário por username:', error);
     return {
@@ -77,7 +94,20 @@ export async function getUserByEmailHash(userEmail: string): Promise<UserDataRes
     const phone = phoneEncrypted ? await decryptData(phoneEncrypted) : '';
 
     return {
-      profile: { ...dataUser, email, phone },
+      profile: {
+        ...dataUser,
+        email: email || '',
+        phone: phone || '',
+        image: dataUser.image === null ? undefined : dataUser.image,
+        bio: dataUser.bio === null ? undefined : dataUser.bio,
+        pickColor: dataUser.pickColor || 5,
+        profession: dataUser.profession || '',
+        city: dataUser.city || '',
+        showPhoneInPDF: dataUser.showPhoneInPDF || false,
+        showEmailInPDF: dataUser.showEmailInPDF || false,
+        public: dataUser.public || false,
+        template: dataUser.template || 'modern',
+      },
       message: '',
       error: false,
     };
@@ -107,11 +137,10 @@ export async function createOrUpdateUser(
   }
 
   try {
-    const { email, phone, username } = data;
+    const { email, phone, ...dataRest } = data;
+    const username = dataRest.username || '';
 
     if (!email) throw new Error('Email é obrigatório');
-
-    console.log('Criando ou atualizando usuário com dados:', data);
 
     const emailHash = await hashEmail(email || '');
     const emailEncrypted = await encryptData(email || '');
@@ -125,8 +154,8 @@ export async function createOrUpdateUser(
     }
 
     const result = existing
-      ? await updateUser(existing.id, data, emailEncrypted, phoneEncrypted, profile || null)
-      : await createUser(data, emailHash, emailEncrypted, phoneEncrypted);
+      ? await updateUser(existing.id, dataRest, emailEncrypted, phoneEncrypted, profile || null)
+      : await createUser(dataRest, emailHash, emailEncrypted, phoneEncrypted);
     return result;
   } catch (error) {
     return {

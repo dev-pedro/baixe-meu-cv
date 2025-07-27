@@ -52,61 +52,89 @@ export type Portfolio = {
   customTags?: string[] | undefined;
   category?: PortfolioCategory | null | undefined;
   customCategory?: string | null;
-  createdAt?: Date | string;
-  updatedAt?: Date | string;
   userId?: number;
 };
 
 export type Graduation = {
+  id?: number | undefined | null;
   name?: string | null | undefined;
   institution?: string | null | undefined;
   description?: string | null | undefined;
   online?: boolean | null | undefined;
   year?: string | null | undefined;
+  userId?: number;
 };
 
 export type Job = {
+  id?: number | undefined | null;
   function?: string | null | undefined;
   description?: string | null | undefined;
   start?: string | null | undefined;
   end?: string | null | undefined;
+  experienceId?: number;
 };
 
 export type Experience = {
+  id?: number | undefined | null;
   company?: string | null | undefined;
   start?: string | null | undefined;
   end?: string | null | undefined;
   jobs?: Job[];
+  userId?: number;
 };
 
 export type Course = {
+  id?: number | undefined | null;
   institution?: string | null | undefined;
   name?: string | null | undefined;
   year?: string | null | undefined;
   description?: string | null | undefined;
   online?: boolean;
+  userId?: number;
 };
 export type DataCreateCurriculoForm = {
-  username?: string | null | undefined;
-  name?: string | null | undefined;
-  email?: string | null | undefined;
-  phone?: string | null | undefined;
-  image?: string | null | undefined;
-  bio?: string | null | undefined;
-  pickColor?: number | null | undefined;
-  profession?: string | null | undefined;
-  city?: string | null | undefined;
-  showPhoneInPDF: boolean | undefined;
-  showEmailInPDF: boolean | undefined;
-  public: boolean | undefined;
-  template?: string | null | undefined;
+  username?: string;
+  name?: string;
+  email?: string;
+  phone?: string;
+  image?: string;
+  bio?: string;
+  pickColor?: number;
+  profession?: string;
+  city?: string;
+  showPhoneInPDF: boolean;
+  showEmailInPDF: boolean;
+  public: boolean;
+  template?: string;
   portfolio?: Portfolio[] | [];
   graduation?: Graduation[] | [];
   experiences?: Experience[] | [];
   courses?: Course[] | [];
   skills?: string[] | [];
   softSkills?: string[] | [];
-} | null;
+} | null | undefined;
+
+export type DataCreateOrUpdateUser = {
+  username?: string;
+  name?: string;
+  emailEncrypted?: string;
+  phoneEncrypted?: string;
+  image?: string;
+  bio?: string;
+  pickColor?: number;
+  profession?: string;
+  city?: string;
+  showPhoneInPDF: boolean;
+  showEmailInPDF: boolean;
+  public: boolean;
+  template?: string;
+  portfolio?: Portfolio[] | [];
+  graduation?: Graduation[] | [];
+  experiences?: Experience[] | [];
+  courses?: Course[] | [];
+  skills?: string[] | [];
+  softSkills?: string[] | [];
+};
 
 export type UserDataResult = {
   profile: DataCreateCurriculoForm;
@@ -121,10 +149,10 @@ export type UserDataForm = {
 } | null;
 
 export type Props = {
-  params: {
+  params: Promise<{
     find_person: string;
     profile: DataCreateCurriculoForm;
-  };
+  }>;
 };
 
 export type SectionProps = {
