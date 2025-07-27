@@ -24,6 +24,13 @@ const config: Config = {
     'data-[state=on]:bg-pick-5/30',
     'data-[state=on]:bg-pick-6/30',
     'data-[state=on]:bg-pick-7/30',
+    'pick-1',
+    'pick-2',
+    'pick-3',
+    'pick-4',
+    'pick-5',
+    'pick-6',
+    'pick-7',
   ],
 
   theme: {
