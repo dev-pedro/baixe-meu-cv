@@ -24,11 +24,21 @@ interface Props {
 }
 
 export default function GraduationEditor({ graduation, setGraduation, pickColor }: Props) {
-  const { bg, hover } = getPickerBg(pickColor);
+  const { bg, pickColor: textColor } = getPickerBg(pickColor);
 
-  const handleChange = (index: number, field: keyof Graduation, value: string) => {
+  const handleChange = (index: number, field: keyof Graduation, value: string | boolean) => {
     const updated = [...graduation];
-    updated[index][field] = value as Graduation[keyof Graduation];
+    if (Array.isArray(updated[index])) return;
+    if (
+      field === 'name' ||
+      field === 'description' ||
+      field === 'institution' ||
+      field === 'year'
+    ) {
+      (updated[index] as Graduation)[field] = value as string;
+    } else if (field === 'online') {
+      (updated[index] as Graduation)[field] = value as boolean;
+    }
     setGraduation(updated);
   };
 
@@ -46,8 +56,14 @@ export default function GraduationEditor({ graduation, setGraduation, pickColor 
     <div className="space-y-4 border-t pt-2">
       <div className="flex justify-between items-center">
         <h2 className="text-lg font-semibold">Formações Acadêmicas</h2>
-        <Button className={`${bg} ${hover}`} type="button" variant="download" onClick={handleAdd}>
-          <IoIosAddCircle />
+        <Button
+          size={'icon'}
+          className={`${bg} hover:bg-${textColor}  hover:scale-110  rounded-full`}
+          type="button"
+          variant="download"
+          onClick={handleAdd}
+        >
+          <IoIosAddCircle className={`!w-7 !h-7 text-gray-500`} />
         </Button>
       </div>
 

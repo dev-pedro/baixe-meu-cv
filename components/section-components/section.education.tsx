@@ -1,5 +1,5 @@
 'use server';
-import { DataCreateCurriculoForm, Graduation, SectionProps } from '@/app/types/types';
+import { Graduation, SectionProps } from '@/app/types/types';
 import {
   Card,
   CardContent,

@@ -5,7 +5,7 @@ import { SectionProps } from '@/app/types/types';
 
 export default async function SoftSkills({ props }: { props: SectionProps }) {
   const { profile } = await props;
-  const { bg, hover } = getPickerBg(profile?.pickColor || 1);
+  const { bg } = getPickerBg(profile?.pickColor || 5);
 
   return (
     <section id="softskills" className="scroll-mt-20">

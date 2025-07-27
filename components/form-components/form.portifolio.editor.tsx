@@ -18,7 +18,7 @@ import { PortfolioCategory, PortfolioTag } from '@/lib/generated/prisma';
 import { ToggleGroup, ToggleGroupItem } from '../ui/toggle-group';
 import { getPickerBg } from '@/utils/colors';
 import { useState } from 'react';
-import { PortfolioSchema } from '@/app/lib/schemas/form.perfil.editor.schema';
+import { PortfolioSchema } from '@/app/meu_perfil/validators/form.perfil.editor.schema';
 
 interface Props {
   projects: Portfolio[];
@@ -28,7 +28,7 @@ interface Props {
 
 export default function PortfolioEditor({ projects, setProjects, pickColor }: Props) {
   const [urlError, setUrlError] = useState<string | null>(null);
-  const { bg, hover } = getPickerBg(pickColor);
+  const { bg, pickColor: textColor } = getPickerBg(pickColor);
   const handleChange = <K extends keyof Portfolio>(
     index: number,
     field: K,
@@ -50,7 +50,7 @@ export default function PortfolioEditor({ projects, setProjects, pickColor }: Pr
         description: '',
         tags: [],
         customTags: [],
-        category: '',
+        category: PortfolioCategory.OUTRA,
         customCategory: '',
       },
     ]);
@@ -64,7 +64,9 @@ export default function PortfolioEditor({ projects, setProjects, pickColor }: Pr
 
   // Validação correta de URL
   const handleUrlBlur = (project: Portfolio) => {
-    const result = PortfolioSchema.pick({ url: true }).safeParse({ url: project?.url });
+    const result = PortfolioSchema.pick({ url: true }).safeParse({
+      url: project?.url,
+    });
 
     if (!result.success) {
       setUrlError(result.error.format().url?._errors?.[0] || 'URL');
@@ -81,8 +83,14 @@ export default function PortfolioEditor({ projects, setProjects, pickColor }: Pr
     <div className="pt-4 space-y-4 border-t">
       <div className="flex justify-between items-center">
         <h2 className="text-lg font-semibold">Portfólio</h2>
-        <Button className={`${bg} ${hover}`} type="button" variant="download" onClick={handleAdd}>
-          <IoIosAddCircle />
+        <Button
+          size={'icon'}
+          className={`${bg} hover:bg-${textColor}  hover:scale-110  rounded-full`}
+          type="button"
+          variant="download"
+          onClick={handleAdd}
+        >
+          <IoIosAddCircle className={`!w-7 !h-7 text-gray-500`} />
         </Button>
       </div>
 

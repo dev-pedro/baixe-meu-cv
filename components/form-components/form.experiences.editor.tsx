@@ -14,7 +14,7 @@ import {
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { IoIosAddCircle } from 'react-icons/io';
 import { getPickerBg } from '@/utils/colors';
-import { Experience } from '@/app/types/types';
+import { Experience, Job } from '@/app/types/types';
 
 interface Props {
   experience: Experience[];
@@ -23,12 +23,18 @@ interface Props {
 }
 
 export default function ExperienceEditor({ experience, setExperience, pickColor }: Props) {
-  const { bg, hover } = getPickerBg(pickColor);
+  const { bg, pickColor: textColor } = getPickerBg(pickColor);
 
-  const handleChange = (index: number, field: keyof Experience, value: string) => {
+  const handleChange = (index: number, field: keyof Experience, value: string | Job[]) => {
     const updated = [...experience];
     if (Array.isArray(updated[index])) return;
-    updated[index][field] = value;
+
+    if (field === 'company' || field === 'start' || field === 'end') {
+      (updated[index] as Experience)[field] = value as string;
+    } else if (field === 'jobs') {
+      (updated[index] as Experience)[field] = value as Job[];
+    }
+
     setExperience(updated);
   };
 
@@ -36,7 +42,8 @@ export default function ExperienceEditor({ experience, setExperience, pickColor 
     const updated = [...experience];
     if (Array.isArray(updated[expIndex])) return;
     if (!updated[expIndex].jobs) updated[expIndex].jobs = [];
-    updated[expIndex].jobs![jobIndex][field] = value;
+    const job = updated[expIndex].jobs![jobIndex] as Job;
+    job[field] = value; // TypeScript will infer the correct type here
     setExperience(updated);
   };
 
@@ -52,7 +59,7 @@ export default function ExperienceEditor({ experience, setExperience, pickColor 
 
   const handleAddJob = (index: number) => {
     const updated = [...experience];
-    if (!Array.isArray(updated[index]?.jobs)) updated[index].jobs = [];
+    if (!Array.isArray(updated[index].jobs)) updated[index].jobs = [];
     updated[index]?.jobs!.push({ function: '', description: '', start: '', end: '' });
     setExperience(updated);
   };
@@ -67,8 +74,14 @@ export default function ExperienceEditor({ experience, setExperience, pickColor 
     <div className="space-y-4 border-t pt-2">
       <div className="flex justify-between items-center">
         <h2 className="text-lg font-semibold">Experiências Profissionais</h2>
-        <Button className={`${bg} ${hover}`} type="button" variant="download" onClick={handleAdd}>
-          <IoIosAddCircle />
+        <Button
+          size={'icon'}
+          className={`${bg} hover:bg-${textColor}  hover:scale-110  rounded-full`}
+          type="button"
+          variant="download"
+          onClick={handleAdd}
+        >
+          <IoIosAddCircle className={`!w-7 !h-7 text-gray-500`} />
         </Button>
       </div>
 

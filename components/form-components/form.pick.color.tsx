@@ -11,16 +11,16 @@ interface Props {
 
 export default function PickColor({ color, setPickColor }: Props) {
   return (
-    <div className="pt-2 space-y-4 border-t">
+    <div className="pt-2 space-y-4 ">
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-lg font-semibold">Cor de destaque</h2>
           <p className="text-xs text-muted-foreground">
-            Selecione uma cor de realce para a página de seu currículo.
+            Selecione uma cor abaixo.
           </p>
         </div>
         <div
-          className="w-6 h-6 ml-4 border rounded-full"
+          className="!w-6 !h-6 ml-4 border rounded-full"
           style={{ backgroundColor: color !== null ? colorPalette[color - 1] : 'transparent' }}
         />
       </div>

@@ -24,11 +24,21 @@ interface Props {
 }
 
 export default function CourseEditor({ courses, setCourses, pickColor }: Props) {
-  const { bg, hover } = getPickerBg(pickColor);
+  const { bg, pickColor: textColor } = getPickerBg(pickColor);
 
   const handleChange = (index: number, field: keyof Course, value: string | boolean) => {
     const updated = [...courses];
-    updated[index][field] = value as Course[keyof Course];
+    if (Array.isArray(updated[index])) return;
+    if (
+      field === 'name' ||
+      field === 'description' ||
+      field === 'institution' ||
+      field === 'year'
+    ) {
+      (updated[index] as Course)[field] = value as string;
+    } else if (field === 'online') {
+      (updated[index] as Course)[field] = value as boolean;
+    }
     setCourses(updated);
   };
 
@@ -49,8 +59,14 @@ export default function CourseEditor({ courses, setCourses, pickColor }: Props) 
     <div className="space-y-4 border-t pt-2">
       <div className="flex justify-between items-center">
         <h2 className="text-lg font-semibold">Cursos</h2>
-        <Button className={`${bg} ${hover}`} type="button" variant="download" onClick={handleAdd}>
-          <IoIosAddCircle />
+        <Button
+          size={'icon'}
+          className={`${bg} hover:bg-${textColor}  hover:scale-110  rounded-full`}
+          type="button"
+          variant="download"
+          onClick={handleAdd}
+        >
+          <IoIosAddCircle className={`!w-7 !h-7 text-gray-500`} />
         </Button>
       </div>
 

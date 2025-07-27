@@ -1,4 +1,4 @@
-'use server';
+'use client';
 
 import { Button } from '@/components/ui/button';
 import { FaFilePdf, FaLocationDot } from 'react-icons/fa6';
@@ -8,18 +8,24 @@ import { SendEmailButton } from '../send.email.button';
 import ShareButton from '../share.button';
 import Image from 'next/image';
 import { SectionProps } from '@/app/types/types';
+import { handleDownloadPdfApi } from '@/app/[find_person]/functions/pdf.download';
 
-export default async function Header({ props }: { props: SectionProps }) {
-  const { profile }= await props;
-  const { bg, hover } = getPickerBg(profile?.pickColor || 1);
+export default function Header({ props }: { props: SectionProps }) {
+  const { profile } = props;
+  const { bg, hover } = getPickerBg(profile?.pickColor || 5);
 
   return (
     <section id="capa" className="scroll-mt-20">
       <div className="flex justify-center sm:justify-end pt-4 gap-2">
-        <Button variant={'download'} className={clsx(bg, hover)}>
+        <Button
+          variant={'download'}
+          className={clsx(bg, hover)}
+          onClick={() => handleDownloadPdfApi(profile)}
+        >
           <FaFilePdf />
           Baixe este CV
         </Button>
+
         <ShareButton />
       </div>
       <div className="flex flex-col items-center text-center pt-10">
