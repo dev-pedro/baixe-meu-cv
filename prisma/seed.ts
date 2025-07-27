@@ -3,12 +3,9 @@ import { curriculoExample } from '../app/data/curriculo-example/curriculo.exampl
 import { createOrUpdateUser } from '@/lib/user';
 
 async function seed() {
-
   const curriculoExampleTyped: DataCreateCurriculoForm = curriculoExample;
 
   await createOrUpdateUser(curriculoExampleTyped);
-
-  console.log('Seed concluído!');
 }
 
 seed()
@@ -17,6 +14,5 @@ seed()
     process.exit(1);
   })
   .finally(() => {
-    console.log('Finalizando o processo de seed...');
     process.exit(0);
   });

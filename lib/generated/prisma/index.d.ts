@@ -342,8 +342,8 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 6.6.0
-   * Query Engine version: f676762280b54cd07c770017ed3711ddde35f37a
+   * Prisma Client JS version: 6.11.1
+   * Query Engine version: f40f79ec31188888a2e33acda0ecc8fd10a853a9
    */
   export type PrismaVersion = {
     client: string
@@ -1502,6 +1502,7 @@ export namespace Prisma {
     showPhoneInPDF: boolean | null
     showEmailInPDF: boolean | null
     public: boolean | null
+    template: string | null
     bio: string | null
     city: string | null
     pickColor: number | null
@@ -1521,6 +1522,7 @@ export namespace Prisma {
     showPhoneInPDF: boolean | null
     showEmailInPDF: boolean | null
     public: boolean | null
+    template: string | null
     bio: string | null
     city: string | null
     pickColor: number | null
@@ -1540,6 +1542,7 @@ export namespace Prisma {
     showPhoneInPDF: number
     showEmailInPDF: number
     public: number
+    template: number
     bio: number
     city: number
     pickColor: number
@@ -1573,6 +1576,7 @@ export namespace Prisma {
     showPhoneInPDF?: true
     showEmailInPDF?: true
     public?: true
+    template?: true
     bio?: true
     city?: true
     pickColor?: true
@@ -1592,6 +1596,7 @@ export namespace Prisma {
     showPhoneInPDF?: true
     showEmailInPDF?: true
     public?: true
+    template?: true
     bio?: true
     city?: true
     pickColor?: true
@@ -1611,6 +1616,7 @@ export namespace Prisma {
     showPhoneInPDF?: true
     showEmailInPDF?: true
     public?: true
+    template?: true
     bio?: true
     city?: true
     pickColor?: true
@@ -1716,16 +1722,17 @@ export namespace Prisma {
     phoneEncrypted: string | null
     image: string | null
     profession: string | null
-    showPhoneInPDF: boolean | null
-    showEmailInPDF: boolean | null
-    public: boolean | null
+    showPhoneInPDF: boolean
+    showEmailInPDF: boolean
+    public: boolean
+    template: string | null
     bio: string | null
     city: string | null
     pickColor: number | null
     skills: string[]
     softSkills: string[]
-    createdAt: Date
-    updatedAt: Date
+    createdAt: Date | null
+    updatedAt: Date | null
     _count: UserCountAggregateOutputType | null
     _avg: UserAvgAggregateOutputType | null
     _sum: UserSumAggregateOutputType | null
@@ -1759,6 +1766,7 @@ export namespace Prisma {
     showPhoneInPDF?: boolean
     showEmailInPDF?: boolean
     public?: boolean
+    template?: boolean
     bio?: boolean
     city?: boolean
     pickColor?: boolean
@@ -1785,6 +1793,7 @@ export namespace Prisma {
     showPhoneInPDF?: boolean
     showEmailInPDF?: boolean
     public?: boolean
+    template?: boolean
     bio?: boolean
     city?: boolean
     pickColor?: boolean
@@ -1806,6 +1815,7 @@ export namespace Prisma {
     showPhoneInPDF?: boolean
     showEmailInPDF?: boolean
     public?: boolean
+    template?: boolean
     bio?: boolean
     city?: boolean
     pickColor?: boolean
@@ -1827,6 +1837,7 @@ export namespace Prisma {
     showPhoneInPDF?: boolean
     showEmailInPDF?: boolean
     public?: boolean
+    template?: boolean
     bio?: boolean
     city?: boolean
     pickColor?: boolean
@@ -1836,7 +1847,7 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "username" | "name" | "emailEncrypted" | "emailHash" | "phoneEncrypted" | "image" | "profession" | "showPhoneInPDF" | "showEmailInPDF" | "public" | "bio" | "city" | "pickColor" | "skills" | "softSkills" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "username" | "name" | "emailEncrypted" | "emailHash" | "phoneEncrypted" | "image" | "profession" | "showPhoneInPDF" | "showEmailInPDF" | "public" | "template" | "bio" | "city" | "pickColor" | "skills" | "softSkills" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     courses?: boolean | User$coursesArgs<ExtArgs>
     experiences?: boolean | User$experiencesArgs<ExtArgs>
@@ -1864,16 +1875,17 @@ export namespace Prisma {
       phoneEncrypted: string | null
       image: string | null
       profession: string | null
-      showPhoneInPDF: boolean | null
-      showEmailInPDF: boolean | null
-      public: boolean | null
+      showPhoneInPDF: boolean
+      showEmailInPDF: boolean
+      public: boolean
+      template: string | null
       bio: string | null
       city: string | null
       pickColor: number | null
       skills: string[]
       softSkills: string[]
-      createdAt: Date
-      updatedAt: Date
+      createdAt: Date | null
+      updatedAt: Date | null
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -2312,6 +2324,7 @@ export namespace Prisma {
     readonly showPhoneInPDF: FieldRef<"User", 'Boolean'>
     readonly showEmailInPDF: FieldRef<"User", 'Boolean'>
     readonly public: FieldRef<"User", 'Boolean'>
+    readonly template: FieldRef<"User", 'String'>
     readonly bio: FieldRef<"User", 'String'>
     readonly city: FieldRef<"User", 'String'>
     readonly pickColor: FieldRef<"User", 'Int'>
@@ -8596,6 +8609,7 @@ export namespace Prisma {
     showPhoneInPDF: 'showPhoneInPDF',
     showEmailInPDF: 'showEmailInPDF',
     public: 'public',
+    template: 'template',
     bio: 'bio',
     city: 'city',
     pickColor: 'pickColor',
@@ -8817,16 +8831,17 @@ export namespace Prisma {
     phoneEncrypted?: StringNullableFilter<"User"> | string | null
     image?: StringNullableFilter<"User"> | string | null
     profession?: StringNullableFilter<"User"> | string | null
-    showPhoneInPDF?: BoolNullableFilter<"User"> | boolean | null
-    showEmailInPDF?: BoolNullableFilter<"User"> | boolean | null
-    public?: BoolNullableFilter<"User"> | boolean | null
+    showPhoneInPDF?: BoolFilter<"User"> | boolean
+    showEmailInPDF?: BoolFilter<"User"> | boolean
+    public?: BoolFilter<"User"> | boolean
+    template?: StringNullableFilter<"User"> | string | null
     bio?: StringNullableFilter<"User"> | string | null
     city?: StringNullableFilter<"User"> | string | null
     pickColor?: IntNullableFilter<"User"> | number | null
     skills?: StringNullableListFilter<"User">
     softSkills?: StringNullableListFilter<"User">
-    createdAt?: DateTimeFilter<"User"> | Date | string
-    updatedAt?: DateTimeFilter<"User"> | Date | string
+    createdAt?: DateTimeNullableFilter<"User"> | Date | string | null
+    updatedAt?: DateTimeNullableFilter<"User"> | Date | string | null
     courses?: CourseListRelationFilter
     experiences?: ExperienceListRelationFilter
     graduation?: GraduationListRelationFilter
@@ -8842,16 +8857,17 @@ export namespace Prisma {
     phoneEncrypted?: SortOrderInput | SortOrder
     image?: SortOrderInput | SortOrder
     profession?: SortOrderInput | SortOrder
-    showPhoneInPDF?: SortOrderInput | SortOrder
-    showEmailInPDF?: SortOrderInput | SortOrder
-    public?: SortOrderInput | SortOrder
+    showPhoneInPDF?: SortOrder
+    showEmailInPDF?: SortOrder
+    public?: SortOrder
+    template?: SortOrderInput | SortOrder
     bio?: SortOrderInput | SortOrder
     city?: SortOrderInput | SortOrder
     pickColor?: SortOrderInput | SortOrder
     skills?: SortOrder
     softSkills?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+    createdAt?: SortOrderInput | SortOrder
+    updatedAt?: SortOrderInput | SortOrder
     courses?: CourseOrderByRelationAggregateInput
     experiences?: ExperienceOrderByRelationAggregateInput
     graduation?: GraduationOrderByRelationAggregateInput
@@ -8870,16 +8886,17 @@ export namespace Prisma {
     emailEncrypted?: StringFilter<"User"> | string
     image?: StringNullableFilter<"User"> | string | null
     profession?: StringNullableFilter<"User"> | string | null
-    showPhoneInPDF?: BoolNullableFilter<"User"> | boolean | null
-    showEmailInPDF?: BoolNullableFilter<"User"> | boolean | null
-    public?: BoolNullableFilter<"User"> | boolean | null
+    showPhoneInPDF?: BoolFilter<"User"> | boolean
+    showEmailInPDF?: BoolFilter<"User"> | boolean
+    public?: BoolFilter<"User"> | boolean
+    template?: StringNullableFilter<"User"> | string | null
     bio?: StringNullableFilter<"User"> | string | null
     city?: StringNullableFilter<"User"> | string | null
     pickColor?: IntNullableFilter<"User"> | number | null
     skills?: StringNullableListFilter<"User">
     softSkills?: StringNullableListFilter<"User">
-    createdAt?: DateTimeFilter<"User"> | Date | string
-    updatedAt?: DateTimeFilter<"User"> | Date | string
+    createdAt?: DateTimeNullableFilter<"User"> | Date | string | null
+    updatedAt?: DateTimeNullableFilter<"User"> | Date | string | null
     courses?: CourseListRelationFilter
     experiences?: ExperienceListRelationFilter
     graduation?: GraduationListRelationFilter
@@ -8895,16 +8912,17 @@ export namespace Prisma {
     phoneEncrypted?: SortOrderInput | SortOrder
     image?: SortOrderInput | SortOrder
     profession?: SortOrderInput | SortOrder
-    showPhoneInPDF?: SortOrderInput | SortOrder
-    showEmailInPDF?: SortOrderInput | SortOrder
-    public?: SortOrderInput | SortOrder
+    showPhoneInPDF?: SortOrder
+    showEmailInPDF?: SortOrder
+    public?: SortOrder
+    template?: SortOrderInput | SortOrder
     bio?: SortOrderInput | SortOrder
     city?: SortOrderInput | SortOrder
     pickColor?: SortOrderInput | SortOrder
     skills?: SortOrder
     softSkills?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+    createdAt?: SortOrderInput | SortOrder
+    updatedAt?: SortOrderInput | SortOrder
     _count?: UserCountOrderByAggregateInput
     _avg?: UserAvgOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
@@ -8924,16 +8942,17 @@ export namespace Prisma {
     phoneEncrypted?: StringNullableWithAggregatesFilter<"User"> | string | null
     image?: StringNullableWithAggregatesFilter<"User"> | string | null
     profession?: StringNullableWithAggregatesFilter<"User"> | string | null
-    showPhoneInPDF?: BoolNullableWithAggregatesFilter<"User"> | boolean | null
-    showEmailInPDF?: BoolNullableWithAggregatesFilter<"User"> | boolean | null
-    public?: BoolNullableWithAggregatesFilter<"User"> | boolean | null
+    showPhoneInPDF?: BoolWithAggregatesFilter<"User"> | boolean
+    showEmailInPDF?: BoolWithAggregatesFilter<"User"> | boolean
+    public?: BoolWithAggregatesFilter<"User"> | boolean
+    template?: StringNullableWithAggregatesFilter<"User"> | string | null
     bio?: StringNullableWithAggregatesFilter<"User"> | string | null
     city?: StringNullableWithAggregatesFilter<"User"> | string | null
     pickColor?: IntNullableWithAggregatesFilter<"User"> | number | null
     skills?: StringNullableListFilter<"User">
     softSkills?: StringNullableListFilter<"User">
-    createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
+    createdAt?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
+    updatedAt?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
   }
 
   export type PortfolioWhereInput = {
@@ -9327,16 +9346,17 @@ export namespace Prisma {
     phoneEncrypted?: string | null
     image?: string | null
     profession?: string | null
-    showPhoneInPDF?: boolean | null
-    showEmailInPDF?: boolean | null
-    public?: boolean | null
+    showPhoneInPDF?: boolean
+    showEmailInPDF?: boolean
+    public?: boolean
+    template?: string | null
     bio?: string | null
     city?: string | null
     pickColor?: number | null
     skills?: UserCreateskillsInput | string[]
     softSkills?: UserCreatesoftSkillsInput | string[]
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    createdAt?: Date | string | null
+    updatedAt?: Date | string | null
     courses?: CourseCreateNestedManyWithoutUserInput
     experiences?: ExperienceCreateNestedManyWithoutUserInput
     graduation?: GraduationCreateNestedManyWithoutUserInput
@@ -9352,16 +9372,17 @@ export namespace Prisma {
     phoneEncrypted?: string | null
     image?: string | null
     profession?: string | null
-    showPhoneInPDF?: boolean | null
-    showEmailInPDF?: boolean | null
-    public?: boolean | null
+    showPhoneInPDF?: boolean
+    showEmailInPDF?: boolean
+    public?: boolean
+    template?: string | null
     bio?: string | null
     city?: string | null
     pickColor?: number | null
     skills?: UserCreateskillsInput | string[]
     softSkills?: UserCreatesoftSkillsInput | string[]
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    createdAt?: Date | string | null
+    updatedAt?: Date | string | null
     courses?: CourseUncheckedCreateNestedManyWithoutUserInput
     experiences?: ExperienceUncheckedCreateNestedManyWithoutUserInput
     graduation?: GraduationUncheckedCreateNestedManyWithoutUserInput
@@ -9376,16 +9397,17 @@ export namespace Prisma {
     phoneEncrypted?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     profession?: NullableStringFieldUpdateOperationsInput | string | null
-    showPhoneInPDF?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    showEmailInPDF?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    public?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    showPhoneInPDF?: BoolFieldUpdateOperationsInput | boolean
+    showEmailInPDF?: BoolFieldUpdateOperationsInput | boolean
+    public?: BoolFieldUpdateOperationsInput | boolean
+    template?: NullableStringFieldUpdateOperationsInput | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     city?: NullableStringFieldUpdateOperationsInput | string | null
     pickColor?: NullableIntFieldUpdateOperationsInput | number | null
     skills?: UserUpdateskillsInput | string[]
     softSkills?: UserUpdatesoftSkillsInput | string[]
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     courses?: CourseUpdateManyWithoutUserNestedInput
     experiences?: ExperienceUpdateManyWithoutUserNestedInput
     graduation?: GraduationUpdateManyWithoutUserNestedInput
@@ -9401,16 +9423,17 @@ export namespace Prisma {
     phoneEncrypted?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     profession?: NullableStringFieldUpdateOperationsInput | string | null
-    showPhoneInPDF?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    showEmailInPDF?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    public?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    showPhoneInPDF?: BoolFieldUpdateOperationsInput | boolean
+    showEmailInPDF?: BoolFieldUpdateOperationsInput | boolean
+    public?: BoolFieldUpdateOperationsInput | boolean
+    template?: NullableStringFieldUpdateOperationsInput | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     city?: NullableStringFieldUpdateOperationsInput | string | null
     pickColor?: NullableIntFieldUpdateOperationsInput | number | null
     skills?: UserUpdateskillsInput | string[]
     softSkills?: UserUpdatesoftSkillsInput | string[]
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     courses?: CourseUncheckedUpdateManyWithoutUserNestedInput
     experiences?: ExperienceUncheckedUpdateManyWithoutUserNestedInput
     graduation?: GraduationUncheckedUpdateManyWithoutUserNestedInput
@@ -9426,16 +9449,17 @@ export namespace Prisma {
     phoneEncrypted?: string | null
     image?: string | null
     profession?: string | null
-    showPhoneInPDF?: boolean | null
-    showEmailInPDF?: boolean | null
-    public?: boolean | null
+    showPhoneInPDF?: boolean
+    showEmailInPDF?: boolean
+    public?: boolean
+    template?: string | null
     bio?: string | null
     city?: string | null
     pickColor?: number | null
     skills?: UserCreateskillsInput | string[]
     softSkills?: UserCreatesoftSkillsInput | string[]
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    createdAt?: Date | string | null
+    updatedAt?: Date | string | null
   }
 
   export type UserUpdateManyMutationInput = {
@@ -9446,16 +9470,17 @@ export namespace Prisma {
     phoneEncrypted?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     profession?: NullableStringFieldUpdateOperationsInput | string | null
-    showPhoneInPDF?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    showEmailInPDF?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    public?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    showPhoneInPDF?: BoolFieldUpdateOperationsInput | boolean
+    showEmailInPDF?: BoolFieldUpdateOperationsInput | boolean
+    public?: BoolFieldUpdateOperationsInput | boolean
+    template?: NullableStringFieldUpdateOperationsInput | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     city?: NullableStringFieldUpdateOperationsInput | string | null
     pickColor?: NullableIntFieldUpdateOperationsInput | number | null
     skills?: UserUpdateskillsInput | string[]
     softSkills?: UserUpdatesoftSkillsInput | string[]
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type UserUncheckedUpdateManyInput = {
@@ -9467,16 +9492,17 @@ export namespace Prisma {
     phoneEncrypted?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     profession?: NullableStringFieldUpdateOperationsInput | string | null
-    showPhoneInPDF?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    showEmailInPDF?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    public?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    showPhoneInPDF?: BoolFieldUpdateOperationsInput | boolean
+    showEmailInPDF?: BoolFieldUpdateOperationsInput | boolean
+    public?: BoolFieldUpdateOperationsInput | boolean
+    template?: NullableStringFieldUpdateOperationsInput | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     city?: NullableStringFieldUpdateOperationsInput | string | null
     pickColor?: NullableIntFieldUpdateOperationsInput | number | null
     skills?: UserUpdateskillsInput | string[]
     softSkills?: UserUpdatesoftSkillsInput | string[]
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type PortfolioCreateInput = {
@@ -9917,9 +9943,9 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
-  export type BoolNullableFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
-    not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
+  export type BoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
   export type IntNullableFilter<$PrismaModel = never> = {
@@ -9941,15 +9967,15 @@ export namespace Prisma {
     isEmpty?: boolean
   }
 
-  export type DateTimeFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+  export type DateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
     lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
   export type CourseListRelationFilter = {
@@ -10009,6 +10035,7 @@ export namespace Prisma {
     showPhoneInPDF?: SortOrder
     showEmailInPDF?: SortOrder
     public?: SortOrder
+    template?: SortOrder
     bio?: SortOrder
     city?: SortOrder
     pickColor?: SortOrder
@@ -10035,6 +10062,7 @@ export namespace Prisma {
     showPhoneInPDF?: SortOrder
     showEmailInPDF?: SortOrder
     public?: SortOrder
+    template?: SortOrder
     bio?: SortOrder
     city?: SortOrder
     pickColor?: SortOrder
@@ -10054,6 +10082,7 @@ export namespace Prisma {
     showPhoneInPDF?: SortOrder
     showEmailInPDF?: SortOrder
     public?: SortOrder
+    template?: SortOrder
     bio?: SortOrder
     city?: SortOrder
     pickColor?: SortOrder
@@ -10118,12 +10147,12 @@ export namespace Prisma {
     _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
-  export type BoolNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
-    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedBoolNullableFilter<$PrismaModel>
-    _max?: NestedBoolNullableFilter<$PrismaModel>
+  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
   }
 
   export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -10142,18 +10171,18 @@ export namespace Prisma {
     _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
-  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
     lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedDateTimeFilter<$PrismaModel>
-    _max?: NestedDateTimeFilter<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
   export type EnumPortfolioTagNullableListFilter<$PrismaModel = never> = {
@@ -10169,6 +10198,17 @@ export namespace Prisma {
     in?: $Enums.PortfolioCategory[] | ListEnumPortfolioCategoryFieldRefInput<$PrismaModel> | null
     notIn?: $Enums.PortfolioCategory[] | ListEnumPortfolioCategoryFieldRefInput<$PrismaModel> | null
     not?: NestedEnumPortfolioCategoryNullableFilter<$PrismaModel> | $Enums.PortfolioCategory | null
+  }
+
+  export type DateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
   export type UserScalarRelationFilter = {
@@ -10234,6 +10274,25 @@ export namespace Prisma {
     _max?: NestedEnumPortfolioCategoryNullableFilter<$PrismaModel>
   }
 
+  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type BoolNullableFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
+  }
+
   export type GraduationCountOrderByAggregateInput = {
     id?: SortOrder
     institution?: SortOrder
@@ -10280,9 +10339,12 @@ export namespace Prisma {
     userId?: SortOrder
   }
 
-  export type BoolFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolFilter<$PrismaModel> | boolean
+  export type BoolNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedBoolNullableFilter<$PrismaModel>
+    _max?: NestedBoolNullableFilter<$PrismaModel>
   }
 
   export type CourseCountOrderByAggregateInput = {
@@ -10329,14 +10391,6 @@ export namespace Prisma {
   export type CourseSumOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
-  }
-
-  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedBoolFilter<$PrismaModel>
-    _max?: NestedBoolFilter<$PrismaModel>
   }
 
   export type JobListRelationFilter = {
@@ -10509,8 +10563,8 @@ export namespace Prisma {
     set?: string | null
   }
 
-  export type NullableBoolFieldUpdateOperationsInput = {
-    set?: boolean | null
+  export type BoolFieldUpdateOperationsInput = {
+    set?: boolean
   }
 
   export type NullableIntFieldUpdateOperationsInput = {
@@ -10531,8 +10585,8 @@ export namespace Prisma {
     push?: string | string[]
   }
 
-  export type DateTimeFieldUpdateOperationsInput = {
-    set?: Date | string
+  export type NullableDateTimeFieldUpdateOperationsInput = {
+    set?: Date | string | null
   }
 
   export type CourseUpdateManyWithoutUserNestedInput = {
@@ -10683,6 +10737,10 @@ export namespace Prisma {
     set?: $Enums.PortfolioCategory | null
   }
 
+  export type DateTimeFieldUpdateOperationsInput = {
+    set?: Date | string
+  }
+
   export type UserUpdateOneRequiredWithoutPortfolioNestedInput = {
     create?: XOR<UserCreateWithoutPortfolioInput, UserUncheckedCreateWithoutPortfolioInput>
     connectOrCreate?: UserCreateOrConnectWithoutPortfolioInput
@@ -10697,6 +10755,10 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput
   }
 
+  export type NullableBoolFieldUpdateOperationsInput = {
+    set?: boolean | null
+  }
+
   export type UserUpdateOneRequiredWithoutGraduationNestedInput = {
     create?: XOR<UserCreateWithoutGraduationInput, UserUncheckedCreateWithoutGraduationInput>
     connectOrCreate?: UserCreateOrConnectWithoutGraduationInput
@@ -10709,10 +10771,6 @@ export namespace Prisma {
     create?: XOR<UserCreateWithoutCoursesInput, UserUncheckedCreateWithoutCoursesInput>
     connectOrCreate?: UserCreateOrConnectWithoutCoursesInput
     connect?: UserWhereUniqueInput
-  }
-
-  export type BoolFieldUpdateOperationsInput = {
-    set?: boolean
   }
 
   export type UserUpdateOneRequiredWithoutCoursesNestedInput = {
@@ -10832,9 +10890,9 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
-  export type NestedBoolNullableFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
-    not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
+  export type NestedBoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
   export type NestedIntNullableFilter<$PrismaModel = never> = {
@@ -10848,15 +10906,15 @@ export namespace Prisma {
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
-  export type NestedDateTimeFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
     lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
@@ -10920,12 +10978,12 @@ export namespace Prisma {
     _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
-  export type NestedBoolNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
-    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedBoolNullableFilter<$PrismaModel>
-    _max?: NestedBoolNullableFilter<$PrismaModel>
+  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
   }
 
   export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -10955,6 +11013,48 @@ export namespace Prisma {
     not?: NestedFloatNullableFilter<$PrismaModel> | number | null
   }
 
+  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
+  export type NestedEnumPortfolioCategoryNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.PortfolioCategory | EnumPortfolioCategoryFieldRefInput<$PrismaModel> | null
+    in?: $Enums.PortfolioCategory[] | ListEnumPortfolioCategoryFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.PortfolioCategory[] | ListEnumPortfolioCategoryFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumPortfolioCategoryNullableFilter<$PrismaModel> | $Enums.PortfolioCategory | null
+  }
+
+  export type NestedDateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
+  export type NestedEnumPortfolioCategoryNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.PortfolioCategory | EnumPortfolioCategoryFieldRefInput<$PrismaModel> | null
+    in?: $Enums.PortfolioCategory[] | ListEnumPortfolioCategoryFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.PortfolioCategory[] | ListEnumPortfolioCategoryFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumPortfolioCategoryNullableWithAggregatesFilter<$PrismaModel> | $Enums.PortfolioCategory | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumPortfolioCategoryNullableFilter<$PrismaModel>
+    _max?: NestedEnumPortfolioCategoryNullableFilter<$PrismaModel>
+  }
+
   export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -10969,34 +11069,17 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
-  export type NestedEnumPortfolioCategoryNullableFilter<$PrismaModel = never> = {
-    equals?: $Enums.PortfolioCategory | EnumPortfolioCategoryFieldRefInput<$PrismaModel> | null
-    in?: $Enums.PortfolioCategory[] | ListEnumPortfolioCategoryFieldRefInput<$PrismaModel> | null
-    notIn?: $Enums.PortfolioCategory[] | ListEnumPortfolioCategoryFieldRefInput<$PrismaModel> | null
-    not?: NestedEnumPortfolioCategoryNullableFilter<$PrismaModel> | $Enums.PortfolioCategory | null
+  export type NestedBoolNullableFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
   }
 
-  export type NestedEnumPortfolioCategoryNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.PortfolioCategory | EnumPortfolioCategoryFieldRefInput<$PrismaModel> | null
-    in?: $Enums.PortfolioCategory[] | ListEnumPortfolioCategoryFieldRefInput<$PrismaModel> | null
-    notIn?: $Enums.PortfolioCategory[] | ListEnumPortfolioCategoryFieldRefInput<$PrismaModel> | null
-    not?: NestedEnumPortfolioCategoryNullableWithAggregatesFilter<$PrismaModel> | $Enums.PortfolioCategory | null
+  export type NestedBoolNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
     _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedEnumPortfolioCategoryNullableFilter<$PrismaModel>
-    _max?: NestedEnumPortfolioCategoryNullableFilter<$PrismaModel>
-  }
-
-  export type NestedBoolFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolFilter<$PrismaModel> | boolean
-  }
-
-  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedBoolFilter<$PrismaModel>
-    _max?: NestedBoolFilter<$PrismaModel>
+    _min?: NestedBoolNullableFilter<$PrismaModel>
+    _max?: NestedBoolNullableFilter<$PrismaModel>
   }
 
   export type CourseCreateWithoutUserInput = {
@@ -11257,16 +11340,17 @@ export namespace Prisma {
     phoneEncrypted?: string | null
     image?: string | null
     profession?: string | null
-    showPhoneInPDF?: boolean | null
-    showEmailInPDF?: boolean | null
-    public?: boolean | null
+    showPhoneInPDF?: boolean
+    showEmailInPDF?: boolean
+    public?: boolean
+    template?: string | null
     bio?: string | null
     city?: string | null
     pickColor?: number | null
     skills?: UserCreateskillsInput | string[]
     softSkills?: UserCreatesoftSkillsInput | string[]
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    createdAt?: Date | string | null
+    updatedAt?: Date | string | null
     courses?: CourseCreateNestedManyWithoutUserInput
     experiences?: ExperienceCreateNestedManyWithoutUserInput
     graduation?: GraduationCreateNestedManyWithoutUserInput
@@ -11281,16 +11365,17 @@ export namespace Prisma {
     phoneEncrypted?: string | null
     image?: string | null
     profession?: string | null
-    showPhoneInPDF?: boolean | null
-    showEmailInPDF?: boolean | null
-    public?: boolean | null
+    showPhoneInPDF?: boolean
+    showEmailInPDF?: boolean
+    public?: boolean
+    template?: string | null
     bio?: string | null
     city?: string | null
     pickColor?: number | null
     skills?: UserCreateskillsInput | string[]
     softSkills?: UserCreatesoftSkillsInput | string[]
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    createdAt?: Date | string | null
+    updatedAt?: Date | string | null
     courses?: CourseUncheckedCreateNestedManyWithoutUserInput
     experiences?: ExperienceUncheckedCreateNestedManyWithoutUserInput
     graduation?: GraduationUncheckedCreateNestedManyWithoutUserInput
@@ -11320,16 +11405,17 @@ export namespace Prisma {
     phoneEncrypted?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     profession?: NullableStringFieldUpdateOperationsInput | string | null
-    showPhoneInPDF?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    showEmailInPDF?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    public?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    showPhoneInPDF?: BoolFieldUpdateOperationsInput | boolean
+    showEmailInPDF?: BoolFieldUpdateOperationsInput | boolean
+    public?: BoolFieldUpdateOperationsInput | boolean
+    template?: NullableStringFieldUpdateOperationsInput | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     city?: NullableStringFieldUpdateOperationsInput | string | null
     pickColor?: NullableIntFieldUpdateOperationsInput | number | null
     skills?: UserUpdateskillsInput | string[]
     softSkills?: UserUpdatesoftSkillsInput | string[]
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     courses?: CourseUpdateManyWithoutUserNestedInput
     experiences?: ExperienceUpdateManyWithoutUserNestedInput
     graduation?: GraduationUpdateManyWithoutUserNestedInput
@@ -11344,16 +11430,17 @@ export namespace Prisma {
     phoneEncrypted?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     profession?: NullableStringFieldUpdateOperationsInput | string | null
-    showPhoneInPDF?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    showEmailInPDF?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    public?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    showPhoneInPDF?: BoolFieldUpdateOperationsInput | boolean
+    showEmailInPDF?: BoolFieldUpdateOperationsInput | boolean
+    public?: BoolFieldUpdateOperationsInput | boolean
+    template?: NullableStringFieldUpdateOperationsInput | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     city?: NullableStringFieldUpdateOperationsInput | string | null
     pickColor?: NullableIntFieldUpdateOperationsInput | number | null
     skills?: UserUpdateskillsInput | string[]
     softSkills?: UserUpdatesoftSkillsInput | string[]
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     courses?: CourseUncheckedUpdateManyWithoutUserNestedInput
     experiences?: ExperienceUncheckedUpdateManyWithoutUserNestedInput
     graduation?: GraduationUncheckedUpdateManyWithoutUserNestedInput
@@ -11367,16 +11454,17 @@ export namespace Prisma {
     phoneEncrypted?: string | null
     image?: string | null
     profession?: string | null
-    showPhoneInPDF?: boolean | null
-    showEmailInPDF?: boolean | null
-    public?: boolean | null
+    showPhoneInPDF?: boolean
+    showEmailInPDF?: boolean
+    public?: boolean
+    template?: string | null
     bio?: string | null
     city?: string | null
     pickColor?: number | null
     skills?: UserCreateskillsInput | string[]
     softSkills?: UserCreatesoftSkillsInput | string[]
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    createdAt?: Date | string | null
+    updatedAt?: Date | string | null
     courses?: CourseCreateNestedManyWithoutUserInput
     experiences?: ExperienceCreateNestedManyWithoutUserInput
     portfolio?: PortfolioCreateNestedManyWithoutUserInput
@@ -11391,16 +11479,17 @@ export namespace Prisma {
     phoneEncrypted?: string | null
     image?: string | null
     profession?: string | null
-    showPhoneInPDF?: boolean | null
-    showEmailInPDF?: boolean | null
-    public?: boolean | null
+    showPhoneInPDF?: boolean
+    showEmailInPDF?: boolean
+    public?: boolean
+    template?: string | null
     bio?: string | null
     city?: string | null
     pickColor?: number | null
     skills?: UserCreateskillsInput | string[]
     softSkills?: UserCreatesoftSkillsInput | string[]
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    createdAt?: Date | string | null
+    updatedAt?: Date | string | null
     courses?: CourseUncheckedCreateNestedManyWithoutUserInput
     experiences?: ExperienceUncheckedCreateNestedManyWithoutUserInput
     portfolio?: PortfolioUncheckedCreateNestedManyWithoutUserInput
@@ -11430,16 +11519,17 @@ export namespace Prisma {
     phoneEncrypted?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     profession?: NullableStringFieldUpdateOperationsInput | string | null
-    showPhoneInPDF?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    showEmailInPDF?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    public?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    showPhoneInPDF?: BoolFieldUpdateOperationsInput | boolean
+    showEmailInPDF?: BoolFieldUpdateOperationsInput | boolean
+    public?: BoolFieldUpdateOperationsInput | boolean
+    template?: NullableStringFieldUpdateOperationsInput | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     city?: NullableStringFieldUpdateOperationsInput | string | null
     pickColor?: NullableIntFieldUpdateOperationsInput | number | null
     skills?: UserUpdateskillsInput | string[]
     softSkills?: UserUpdatesoftSkillsInput | string[]
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     courses?: CourseUpdateManyWithoutUserNestedInput
     experiences?: ExperienceUpdateManyWithoutUserNestedInput
     portfolio?: PortfolioUpdateManyWithoutUserNestedInput
@@ -11454,16 +11544,17 @@ export namespace Prisma {
     phoneEncrypted?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     profession?: NullableStringFieldUpdateOperationsInput | string | null
-    showPhoneInPDF?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    showEmailInPDF?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    public?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    showPhoneInPDF?: BoolFieldUpdateOperationsInput | boolean
+    showEmailInPDF?: BoolFieldUpdateOperationsInput | boolean
+    public?: BoolFieldUpdateOperationsInput | boolean
+    template?: NullableStringFieldUpdateOperationsInput | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     city?: NullableStringFieldUpdateOperationsInput | string | null
     pickColor?: NullableIntFieldUpdateOperationsInput | number | null
     skills?: UserUpdateskillsInput | string[]
     softSkills?: UserUpdatesoftSkillsInput | string[]
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     courses?: CourseUncheckedUpdateManyWithoutUserNestedInput
     experiences?: ExperienceUncheckedUpdateManyWithoutUserNestedInput
     portfolio?: PortfolioUncheckedUpdateManyWithoutUserNestedInput
@@ -11477,16 +11568,17 @@ export namespace Prisma {
     phoneEncrypted?: string | null
     image?: string | null
     profession?: string | null
-    showPhoneInPDF?: boolean | null
-    showEmailInPDF?: boolean | null
-    public?: boolean | null
+    showPhoneInPDF?: boolean
+    showEmailInPDF?: boolean
+    public?: boolean
+    template?: string | null
     bio?: string | null
     city?: string | null
     pickColor?: number | null
     skills?: UserCreateskillsInput | string[]
     softSkills?: UserCreatesoftSkillsInput | string[]
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    createdAt?: Date | string | null
+    updatedAt?: Date | string | null
     experiences?: ExperienceCreateNestedManyWithoutUserInput
     graduation?: GraduationCreateNestedManyWithoutUserInput
     portfolio?: PortfolioCreateNestedManyWithoutUserInput
@@ -11501,16 +11593,17 @@ export namespace Prisma {
     phoneEncrypted?: string | null
     image?: string | null
     profession?: string | null
-    showPhoneInPDF?: boolean | null
-    showEmailInPDF?: boolean | null
-    public?: boolean | null
+    showPhoneInPDF?: boolean
+    showEmailInPDF?: boolean
+    public?: boolean
+    template?: string | null
     bio?: string | null
     city?: string | null
     pickColor?: number | null
     skills?: UserCreateskillsInput | string[]
     softSkills?: UserCreatesoftSkillsInput | string[]
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    createdAt?: Date | string | null
+    updatedAt?: Date | string | null
     experiences?: ExperienceUncheckedCreateNestedManyWithoutUserInput
     graduation?: GraduationUncheckedCreateNestedManyWithoutUserInput
     portfolio?: PortfolioUncheckedCreateNestedManyWithoutUserInput
@@ -11540,16 +11633,17 @@ export namespace Prisma {
     phoneEncrypted?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     profession?: NullableStringFieldUpdateOperationsInput | string | null
-    showPhoneInPDF?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    showEmailInPDF?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    public?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    showPhoneInPDF?: BoolFieldUpdateOperationsInput | boolean
+    showEmailInPDF?: BoolFieldUpdateOperationsInput | boolean
+    public?: BoolFieldUpdateOperationsInput | boolean
+    template?: NullableStringFieldUpdateOperationsInput | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     city?: NullableStringFieldUpdateOperationsInput | string | null
     pickColor?: NullableIntFieldUpdateOperationsInput | number | null
     skills?: UserUpdateskillsInput | string[]
     softSkills?: UserUpdatesoftSkillsInput | string[]
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     experiences?: ExperienceUpdateManyWithoutUserNestedInput
     graduation?: GraduationUpdateManyWithoutUserNestedInput
     portfolio?: PortfolioUpdateManyWithoutUserNestedInput
@@ -11564,16 +11658,17 @@ export namespace Prisma {
     phoneEncrypted?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     profession?: NullableStringFieldUpdateOperationsInput | string | null
-    showPhoneInPDF?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    showEmailInPDF?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    public?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    showPhoneInPDF?: BoolFieldUpdateOperationsInput | boolean
+    showEmailInPDF?: BoolFieldUpdateOperationsInput | boolean
+    public?: BoolFieldUpdateOperationsInput | boolean
+    template?: NullableStringFieldUpdateOperationsInput | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     city?: NullableStringFieldUpdateOperationsInput | string | null
     pickColor?: NullableIntFieldUpdateOperationsInput | number | null
     skills?: UserUpdateskillsInput | string[]
     softSkills?: UserUpdatesoftSkillsInput | string[]
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     experiences?: ExperienceUncheckedUpdateManyWithoutUserNestedInput
     graduation?: GraduationUncheckedUpdateManyWithoutUserNestedInput
     portfolio?: PortfolioUncheckedUpdateManyWithoutUserNestedInput
@@ -11616,16 +11711,17 @@ export namespace Prisma {
     phoneEncrypted?: string | null
     image?: string | null
     profession?: string | null
-    showPhoneInPDF?: boolean | null
-    showEmailInPDF?: boolean | null
-    public?: boolean | null
+    showPhoneInPDF?: boolean
+    showEmailInPDF?: boolean
+    public?: boolean
+    template?: string | null
     bio?: string | null
     city?: string | null
     pickColor?: number | null
     skills?: UserCreateskillsInput | string[]
     softSkills?: UserCreatesoftSkillsInput | string[]
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    createdAt?: Date | string | null
+    updatedAt?: Date | string | null
     courses?: CourseCreateNestedManyWithoutUserInput
     graduation?: GraduationCreateNestedManyWithoutUserInput
     portfolio?: PortfolioCreateNestedManyWithoutUserInput
@@ -11640,16 +11736,17 @@ export namespace Prisma {
     phoneEncrypted?: string | null
     image?: string | null
     profession?: string | null
-    showPhoneInPDF?: boolean | null
-    showEmailInPDF?: boolean | null
-    public?: boolean | null
+    showPhoneInPDF?: boolean
+    showEmailInPDF?: boolean
+    public?: boolean
+    template?: string | null
     bio?: string | null
     city?: string | null
     pickColor?: number | null
     skills?: UserCreateskillsInput | string[]
     softSkills?: UserCreatesoftSkillsInput | string[]
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    createdAt?: Date | string | null
+    updatedAt?: Date | string | null
     courses?: CourseUncheckedCreateNestedManyWithoutUserInput
     graduation?: GraduationUncheckedCreateNestedManyWithoutUserInput
     portfolio?: PortfolioUncheckedCreateNestedManyWithoutUserInput
@@ -11709,16 +11806,17 @@ export namespace Prisma {
     phoneEncrypted?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     profession?: NullableStringFieldUpdateOperationsInput | string | null
-    showPhoneInPDF?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    showEmailInPDF?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    public?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    showPhoneInPDF?: BoolFieldUpdateOperationsInput | boolean
+    showEmailInPDF?: BoolFieldUpdateOperationsInput | boolean
+    public?: BoolFieldUpdateOperationsInput | boolean
+    template?: NullableStringFieldUpdateOperationsInput | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     city?: NullableStringFieldUpdateOperationsInput | string | null
     pickColor?: NullableIntFieldUpdateOperationsInput | number | null
     skills?: UserUpdateskillsInput | string[]
     softSkills?: UserUpdatesoftSkillsInput | string[]
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     courses?: CourseUpdateManyWithoutUserNestedInput
     graduation?: GraduationUpdateManyWithoutUserNestedInput
     portfolio?: PortfolioUpdateManyWithoutUserNestedInput
@@ -11733,16 +11831,17 @@ export namespace Prisma {
     phoneEncrypted?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     profession?: NullableStringFieldUpdateOperationsInput | string | null
-    showPhoneInPDF?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    showEmailInPDF?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    public?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    showPhoneInPDF?: BoolFieldUpdateOperationsInput | boolean
+    showEmailInPDF?: BoolFieldUpdateOperationsInput | boolean
+    public?: BoolFieldUpdateOperationsInput | boolean
+    template?: NullableStringFieldUpdateOperationsInput | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     city?: NullableStringFieldUpdateOperationsInput | string | null
     pickColor?: NullableIntFieldUpdateOperationsInput | number | null
     skills?: UserUpdateskillsInput | string[]
     softSkills?: UserUpdatesoftSkillsInput | string[]
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     courses?: CourseUncheckedUpdateManyWithoutUserNestedInput
     graduation?: GraduationUncheckedUpdateManyWithoutUserNestedInput
     portfolio?: PortfolioUncheckedUpdateManyWithoutUserNestedInput

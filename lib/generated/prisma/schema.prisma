@@ -17,9 +17,10 @@ model User {
   phoneEncrypted String?      @unique
   image          String?
   profession     String?
-  showPhoneInPDF Boolean?     @default(false)
-  showEmailInPDF Boolean?     @default(true)
-  public         Boolean?     @default(false)
+  showPhoneInPDF Boolean      @default(false)
+  showEmailInPDF Boolean      @default(false)
+  public         Boolean      @default(false)
+  template       String?      @default("modern")
   bio            String?
   city           String?
   pickColor      Int?
@@ -29,8 +30,8 @@ model User {
   experiences    Experience[]
   graduation     Graduation[]
   portfolio      Portfolio[]
-  createdAt      DateTime     @default(now())
-  updatedAt      DateTime     @updatedAt
+  createdAt      DateTime?    @default(now())
+  updatedAt      DateTime?    @updatedAt
 }
 
 enum PortfolioCategory {
