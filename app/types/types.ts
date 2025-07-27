@@ -43,71 +43,63 @@ export type UserSession = {
   image?: string | null | undefined;
 } | null;
 
-export type Portfolio =
-  | {
-      id?: number | undefined | null;
-      name?: string | null;
-      url?: string | null;
-      description?: string | null;
-      tags?: PortfolioTag[] | undefined;
-      customTags?: string[] | undefined;
-      category?: PortfolioCategory | null | undefined;
-      customCategory?: string | null;
-      createdAt?: Date | string;
-      updatedAt?: Date | string;
-      userId: number;
-    }
-  | [];
+export type Portfolio = {
+  id?: number | undefined | null;
+  name?: string | null;
+  url?: string | undefined | null;
+  description?: string | null;
+  tags?: PortfolioTag[] | undefined;
+  customTags?: string[] | undefined;
+  category?: PortfolioCategory | null | undefined;
+  customCategory?: string | null;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  userId?: number;
+};
 
-export type Graduation =
-  | {
-      name?: string | null | undefined;
-      institution?: string | null | undefined;
-      description?: string | null | undefined;
-      online?: boolean | null | undefined;
-      year?: string | null | undefined;
-    }
-  | [];
+export type Graduation = {
+  name?: string | null | undefined;
+  institution?: string | null | undefined;
+  description?: string | null | undefined;
+  online?: boolean | null | undefined;
+  year?: string | null | undefined;
+};
 
-export type Job =
-  | {
-      function?: string | null | undefined;
-      description?: string | null | undefined;
-      start?: string | null | undefined;
-      end?: string | null | undefined;
-    }
-  | [];
+export type Job = {
+  function?: string;
+  description?: string;
+  start?: string;
+  end?: string;
+};
 
-export type Experience =
-  | {
-      company?: string | null | undefined;
-      start?: string | null | undefined;
-      end?: string | null | undefined;
-      jobs?: Job[];
-    }
-  | [];
+export type Experience = {
+  company?: string;
+  start?: string;
+  end?: string;
+  jobs?: Job[];
+};
 
-export type Course =
-  | {
-      institution?: string | null | undefined
-      name?: string | null | undefined
-      year?: string | null | undefined
-      description?: string | null | undefined
-      online?: boolean
-    };
+export type Course = {
+  institution?: string | null | undefined;
+  name?: string | null | undefined;
+  year?: string | null | undefined;
+  description?: string | null | undefined;
+  online?: boolean;
+};
 export type DataCreateCurriculoForm = {
   username?: string | null | undefined;
   name?: string | null | undefined;
-  email: string | null | undefined;
+  email?: string | null | undefined;
   phone?: string | null | undefined;
   image?: string | null | undefined;
   bio?: string | null | undefined;
   pickColor?: number | null | undefined;
   profession?: string | null | undefined;
   city?: string | null | undefined;
-  showPhoneInPDF?: boolean | null | undefined;
-  showEmailInPDF?: boolean | null | undefined;
-  public?: boolean | null | undefined;
+  showPhoneInPDF: boolean | undefined;
+  showEmailInPDF: boolean | undefined;
+  public: boolean | undefined;
+  template?: string | null | undefined;
   portfolio?: Portfolio[] | [];
   graduation?: Graduation[] | [];
   experiences?: Experience[] | [];
@@ -128,9 +120,10 @@ export type UserDataForm = {
   error: boolean | false;
 } | null;
 
-export type FindPersonProps = {
+export type Props = {
   params: {
     find_person: string;
+    profile: DataCreateCurriculoForm;
   };
 };
 
