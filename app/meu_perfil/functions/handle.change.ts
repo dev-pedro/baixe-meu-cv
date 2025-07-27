@@ -1,6 +1,6 @@
-import { Portfolio } from "@/lib/generated/prisma";
-import { updateFormData } from "./update.form.data";
-import { DataCreateCurriculoForm, Experience, Graduation } from "@/app/types/types";
+import { Portfolio } from '@/lib/generated/prisma';
+import { updateFormData } from './update.form.data';
+import { DataCreateCurriculoForm, Experience, Graduation } from '@/app/types/types';
 
 type InputChangeEvent = React.ChangeEvent<
   HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
@@ -13,6 +13,7 @@ export const handleChange = (
 ) => {
   // Caso seja o ShadCN Checkbox
   if (typeof e === 'boolean' || e === 'indeterminate') {
+    console.log(name, e);
     if (!name) return; // nome é obrigatório nesse caso
     updateFormData(setFormData, { [name]: e === true });
     return;
@@ -36,5 +37,9 @@ export const handleChange = (
   const checked = type === 'checkbox' ? (e.target as HTMLInputElement).checked : undefined;
   const finalValue = type === 'checkbox' ? checked : value;
 
-  updateFormData(setFormData, { [targetName]: finalValue });
+  if (name === 'username' && finalValue && typeof finalValue === 'string') {
+    updateFormData(setFormData, { [targetName]: finalValue.toLowerCase() });
+  } else {
+    updateFormData(setFormData, { [targetName]: finalValue });
+  }
 };
