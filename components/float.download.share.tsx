@@ -6,11 +6,18 @@ import { FaDownload, FaRegShareSquare, FaShareAlt } from 'react-icons/fa';
 import { Popover, PopoverContent, PopoverTrigger } from './ui/popover';
 import clsx from 'clsx';
 import { getPickerBg } from '@/utils/colors';
+import { DataCreateCurriculoForm, SectionProps, UserSession } from '@/app/types/types';
+import { handleDownloadPdfApi } from '@/app/[find_person]/functions/pdf.download';
 
-export function FloatingActionMenu({ props }: { props: any }) {
+export function FloatingActionMenu({ props }: { props: SectionProps }) {
   const [isVisible, setIsVisible] = useState(false);
-  const { profile, userSession }: { profile: any; userSession: any } = props;
-  const { bg, hover } = getPickerBg(profile.pickColor);
+  const { profile, userSession }: { profile: DataCreateCurriculoForm; userSession: UserSession } =
+    props;
+  const { bg, hover } = getPickerBg(profile?.pickColor || 5);
+  const displayName = (profile?.name || userSession?.name || 'Usuário')
+    .split(' ')
+    .slice(0, 2)
+    .join(' ');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -44,9 +51,9 @@ export function FloatingActionMenu({ props }: { props: any }) {
             <Button
               variant="ghost"
               className={`justify-start gap-2 ${hover}`}
-              onClick={() => console.log('Baixar currículo')}
+              onClick={() => handleDownloadPdfApi(profile)}
             >
-              <FaDownload /> {`Baixar Currículo de ${props.profile.name}`}
+              <FaDownload /> {`Baixar Currículo de ${displayName}`}
             </Button>
             <Button
               variant="ghost"
