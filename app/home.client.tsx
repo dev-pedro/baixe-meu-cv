@@ -16,10 +16,12 @@ export default function HomeClient({ session }: HomeClientProps) {
   if (session) redirect('/meu_perfil');
 
   return (
-    <main className="flex flex-col justify-start mx-auto w-full sm:max-w-7xl px-4">
-      <div className="flex flex-col items-center text-center gap-4">
-        <div className="flex flex-col justify-center items-center gap-4 ">
-          <Image alt="logo" src={logo} className="w-52 sm:w-80 object-cover" />
+    <main className="flex flex-col justify-start w-full px-4 mx-auto sm:max-w-7xl">
+      <div className="flex flex-col items-center gap-4 text-center ">
+        <div className="flex flex-col items-center justify-center gap-4 ">
+          <div className="relative w-full mt-4 h-28 sm:h-42">
+            <Image alt="logo" src={logo} fill />
+          </div>
           <h1 className="text-4xl font-bold leading-tight text-balance">
             Construa e compartilhe grátis seu <span className="text-primary">Currículo Online</span>
           </h1>
@@ -38,28 +40,28 @@ export default function HomeClient({ session }: HomeClientProps) {
           baixá-lo em PDF e compartilhá-lo com quem desejar.
         </p>
 
-        <div className="flex flex-col justify-center gap-4 py-4 flex-wrap">
+        <div className="flex flex-col flex-wrap justify-center gap-4 py-4">
           <div className="flex justify-center gap-4">
             {!session && (
               <Button
                 onClick={() => signIn('google')}
                 variant="default"
-                className="rounded-2xl p-6 w-40"
+                className="w-40 p-6 rounded-2xl"
               >
                 Entrar com Google
               </Button>
             )}
 
             <Link href="/curriculo-example" passHref>
-              <Button asChild variant="outline" className="rounded-2xl p-6 w-40">
+              <Button asChild variant="outline" className="w-40 p-6 rounded-2xl">
                 <span>Ver exemplo</span>
               </Button>
             </Link>
           </div>
         </div>
 
-        <div className="bg-card rounded-2xl p-6 shadow-lg sm:w-3xl">
-          <h2 className="text-2xl font-semibold mb-2">📄 Exportação em PDF</h2>
+        <div className="p-6 shadow-lg bg-card rounded-2xl sm:w-3xl">
+          <h2 className="mb-2 text-2xl font-semibold">📄 Exportação em PDF</h2>
           <p className="text-muted-foreground">
             Os visitantes podem baixar uma versão em PDF do seu currículo com um clique. Ideal para
             processos seletivos e entrevistas!
