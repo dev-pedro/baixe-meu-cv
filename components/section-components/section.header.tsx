@@ -1,14 +1,16 @@
 'use client';
 
 import { Button } from '@/components/ui/button';
-import { FaFilePdf, FaLocationDot } from 'react-icons/fa6';
+import { FaFilePdf } from 'react-icons/fa';
 import clsx from 'clsx';
 import { getPickerBg } from '@/utils/colors';
 import { SendEmailButton } from '../send.email.button';
-import ShareButton from '../share.button';
+import { handleShare } from '../share.button';
 import Image from 'next/image';
 import { SectionProps } from '@/app/types/types';
 import { handleDownloadPdfApi } from '@/app/[find_person]/functions/pdf.download';
+import { FaShare } from 'react-icons/fa';
+import { FaLocationDot } from 'react-icons/fa6';
 
 export default function Header({ props }: { props: SectionProps }) {
   const { profile } = props;
@@ -26,7 +28,10 @@ export default function Header({ props }: { props: SectionProps }) {
           Baixe este CV
         </Button>
 
-        <ShareButton />
+        <Button variant="outline" onClick={handleShare}>
+          <FaShare />
+          Compartilhar
+        </Button>
       </div>
       <div className="flex flex-col items-center text-center pt-10">
         <Image

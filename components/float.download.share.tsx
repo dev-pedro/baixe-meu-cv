@@ -2,12 +2,13 @@
 
 import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { FaDownload, FaRegShareSquare, FaShareAlt } from 'react-icons/fa';
+import { FaFilePdf, FaRegShareSquare, FaShare } from 'react-icons/fa';
 import { Popover, PopoverContent, PopoverTrigger } from './ui/popover';
 import clsx from 'clsx';
 import { getPickerBg } from '@/utils/colors';
 import { DataCreateCurriculoForm, SectionProps, UserSession } from '@/app/types/types';
 import { handleDownloadPdfApi } from '@/app/[find_person]/functions/pdf.download';
+import { handleShare } from './share.button';
 
 export function FloatingActionMenu({ props }: { props: SectionProps }) {
   const [isVisible, setIsVisible] = useState(false);
@@ -53,14 +54,14 @@ export function FloatingActionMenu({ props }: { props: SectionProps }) {
               className={`justify-start gap-2 ${hover}`}
               onClick={() => handleDownloadPdfApi(profile)}
             >
-              <FaDownload /> {`Baixar Currículo de ${displayName}`}
+              <FaFilePdf /> {`Baixar Currículo de ${displayName}`}
             </Button>
             <Button
               variant="ghost"
               className={`justify-start gap-2 ${hover}`}
-              onClick={() => console.log('Compartilhar')}
+              onClick={handleShare}
             >
-              <FaShareAlt />
+              <FaShare />
               Compartilhar este Currículo
             </Button>
           </div>
